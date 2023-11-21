@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { breakPoint } from '../styles/breakpoints';
@@ -12,6 +12,25 @@ const logoHome = require('../assets/LogoHome.png');
 const appLogo = require('../assets/logo.png');
 const logoCloseMenue = require('../assets/logoCloseMenue.png');
 
+const showMenue = keyframes`
+  from{
+    transform: translateX(-100%);
+	
+  }
+  to{
+    transform: translateX(0);
+  }
+`;
+
+const showBackGround = keyframes`
+  from{
+    background-color: #fff;;
+  }
+  to{
+    background-color: #00000082;
+  }
+`;
+
 const BackGround = styled.div`
 	position: absolute;
 	left: 0;
@@ -19,6 +38,8 @@ const BackGround = styled.div`
 	width: 100%;
 	height: 100vh;
 	background-color: #00000082;
+
+	animation: ${showBackGround} 0.3s ease-in-out forwards;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -29,6 +50,7 @@ const StyledNavLink = styled(NavLink)`
 	text-decoration: none;
 	border-radius: 1.6rem;
 	margin: 1rem;
+	transition: 0.1s;
 
 	@media (max-width: ${breakPoint.extraLarge}px) {
 		padding: 0.8rem 1rem;
@@ -63,9 +85,9 @@ const Navigation = styled.nav`
 	gap: 2rem;
 	padding: 1rem;
 
-	max-width: 70%;
-	min-width: 300px;
-	width: 70%;
+	animation: ${showMenue} 0.3s ease-in-out forwards;
+
+	width: 340px;
 	height: 40rem;
 	background-color: #fff;
 
@@ -100,7 +122,8 @@ type Props = {
 
 function Mobilenavigation({ showNavigation }: Props) {
 	return (
-		<BackGround>
+		<>
+			<BackGround />
 			<Navigation>
 				<CloseButton onClick={showNavigation}>
 					<img src={logoCloseMenue} alt='Close Menue' />
@@ -133,7 +156,7 @@ function Mobilenavigation({ showNavigation }: Props) {
 					</li>
 				</ul>
 			</Navigation>
-		</BackGround>
+		</>
 	);
 }
 

@@ -49,6 +49,7 @@ const StyledMenue = styled.button`
 function Header() {
 	const [windowWidth, setWindowWitch] = useState(window.innerWidth);
 	const [showMenue, setShowMenue] = useState(false);
+	console.log(showMenue);
 
 	useEffect(() => {
 		const handleResizeWindow = () => setWindowWitch(window.innerWidth);
@@ -69,8 +70,10 @@ function Header() {
 				<Logo />
 			</NavLink>
 			{windowWidth > Number(breakPoint.large) && <Navigation />}
-			{windowWidth > Number(breakPoint.medium) ? <Search /> : <Search type={'small'} />}
+
 			{showMenue && <Mobilenavigation showNavigation={handleOnCLick} />}
+
+			{windowWidth > Number(breakPoint.medium) ? <Search /> : <Search type={'small'} />}
 		</StyledHeader>
 	);
 }

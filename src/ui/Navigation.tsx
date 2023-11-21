@@ -44,6 +44,7 @@ const StyledNavLink = styled(NavLink)`
 	margin: 0.4rem 1rem;
 	text-decoration: none;
 	border-radius: 1.6rem;
+	transition: 0.1s;
 
 	@media (max-width: ${breakPoint.extraLarge}px) {
 		padding: 0.8rem 1rem;

@@ -22,7 +22,6 @@ function AppLayout() {
 	return (
 		<AppContainer>
 			<Header />
-			{/* <Navigation /> */}
 			<MainContentStyled>
 				<Outlet />
 			</MainContentStyled>
