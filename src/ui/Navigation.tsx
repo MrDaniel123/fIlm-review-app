@@ -1,20 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
+import StyledNavLink from './NavigationLink';
 import { breakPoint } from '../styles/breakpoints';
-import Logo from './Logo';
-import Mobilenavigation from './Mobilenavigation';
 
 const logoMovie = require('../assets/logoMovie.png');
 const logoTvSeires = require('../assets/logoPersons.png');
 const logoPersons = require('../assets/logoPersons.png');
-const logoHome = require('../assets/LogoHome.png');
-const appLogo = require('../assets/logo.png');
-
-type Props = {
-	type?: 'mobile' | 'desktop';
-};
 
 const NavigationStyled = styled.nav`
 	display: flex;
@@ -37,43 +29,10 @@ const NavList = styled.ul`
 	list-style: none;
 `;
 
-const StyledNavLink = styled(NavLink)`
-	display: flex;
-	align-items: center;
-	padding: 0.8rem 2.4rem;
-	margin: 0.4rem 1rem;
-	text-decoration: none;
-	border-radius: 1.6rem;
-	transition: 0.1s;
-
-	@media (max-width: ${breakPoint.extraLarge}px) {
-		padding: 0.8rem 1rem;
-	}
-
-	& span {
-		font-size: 2.4rem;
-		font-weight: 600;
-		color: #4b5563;
-
-		@media (max-width: ${breakPoint.extraLarge}px) {
-			font-size: 2rem;
-		}
-	}
-
-	&:hover,
-	&:active,
-	&.active:link,
-	&.active:visited {
-		background-color: #e7e7e7;
-	}
-`;
-
-function Navigation({ type }: Props) {
+function Navigation() {
 	return (
 		<NavigationStyled>
 			<NavList>
-				{/* {type && <Mobilenavigation />} */}
-
 				<li>
 					<StyledNavLink to={'/movies'}>
 						<img src={logoMovie} alt='Logo movie' />

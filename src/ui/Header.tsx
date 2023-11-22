@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import { breakPoint } from '../styles/breakpoints';
 import Search from './Search';
 import Navigation from './Navigation';
-import NavigationPopUp from './NavigationPopUp';
 import Logo from './Logo';
 import Mobilenavigation from './Mobilenavigation';
 
+import { breakPoint } from '../styles/breakpoints';
 const logoMenue = require('../assets/logoMenue.png');
-const logo = require('../assets/logo.png');
 
 const StyledHeader = styled.nav`
 	display: flex;
@@ -48,21 +46,20 @@ const StyledMenue = styled.button`
 
 function Header() {
 	const [windowWidth, setWindowWitch] = useState(window.innerWidth);
-	const [showMenue, setShowMenue] = useState(false);
-	console.log(showMenue);
+	const [showMobileMenu, setShowMobileMenue] = useState(false);
 
 	useEffect(() => {
 		const handleResizeWindow = () => setWindowWitch(window.innerWidth);
 		window.addEventListener('resize', handleResizeWindow);
 	}, []);
 
-	const handleOnCLick = () => {
-		setShowMenue(!showMenue);
+	const handleShowOrHideNavigation = () => {
+		setShowMobileMenue(!showMobileMenu);
 	};
 	return (
 		<StyledHeader>
 			{windowWidth < Number(breakPoint.large) && (
-				<StyledMenue onClick={() => setShowMenue(!showMenue)}>
+				<StyledMenue onClick={() => setShowMobileMenue(!showMobileMenu)}>
 					<img src={logoMenue} alt='Menue' />
 				</StyledMenue>
 			)}
@@ -71,7 +68,7 @@ function Header() {
 			</NavLink>
 			{windowWidth > Number(breakPoint.large) && <Navigation />}
 
-			{showMenue && <Mobilenavigation showNavigation={handleOnCLick} />}
+			{showMobileMenu && <Mobilenavigation showNavigation={handleShowOrHideNavigation} />}
 
 			{windowWidth > Number(breakPoint.medium) ? <Search /> : <Search type={'small'} />}
 		</StyledHeader>
