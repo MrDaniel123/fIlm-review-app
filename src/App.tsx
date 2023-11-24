@@ -8,7 +8,7 @@ import Movies from './pages/Movies';
 import TvSeries from './pages/TvSeries';
 import Persons from './pages/Persons';
 import GlobalStyles from './styles/GlobalStyle';
-// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient({
 	defaultOptions: {

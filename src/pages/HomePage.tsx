@@ -1,15 +1,11 @@
 import React from 'react';
-import UseApi from '../services/useNowPlaying';
+import { useNowPlaying } from '../hooks/useNowPlaying';
 
 function HomePage() {
-	const { data, isLoading, isError, error } = UseApi();
-	console.log(data, isLoading);
+	const { data, isLoading, isError } = useNowPlaying();
+	console.log(data, isLoading, isError);
 
-	if (isError) throw new Error('');
-	if (isLoading) return <div>LOading...</div>;
-	if (data) {
-		return <div>{data.results[3].title}</div>;
-	} else return null;
+	return <div>{data?.results[1].overview}</div>;
 }
 
 export default HomePage;

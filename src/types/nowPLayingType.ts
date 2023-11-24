@@ -15,7 +15,7 @@ interface result {
 	vote_count: number;
 }
 
-export interface INowPLaing {
+export interface NowPLaing {
 	dates: [maximum: string, minmum: string];
 	page: number;
 	results: result[];
