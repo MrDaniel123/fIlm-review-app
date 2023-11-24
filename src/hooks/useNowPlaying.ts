@@ -1,11 +1,10 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { nowPlaying } from '../services/nowPLaying';
 
 export const useNowPlaying = () => {
-	const { data, isLoading, isError } = useQuery(['now-playing'], nowPlaying, {
-		onError: error => {
-			if (error) throw new Error('Error fetch now-playing');
-		},
+	const { data, isLoading, isError } = useQuery({
+		queryKey: ['now-playing'],
+		queryFn: nowPlaying,
 	});
 	return { data, isLoading, isError };
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import HomePage from './pages/HomePage';
 import AppLayout from './ui/AppLayout';
@@ -25,7 +25,7 @@ const queryClient = new QueryClient({
 function App() {
 	return (
 		<>
-			<QueryClientProvider client={queryClient} contextSharing={true}>
+			<QueryClientProvider client={queryClient}>
 				<GlobalStyles />
 				<BrowserRouter>
 					<Routes>
@@ -37,8 +37,7 @@ function App() {
 						</Route>
 					</Routes>
 				</BrowserRouter>
-				{/* <ReactQueryDevtools initialIsOpen={false} /> */}
-				//!!!Fix this bug Not working query devtools
+				<ReactQueryDevtools />
 			</QueryClientProvider>
 		</>
 	);
