@@ -13,7 +13,7 @@ const AppContainer = styled.div`
 	height: 100vh;
 `;
 
-const MainContentStyled = styled.main`
+const MainContentStyled = styled.div`
 	width: 100%;
 `;
 
