@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useNowPlaying } from '../hooks/useNowPlaying';
 import NowPlaying from '../features/nowPlayingCarusel/NowPlaying';
 
 const StyledHomePage = styled.main`
@@ -11,9 +10,6 @@ const StyledHomePage = styled.main`
 `;
 
 function HomePage() {
-	const { data, isLoading, isError } = useNowPlaying();
-	console.log(data, isLoading, isError);
-
 	return (
 		<StyledHomePage>
 			<NowPlaying />

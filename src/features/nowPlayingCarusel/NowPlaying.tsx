@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Carusel from './Carusel';
+import { useNowPlaying } from '../../hooks/useNowPlaying';
 
 const StyledWrapper = styled.section`
 	display: flex;
@@ -20,10 +21,13 @@ const StyledWrapper = styled.section`
 `;
 
 function NowPlaying() {
+	const { data, isLoading, isError } = useNowPlaying();
+	console.log(data, isLoading, isError);
 	return (
 		<StyledWrapper>
 			<h2>Now playing in cinema</h2>
-			<Carusel />
+			{isLoading && <h1>LOading....</h1>}
+			{data && <Carusel data={data} />}
 		</StyledWrapper>
 	);
 }

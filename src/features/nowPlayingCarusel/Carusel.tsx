@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { NowPLaing, result } from '../../types/nowPLayingType';
 
 const arrow = require('../../assets/arrow.png');
 const dot = require('../../assets/dot.png');
 
-const CaruselWrapper = styled.div`
+const CaruselWrapper = styled.div<{ imageLink: string }>`
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-template-rows: 40px 1fr 50px 20px;
 	justify-items: center;
 	align-items: center;
-
 	padding: 12px;
+	min-width: 320px;
+	background-image: url(${props => props.imageLink});
+	background-size: cover;
+	border-radius: 16px;
 `;
 
-const Image = styled.div`
+const Image = styled.img`
 	grid-column: 1/2;
 	grid-row: 1/7;
 	width: 120px;
 	height: 200px;
 	border-radius: 16px;
-
-	background-color: #5e3030;
 `;
 
 const Title = styled.h3`
@@ -34,7 +36,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
 	margin: 1rem;
-	font-size: 10px;
+	font-size: 12px;
 	color: #fff;
 	padding: 1rem;
 	border-radius: 8px;
@@ -69,23 +71,45 @@ const RadioDotButton = styled.button`
 	all: unset;
 `;
 
-function Carusel() {
+interface Props {
+	data: NowPLaing;
+}
+
+function generateCurentResult(data: NowPLaing) {
+	const results = data.results.filter(result => {
+		if (result.title && result.overview && result.backdrop_path && result.poster_path)
+			return result;
+	});
+
+	return results.slice(0, 5);
+}
+
+function Carusel({ data }: Props) {
+	const [caruselIndex, setCaruselIndex] = useState(0);
+	const results = generateCurentResult(data);
+
+	const handleIncrementCaruselIndex = () => {
+		if (results.length - 1 === caruselIndex) return null;
+		setCaruselIndex(caruselIndex + 1);
+	};
+
+	const handleDecrementCaruselIndex = () => {
+		if (caruselIndex === 0) return null;
+		setCaruselIndex(caruselIndex - 1);
+	};
+
 	return (
-		<CaruselWrapper>
-			{/* <img src='' alt='' /> */}
-			<Image />
-			<Title>Interstellar</Title>
-			<Description>
-				The story of Edgardo Mortara, a young Jewish boy living in Bologna, Italy, who in 1858,
-				after being secretly baptized, was forcibly taken from his family to be raised as a
-				Christian. His parents struggle to free their
-			</Description>
+		<CaruselWrapper
+			imageLink={`https://image.tmdb.org/t/p/original${results[caruselIndex].backdrop_path}`}>
+			<Image src={`https://image.tmdb.org/t/p/w500${results[caruselIndex].poster_path}`} />
+			<Title>{results[caruselIndex].title}</Title>
+			<Description>{results[caruselIndex].overview.slice(0, 120)}...</Description>
 			<NavigationWrapper>
-				<PreviewWiewBtn>
+				<PreviewWiewBtn onClick={handleDecrementCaruselIndex}>
 					<img src={arrow} alt='' />
 				</PreviewWiewBtn>
 				<MoreButton>See More...</MoreButton>
-				<NextWiewBtn>
+				<NextWiewBtn onClick={handleIncrementCaruselIndex}>
 					<img src={arrow} alt='' />
 				</NextWiewBtn>
 			</NavigationWrapper>
