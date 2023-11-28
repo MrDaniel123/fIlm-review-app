@@ -7,12 +7,25 @@ import { breakPoint } from '../../styles/breakpoints';
 const arrow = require('../../assets/arrow.png');
 const dot = require('../../assets/dot.png');
 
-const showSlide = keyframes`
+const slowShowing = keyframes`
 from{
 	opacity: 0;
+	transform: translateY(-15px);
 }
 to{
 	opacity: 1;
+	transform: translateY(0);
+}
+`;
+
+const slowShowingImage = keyframes`
+from{
+	opacity: 0;
+
+}
+to{
+	opacity: 1;
+
 }
 `;
 
@@ -31,7 +44,6 @@ const CaruselWrapper = styled.div`
 	min-height: 220px;
 	border-radius: 16px;
 
-	animation: ${showSlide}1s ease-in-out;
 	@media (min-width: ${breakPoint.small}px) {
 		min-height: 360px;
 	}
@@ -50,7 +62,7 @@ const BackGroundImage = styled.img`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	animation: ${showSlide}1s ease-in-out;
+	animation: ${slowShowingImage} 0.6s ease-in-out;
 
 	border-radius: 16px;
 `;
@@ -58,9 +70,10 @@ const BackGroundImage = styled.img`
 const Image = styled.img`
 	grid-column: 1/2;
 	grid-row: 1/7;
-	width: 120px;
-	height: 200px;
+	width: 140px;
+	height: 220px;
 	border-radius: 12px;
+	animation: ${slowShowingImage} 0.6s ease-in-out;
 
 	@media (min-width: ${breakPoint.small}px) {
 		width: 160px;
@@ -79,12 +92,14 @@ const Image = styled.img`
 `;
 
 const Title = styled.h3`
-	font-size: 1.6rem;
+	font-size: 1.2rem;
 	color: #fff;
 	padding: 0.5rem 3rem;
 	border-radius: 50px;
 	text-transform: uppercase;
 	background-color: #000000b3;
+
+	animation: ${slowShowing} 0.6s ease-in-out;
 
 	@media (min-width: ${breakPoint.small}px) {
 		font-size: 2.2rem;
@@ -103,6 +118,8 @@ const Description = styled.p`
 	border-radius: 12px;
 	background-color: #000000b3;
 	max-width: 600px;
+
+	animation: ${slowShowing} 0.6s ease-in-out;
 	@media (min-width: ${breakPoint.small}px) {
 		font-size: 2rem;
 	}
@@ -244,11 +261,18 @@ function Carusel({ data }: Props) {
 	return (
 		<CaruselWrapper>
 			<BackGroundImage
+				key={results[caruselIndex].id}
 				src={`https://image.tmdb.org/t/p/original${results[caruselIndex].backdrop_path}`}
 			/>
-			<Image src={`https://image.tmdb.org/t/p/w500${results[caruselIndex].poster_path}`} />
-			<Title>{results[caruselIndex].title.slice(0, 20)}</Title>
-			<Description>{descriptionlength}...</Description>
+			<Image
+				key={results[caruselIndex].vote_average}
+				src={`https://image.tmdb.org/t/p/w500${results[caruselIndex].poster_path}`}
+			/>
+			<Title key={results[caruselIndex].title.slice(0, 10)}>
+				{results[caruselIndex].title.slice(0, 20)}
+			</Title>
+
+			<Description key={descriptionlength.slice(0, 10)}>{descriptionlength}...</Description>
 			<NavigationWrapper>
 				<PreviewWiewBtn onClick={handleDecrementCaruselIndex}>
 					<img src={arrow} alt='' />

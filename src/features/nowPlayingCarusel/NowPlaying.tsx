@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Carusel from './Carusel';
 import { useNowPlaying } from '../../hooks/useNowPlaying';
 import { breakPoint } from '../../styles/breakpoints';
