@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Carusel from './Carusel';
 import { useNowPlaying } from '../../hooks/useNowPlaying';
+import { breakPoint } from '../../styles/breakpoints';
 
 const StyledWrapper = styled.section`
 	display: flex;
@@ -17,6 +18,15 @@ const StyledWrapper = styled.section`
 	& h2 {
 		font-size: 1.6rem;
 		margin: 1rem;
+		width: 100%;
+		text-align: left;
+
+		@media (min-width: ${breakPoint.small}px) {
+			font-size: 2rem;
+		}
+		@media (min-width: ${breakPoint.medium}px) {
+			font-size: 3rem;
+		}
 	}
 `;
 
