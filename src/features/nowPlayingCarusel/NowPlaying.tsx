@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Carusel from './Carusel';
 import { useNowPlaying } from '../../hooks/useNowPlaying';
 import { breakPoint } from '../../styles/breakpoints';
@@ -12,8 +12,6 @@ const StyledWrapper = styled.section`
 	min-width: 340px;
 	width: 95%;
 	max-width: 1280px;
-
-	/* background-color: #5e5252; */
 
 	& h2 {
 		font-size: 1.6rem;
