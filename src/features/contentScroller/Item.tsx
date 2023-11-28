@@ -1,28 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { result } from '../../types/nowPLayingType';
+
 const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 	width: 130px;
-	height: 200px;
+	min-height: 200px;
 
-	background-color: cadetblue;
+	/* background-color: cadetblue; */
 `;
 
-const ImagePoster = styled.div`
+const ImagePoster = styled.img`
 	height: 150px;
 	width: 100px;
 	border-radius: 12px;
-	background-color: aliceblue;
 `;
 
 const Title = styled.h4`
-	font-size: 14px;
+	font-size: 12px;
 	text-transform: uppercase;
 	font-weight: bold;
+	width: 100%;
+	text-align: center;
 `;
 
 const Date = styled.h6`
@@ -30,12 +33,16 @@ const Date = styled.h6`
 	font-weight: lighter;
 `;
 
-function Item() {
+type Props = {
+	data: result;
+};
+
+function Item({ data }: Props) {
 	return (
 		<Wrapper>
-			<ImagePoster />
-			<Title>Intellesteral</Title>
-			<Date>25 mar 2012</Date>
+			<ImagePoster src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
+			<Title>{data.title}</Title>
+			<Date>{data.release_date}</Date>
 		</Wrapper>
 	);
 }

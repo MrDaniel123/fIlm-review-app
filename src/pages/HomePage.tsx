@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import NowPlaying from '../features/nowPlayingCarusel/NowPlaying';
 import ContentScroller from '../features/contentScroller/ContentScroller';
+import { useTrendingMovies } from '../hooks/useTrendingMovies';
 
 const StyledHomePage = styled.main`
 	display: flex;
@@ -15,10 +16,13 @@ const StyledHomePage = styled.main`
 `;
 
 function HomePage() {
+	const { data, isError, isLoading } = useTrendingMovies();
+	console.log(data);
+
 	return (
 		<StyledHomePage>
 			<NowPlaying />
-			<ContentScroller />
+			{data && <ContentScroller data={data} />}
 		</StyledHomePage>
 	);
 }
