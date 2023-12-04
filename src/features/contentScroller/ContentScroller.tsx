@@ -22,6 +22,8 @@ const ItemsWrapper = styled.div`
 	display: flex;
 	padding: 0 12px;
 	gap: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 
 	overflow: scroll;
 	scroll-behavior: smooth;
@@ -66,9 +68,10 @@ const ScrollButton = styled.button<{ type?: string }>`
 
 type Props = {
 	data: NowPLaing;
+	name: string;
 };
 
-function ContentScroller({ data }: Props) {
+function ContentScroller({ data, name }: Props) {
 	const elementRef = useRef<any>(null);
 
 	// useEffect(() => {
@@ -83,7 +86,7 @@ function ContentScroller({ data }: Props) {
 
 	return (
 		<Wrapper>
-			<Header>Trending</Header>
+			<Header>{name}</Header>
 
 			<ScrollButton onClick={() => handleHorizontallScroll(-210)}>
 				<img src={arrow} alt='Left Horizontal Scroll' />

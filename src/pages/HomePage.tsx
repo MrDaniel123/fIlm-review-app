@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import NowPlaying from '../features/nowPlayingCarusel/NowPlaying';
 import ContentScroller from '../features/contentScroller/ContentScroller';
 import { useTrendingMovies } from '../hooks/useTrendingMovies';
+import { usePopularMovies } from '../hooks/usePopularMovies';
 
 const StyledHomePage = styled.main`
 	display: flex;
@@ -16,13 +17,14 @@ const StyledHomePage = styled.main`
 `;
 
 function HomePage() {
-	const { data, isError, isLoading } = useTrendingMovies();
-	console.log(data);
+	const { data: trendingMoviesData, isError, isLoading } = useTrendingMovies();
+	const { data: popularMoviesData } = usePopularMovies();
 
 	return (
 		<StyledHomePage>
 			<NowPlaying />
-			{data && <ContentScroller data={data} />}
+			{trendingMoviesData && <ContentScroller data={trendingMoviesData} name={'Trending'} />}
+			{popularMoviesData && <ContentScroller data={popularMoviesData} name={'Popular Movies'} />}
 		</StyledHomePage>
 	);
 }
