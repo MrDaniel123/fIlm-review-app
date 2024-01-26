@@ -38,7 +38,7 @@ function DotNavigation({ results, changeSlide }: Props) {
 	return (
 		<DotNavigationWrapper>
 			{results.map((result, index) => (
-				<DotRadioButton onClick={() => changeSlide(index)}>
+				<DotRadioButton key={index} onClick={() => changeSlide(index)}>
 					<img src={dot} alt={`Cange view wariant to ${index} `} />
 				</DotRadioButton>
 			))}

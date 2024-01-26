@@ -22,6 +22,7 @@ const StyledHeader = styled.nav`
 	list-style: none;
 	box-shadow: 0px 0px 19px -4px #000000;
 	border-radius: 0px 0px 32px 32px;
+	background-color: white;
 
 	@media (max-width: ${breakPoint.extraLarge}px) {
 		gap: 1.4rem;
