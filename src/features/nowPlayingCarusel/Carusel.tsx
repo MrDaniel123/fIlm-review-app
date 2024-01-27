@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NowPLaing } from '../../types/nowPLayingType';
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 
 import { CaruselWrapper } from './CaruselWrapper';
 import { PosterImage } from './PosterImage';

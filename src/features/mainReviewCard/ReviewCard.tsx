@@ -2,7 +2,7 @@ import React from 'react';
 import { MovieById } from '../../types/movieByIdType';
 import styled from 'styled-components';
 
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 
 const logoStart = require('../../assets/logoStar.png');
 

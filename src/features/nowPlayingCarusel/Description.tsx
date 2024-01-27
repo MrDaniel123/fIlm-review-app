@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 import { slowShowing } from './animation';
 
 export const Description = styled.p`

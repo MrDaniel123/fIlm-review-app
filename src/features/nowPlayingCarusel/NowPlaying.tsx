@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Carusel from './Carusel';
 import { useNowPlaying } from '../../hooks/useNowPlaying';
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 
 const StyledWrapper = styled.section`
 	display: flex;

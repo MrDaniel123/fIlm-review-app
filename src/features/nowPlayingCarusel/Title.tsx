@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { slowShowing } from './animation';
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 
 export const Title = styled.h3`
 	font-size: 1.2rem;

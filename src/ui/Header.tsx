@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import Logo from './Logo';
 import Mobilenavigation from './Mobilenavigation';
 
-import { breakPoint } from '../styles/breakpoints';
+import { breakPoint } from '../styles/style';
 const logoMenue = require('../assets/logoMenue.png');
 
 const StyledHeader = styled.nav`

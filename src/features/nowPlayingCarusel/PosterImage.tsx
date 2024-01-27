@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 import { slowShowingImage } from './animation';
 
 export const PosterImage = styled.img`

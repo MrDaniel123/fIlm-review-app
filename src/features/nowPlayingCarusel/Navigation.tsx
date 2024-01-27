@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakPoint } from '../../styles/breakpoints';
+import { breakPoint } from '../../styles/style';
 
 const arrow = require('../../assets/arrow.png');
 

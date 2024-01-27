@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import StyledNavLink from './NavigationLink';
-import { breakPoint } from '../styles/breakpoints';
+import { breakPoint } from '../styles/style';
 
 const logoMovie = require('../assets/logoMovie.png');
 const logoTvSeires = require('../assets/logoPersons.png');
