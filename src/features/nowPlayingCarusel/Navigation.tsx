@@ -48,7 +48,7 @@ const MoreButton = styled.button`
 	padding: 1rem;
 	background-color: ${colors.buttonWhite};
 	color: ${colors.fontBlack};
-	font-size: ${fontSizes.mediumMobile};
+	font-size: ${fontSizes.small};
 	border-radius: 12px;
 	cursor: pointer;
 	transition: 0.3s;

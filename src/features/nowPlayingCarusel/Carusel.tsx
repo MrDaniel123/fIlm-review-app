@@ -51,7 +51,7 @@ function Carusel({ data }: Props) {
 
 	if (windowWidth > Number(breakPoint.large)) {
 		descriptionInDifrentSize = results[slideNumber].overview.slice(0, 300);
-	} else if (windowWidth > Number(breakPoint.medium)) {
+	} else if (windowWidth > Number(breakPoint.large)) {
 		descriptionInDifrentSize = results[slideNumber].overview.slice(0, 200);
 	}
 

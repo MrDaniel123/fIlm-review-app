@@ -15,7 +15,7 @@ export const PosterImage = styled.img`
 		height: 240px;
 	}
 
-	@media (min-width: ${breakPoint.medium}px) {
+	@media (min-width: ${breakPoint.large}px) {
 		width: 220px;
 		height: 300px;
 	}

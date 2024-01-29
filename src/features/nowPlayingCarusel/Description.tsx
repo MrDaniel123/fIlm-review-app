@@ -4,7 +4,7 @@ import { slowShowing } from './animation';
 
 export const Description = styled.p`
 	margin: 1rem;
-	font-size: ${fontSizes.mediumMobile};
+	font-size: ${fontSizes.small};
 	color: ${colors.fontWhite};
 	padding: 1rem;
 	border-radius: 12px;

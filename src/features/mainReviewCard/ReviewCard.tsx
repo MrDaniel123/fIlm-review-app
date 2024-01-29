@@ -69,7 +69,7 @@ const Poster = styled.img`
 `;
 
 const Title = styled.h1`
-	font-size: ${fontSizes.heading};
+	font-size: ${fontSizes.header};
 	font-weight: bold;
 	color: ${colors.fontWhite};
 	width: 100%;
@@ -88,7 +88,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
 	color: ${colors.fontWhite};
-	font-size: ${fontSizes.regular};
+	font-size: ${fontSizes.medium};
 	width: 90%;
 	text-align: center;
 
@@ -190,7 +190,7 @@ const AdwanceInfromation = styled.div`
 
 	& span {
 		width: 100%;
-		font-size: ${fontSizes.regular};
+		font-size: ${fontSizes.medium};
 		text-align: center;
 		color: ${colors.fontGreyLess};
 	}
@@ -198,7 +198,7 @@ const AdwanceInfromation = styled.div`
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
 		padding: 8px 0;
 		& h4 {
-			font-size: ${fontSizes.mediumBig};
+			font-size: ${fontSizes.large};
 		}
 
 		& span {

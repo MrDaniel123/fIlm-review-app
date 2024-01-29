@@ -3,7 +3,7 @@ import { slowShowing } from './animation';
 import { breakPoint, colors, fontSizes } from '../../styles/style';
 
 export const Title = styled.h3`
-	font-size: ${fontSizes.regular};
+	font-size: ${fontSizes.medium};
 	color: ${colors.fontWhite};
 	padding: 0.5rem 3rem;
 	border-radius: 50px;
@@ -13,10 +13,10 @@ export const Title = styled.h3`
 	animation: ${slowShowing} 0.6s ease-in-out;
 
 	@media (min-width: ${breakPoint.small}px) {
-		font-size: ${fontSizes.headingMobile};
+		font-size: ${fontSizes.extraExtraLarge};
 	}
 
 	@media (min-width: ${breakPoint.large}px) {
-		font-size: ${fontSizes.heading};
+		font-size: ${fontSizes.header};
 	}
 `;

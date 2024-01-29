@@ -23,10 +23,10 @@ const StyledInput = styled.input`
 	width: 20rem;
 	height: 3rem;
 	border-radius: 0.8rem;
-	font-size: ${fontSizes.regular};
+	font-size: ${fontSizes.medium};
 
 	&::placeholder {
-		font-size: ${fontSizes.regular};
+		font-size: ${fontSizes.medium};
 		color: ${colors.fontGrey};
 		padding: 0.7rem;
 	}

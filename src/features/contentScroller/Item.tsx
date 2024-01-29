@@ -22,7 +22,7 @@ const ImagePoster = styled.img`
 `;
 
 const Title = styled.h4`
-	font-size: ${fontSizes.mediumMobile};
+	font-size: ${fontSizes.small};
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 0.4px;
@@ -32,7 +32,7 @@ const Title = styled.h4`
 `;
 
 const Date = styled.h6`
-	font-size: ${fontSizes.smallMobile};
+	font-size: ${fontSizes.extraSmall};
 	font-weight: lighter;
 	color: ${colors.fontBlack};
 `;

@@ -71,7 +71,7 @@ function Header() {
 
 			{showMobileMenu && <Mobilenavigation showNavigation={handleShowOrHideNavigation} />}
 
-			{windowWidth > Number(breakPoint.medium) ? <Search /> : <Search type={'small'} />}
+			{windowWidth > Number(breakPoint.large) ? <Search /> : <Search type={'small'} />}
 		</StyledHeader>
 	);
 }

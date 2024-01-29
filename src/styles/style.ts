@@ -28,11 +28,11 @@ export const borderRadius = {
 };
 
 export const fontSizes = {
-	smallMobile: '10px',
-	mediumMobile: '12px',
-	regular: '18px',
-	medium: '22px',
-	mediumBig: '28px',
-	headingMobile: '28px',
-	heading: '34px',
+	extraSmall: '10px',
+	small: '12px',
+	medium: '18px',
+	large: '22px',
+	extraLarge: '28px',
+	extraExtraLarge: '28px',
+	header: '34px',
 };

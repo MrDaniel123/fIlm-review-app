@@ -12,7 +12,7 @@ const DotNavigationWrapper = styled.div`
 	gap: 1rem;
 	width: 100%;
 
-	@media (min-width: ${breakPoint.medium}px) {
+	@media (min-width: ${breakPoint.large}px) {
 		gap: 2rem;
 	}
 `;

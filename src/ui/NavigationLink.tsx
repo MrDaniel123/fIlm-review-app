@@ -17,7 +17,7 @@ const StyledNavLink = styled(NavLink)`
 	}
 
 	& span {
-		font-size: ${fontSizes.medium};
+		font-size: ${fontSizes.large};
 		font-weight: 600;
 		color: ${colors.fontGrey};
 

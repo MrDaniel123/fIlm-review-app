@@ -14,13 +14,13 @@ const StyledWrapper = styled.section`
 	max-width: 1280px;
 
 	& h2 {
-		font-size: ${fontSizes.headingMobile};
+		font-size: ${fontSizes.extraExtraLarge};
 		margin: 1rem;
 		width: 100%;
 		text-align: left;
 
 		@media (min-width: ${breakPoint.large}px) {
-			font-size: ${fontSizes.heading};
+			font-size: ${fontSizes.header};
 		}
 	}
 `;

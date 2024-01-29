@@ -38,11 +38,11 @@ const ItemsWrapper = styled.div`
 
 const Header = styled.h2`
 	width: 100%;
-	font-size: ${fontSizes.headingMobile};
+	font-size: ${fontSizes.extraExtraLarge};
 	font-weight: bold;
 
 	@media (min-width: ${breakPoint.large}px) {
-		font-size: ${fontSizes.heading};
+		font-size: ${fontSizes.header};
 	}
 `;
 
