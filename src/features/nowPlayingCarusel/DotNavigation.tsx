@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { breakPoint } from '../../styles/style';
 import { result } from '../../types/nowPLayingType';
 
@@ -17,14 +17,24 @@ const DotNavigationWrapper = styled.div`
 	}
 `;
 
-const DotRadioButton = styled.button`
+type styleProps = {
+	type?: string;
+};
+
+const DotRadioButton = styled.button<styleProps>`
 	all: unset;
 	cursor: pointer;
 
 	& img {
 		transition: 0.3s;
+
+		${props =>
+			props.type === 'big' &&
+			css`
+				transform: scale(1.8);
+			`}
 		&:hover {
-			transform: scale(1.6);
+			transform: scale(1.8);
 		}
 	}
 `;
@@ -32,16 +42,26 @@ const DotRadioButton = styled.button`
 type Props = {
 	results: result[];
 	changeSlide: (index: number) => void;
+	slideIndex: number;
 };
 
-function DotNavigation({ results, changeSlide }: Props) {
+function DotNavigation({ results, changeSlide, slideIndex }: Props) {
 	return (
 		<DotNavigationWrapper>
-			{results.map((result, index) => (
-				<DotRadioButton key={index} onClick={() => changeSlide(index)}>
-					<img src={dot} alt={`Cange view wariant to ${index} `} />
-				</DotRadioButton>
-			))}
+			{results.map((result, index) => {
+				if (index === slideIndex) {
+					return (
+						<DotRadioButton key={index} onClick={() => changeSlide(index)} type={'big'}>
+							<img src={dot} alt={`Cange view wariant to ${index} `} />
+						</DotRadioButton>
+					);
+				}
+				return (
+					<DotRadioButton key={index} onClick={() => changeSlide(index)}>
+						<img src={dot} alt={`Cange view wariant to ${index} `} />
+					</DotRadioButton>
+				);
+			})}
 		</DotNavigationWrapper>
 	);
 }

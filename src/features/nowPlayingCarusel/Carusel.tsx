@@ -70,7 +70,7 @@ function Carusel({ data }: Props) {
 			<Description key={results[slideNumber].overview}>{descriptionInDifrentSize}...</Description>
 			<Navigation nextSlide={handleNextSLide} previewSlide={handlePreviewSlide} />
 
-			<DotNavigation results={results} changeSlide={handleChangeSlide} />
+			<DotNavigation results={results} changeSlide={handleChangeSlide} slideIndex={slideNumber} />
 		</CaruselWrapper>
 	);
 }
