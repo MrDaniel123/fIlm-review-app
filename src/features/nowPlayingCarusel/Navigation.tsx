@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakPoint } from '../../styles/style';
+import { breakPoint, colors, fontSizes } from '../../styles/style';
 
 const arrow = require('../../assets/arrow.png');
 
@@ -46,9 +46,9 @@ const NextWiewBtn = styled.button`
 const MoreButton = styled.button`
 	all: unset;
 	padding: 1rem;
-	background-color: #ffffffaf;
-	color: #000;
-	font-size: 14px;
+	background-color: ${colors.buttonWhite};
+	color: ${colors.fontBlack};
+	font-size: ${fontSizes.mediumMobile};
 	border-radius: 12px;
 	cursor: pointer;
 	transition: 0.3s;

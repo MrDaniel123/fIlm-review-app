@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors, fontSizes } from '../styles/style';
 
 const searchLogo = require('../assets/logoSearch.png');
 
@@ -13,7 +14,7 @@ const SearchContainer = styled.div`
 		border-radius: 0.8rem;
 		padding: 1rem;
 		&:hover {
-			background-color: #e7e7e7;
+			background-color: ${colors.whiteHover};
 		}
 	}
 `;
@@ -22,11 +23,11 @@ const StyledInput = styled.input`
 	width: 20rem;
 	height: 3rem;
 	border-radius: 0.8rem;
-	font-size: 1.6rem;
+	font-size: ${fontSizes.regular};
 
 	&::placeholder {
-		font-size: 1.6rem;
-		color: #aaaaaa;
+		font-size: ${fontSizes.regular};
+		color: ${colors.fontGrey};
 		padding: 0.7rem;
 	}
 `;

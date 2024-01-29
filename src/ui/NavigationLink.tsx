@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { breakPoint } from '../styles/style';
+import { breakPoint, colors, fontSizes } from '../styles/style';
 
 const StyledNavLink = styled(NavLink)`
 	display: flex;
@@ -17,9 +17,9 @@ const StyledNavLink = styled(NavLink)`
 	}
 
 	& span {
-		font-size: 2.4rem;
+		font-size: ${fontSizes.medium};
 		font-weight: 600;
-		color: #4b5563;
+		color: ${colors.fontGrey};
 
 		@media (max-width: ${breakPoint.extraLarge}px) {
 			font-size: 2rem;
@@ -30,7 +30,7 @@ const StyledNavLink = styled(NavLink)`
 	&:active,
 	&.active:link,
 	&.active:visited {
-		background-color: #e7e7e7;
+		background-color: ${colors.whiteHover};
 	}
 `;
 

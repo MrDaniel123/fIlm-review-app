@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { breakPoint } from '../../styles/style';
+import { breakPoint, colors, fontSizes } from '../../styles/style';
 import { slowShowing } from './animation';
 
 export const Description = styled.p`
 	margin: 1rem;
-	font-size: 12px;
-	color: #fff;
+	font-size: ${fontSizes.mediumMobile};
+	color: ${colors.fontWhite};
 	padding: 1rem;
 	border-radius: 12px;
-	background-color: #000000b3;
+	background-color: ${colors.popUpFilterBlack};
 	max-width: 600px;
 
 	animation: ${slowShowing} 0.6s ease-in-out;

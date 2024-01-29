@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakPoint } from '../../styles/style';
+import { borderRadius, breakPoint } from '../../styles/style';
 import { mountAnimation } from './animation';
 
 export const CaruselWrapper = styled.div`
@@ -15,7 +15,7 @@ export const CaruselWrapper = styled.div`
 	width: 90vw;
 	max-width: 1440px;
 	min-height: 220px;
-	border-radius: 16px;
+	border-radius: ${borderRadius.posterNormal};
 	animation: ${mountAnimation} 0.6s ease-in-out;
 
 	@media (min-width: ${breakPoint.small}px) {

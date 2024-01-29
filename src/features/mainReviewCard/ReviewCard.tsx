@@ -2,7 +2,7 @@ import React from 'react';
 import { MovieById } from '../../types/movieByIdType';
 import styled from 'styled-components';
 
-import { breakPoint } from '../../styles/style';
+import { borderRadius, breakPoint, colors, fontSizes } from '../../styles/style';
 
 const logoStart = require('../../assets/logoStar.png');
 
@@ -37,8 +37,8 @@ const SectionWrapper = styled.section`
 	min-width: 360px;
 	min-height: 540px;
 	margin: 48px 0;
-	border-radius: 32px;
-	background-color: #00000069;
+	border-radius: ${borderRadius.posterNormal};
+	background-color: ${colors.popUpFilterBlack};
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-template-columns: 2fr 3fr;
@@ -54,7 +54,7 @@ const SectionWrapper = styled.section`
 const Poster = styled.img`
 	width: 300px;
 	height: 450px;
-	border-radius: 12px;
+	border-radius: ${borderRadius.posterNormal};
 	object-fit: cover;
 
 	@media (min-width: ${breakPoint.large}px) {
@@ -69,9 +69,9 @@ const Poster = styled.img`
 `;
 
 const Title = styled.h1`
-	font-size: 64px;
+	font-size: ${fontSizes.heading};
 	font-weight: bold;
-	color: white;
+	color: ${colors.fontWhite};
 	width: 100%;
 	text-align: center;
 
@@ -81,15 +81,14 @@ const Title = styled.h1`
 	}
 
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		font-size: 74px;
 		text-align: left;
 		width: 90%;
 	}
 `;
 
 const Description = styled.p`
-	color: white;
-	font-size: 18px;
+	color: ${colors.fontWhite};
+	font-size: ${fontSizes.regular};
 	width: 90%;
 	text-align: center;
 
@@ -98,15 +97,16 @@ const Description = styled.p`
 	}
 
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		font-size: 24px;
+		font-size: ${fontSizes.medium};
 		text-align: left;
 	}
 `;
 
 const GenreWrapper = styled.div`
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
+	gap: 12px;
 	width: 90%;
 
 	@media (min-width: ${breakPoint.large}px) {
@@ -125,8 +125,8 @@ const Genre = styled.div`
 	padding: 8px 12px;
 
 	&& h4 {
-		font-size: 20px;
-		color: white;
+		font-size: ${fontSizes.medium};
+		color: ${colors.fontWhite};
 	}
 `;
 
@@ -141,7 +141,7 @@ const StarReview = styled.div`
 	& span {
 		font-size: 26px;
 		font-weight: bold;
-		color: white;
+		color: ${colors.fontWhite};
 		margin-right: 8px;
 	}
 
@@ -183,26 +183,26 @@ const AdwanceInfromation = styled.div`
 
 	& h4 {
 		width: 100%;
-		font-size: 24px;
-		color: white;
+		font-size: ${fontSizes.medium};
+		color: ${colors.fontWhite};
 		text-align: center;
 	}
 
 	& span {
 		width: 100%;
-		font-size: 18px;
+		font-size: ${fontSizes.regular};
 		text-align: center;
-		color: #ffffff87;
+		color: ${colors.fontGreyLess};
 	}
 
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
 		padding: 8px 0;
 		& h4 {
-			font-size: 28px;
+			font-size: ${fontSizes.mediumBig};
 		}
 
 		& span {
-			font-size: 22px;
+			font-size: ${fontSizes.medium};
 		}
 	}
 `;

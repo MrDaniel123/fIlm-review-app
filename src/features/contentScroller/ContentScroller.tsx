@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import Item from './Item';
 import { NowPLaing } from '../../types/nowPLayingType';
+import { fontSizes, breakPoint } from '../../styles/style';
 
 const arrow = require('../../assets/arrowNext.png');
 
@@ -37,8 +38,12 @@ const ItemsWrapper = styled.div`
 
 const Header = styled.h2`
 	width: 100%;
-	font-size: 30px;
+	font-size: ${fontSizes.headingMobile};
 	font-weight: bold;
+
+	@media (min-width: ${breakPoint.large}px) {
+		font-size: ${fontSizes.heading};
+	}
 `;
 
 const ScrollButton = styled.button<{ type?: string }>`

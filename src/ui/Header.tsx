@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import Logo from './Logo';
 import Mobilenavigation from './Mobilenavigation';
 
-import { breakPoint } from '../styles/style';
+import { breakPoint, colors, shadows, borderRadius } from '../styles/style';
 const logoMenue = require('../assets/logoMenue.png');
 
 const StyledHeader = styled.nav`
@@ -20,9 +20,9 @@ const StyledHeader = styled.nav`
 	width: 95%;
 	padding: 0.4rem 0;
 	list-style: none;
-	box-shadow: 0px 0px 19px -4px #000000;
-	border-radius: 0px 0px 32px 32px;
-	background-color: white;
+	box-shadow: ${shadows.mainHeaderShadow};
+	border-radius: ${borderRadius.bottomBig};
+	background-color: ${colors.white};
 
 	@media (max-width: ${breakPoint.extraLarge}px) {
 		gap: 1.4rem;
@@ -38,10 +38,10 @@ const StyledMenue = styled.button`
 	height: 35px;
 	cursor: pointer;
 
-	border-radius: 0.8rem;
+	border-radius: ${borderRadius.radiusSmall};
 	padding: 1rem;
 	&:hover {
-		background-color: #e7e7e7;
+		background-color: ${colors.whiteHover};
 	}
 `;
 

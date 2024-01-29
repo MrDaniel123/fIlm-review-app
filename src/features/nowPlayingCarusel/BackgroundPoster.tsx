@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { slowShowingImage } from './animation';
+import { borderRadius } from '../../styles/style';
 
 export const BackgroundPoster = styled.img`
 	position: absolute;
@@ -12,5 +13,5 @@ export const BackgroundPoster = styled.img`
 	animation: ${slowShowingImage} 0.6s ease-in-out;
 	filter: brightness(0.6);
 
-	border-radius: 16px;
+	border-radius: ${borderRadius.posterNormal};
 `;

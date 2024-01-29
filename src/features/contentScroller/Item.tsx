@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { result } from '../../types/nowPLayingType';
+import { colors, fontSizes } from '../../styles/style';
 
 const Wrapper = styled(NavLink)`
 	display: flex;
@@ -12,8 +13,6 @@ const Wrapper = styled(NavLink)`
 	width: 130px;
 	min-height: 200px;
 	text-decoration: none;
-
-	/* background-color: cadetblue; */
 `;
 
 const ImagePoster = styled.img`
@@ -23,18 +22,19 @@ const ImagePoster = styled.img`
 `;
 
 const Title = styled.h4`
-	font-size: 12px;
+	font-size: ${fontSizes.mediumMobile};
 	text-transform: uppercase;
 	font-weight: bold;
+	letter-spacing: 0.4px;
 	width: 100%;
 	text-align: center;
-	color: black;
+	color: ${colors.fontBlack};
 `;
 
 const Date = styled.h6`
-	font-size: 8px;
+	font-size: ${fontSizes.smallMobile};
 	font-weight: lighter;
-	color: black;
+	color: ${colors.fontBlack};
 `;
 
 type Props = {

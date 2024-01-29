@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 import { slowShowing } from './animation';
-import { breakPoint } from '../../styles/style';
+import { breakPoint, colors, fontSizes } from '../../styles/style';
 
 export const Title = styled.h3`
-	font-size: 1.2rem;
-	color: #fff;
+	font-size: ${fontSizes.regular};
+	color: ${colors.fontWhite};
 	padding: 0.5rem 3rem;
 	border-radius: 50px;
 	text-transform: uppercase;
-	background-color: #000000b3;
+	background-color: ${colors.popUpFilterBlack};
 
 	animation: ${slowShowing} 0.6s ease-in-out;
 
 	@media (min-width: ${breakPoint.small}px) {
-		font-size: 2.2rem;
+		font-size: ${fontSizes.headingMobile};
 	}
 
 	@media (min-width: ${breakPoint.large}px) {
-		font-size: 3.6rem;
+		font-size: ${fontSizes.heading};
 	}
 `;

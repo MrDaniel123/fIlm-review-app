@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 import Logo from './Logo';
 import StyledNavLink from './NavigationLink';
+import { colors } from '../styles/style';
 
 const logoMovie = require('../assets/logoMovie.png');
 const logoTvSeires = require('../assets/logoPersons.png');
@@ -25,7 +26,7 @@ const showBackGround = keyframes`
     background-color: #fff;;
   }
   to{
-    background-color: #00000082;
+    background-color: ${colors.popUpFilterBlack};
   }
 `;
 
@@ -35,7 +36,7 @@ const BackGround = styled.div`
 	top: 0;
 	width: 100%;
 	height: 100vh;
-	background-color: #00000082;
+	background-color: ${colors.popUpFilterBlack};
 
 	animation: ${showBackGround} 0.3s ease-in-out forwards;
 `;
@@ -55,7 +56,7 @@ const Navigation = styled.nav`
 
 	width: 340px;
 	height: 40rem;
-	background-color: #fff;
+	background-color: ${colors.white};
 
 	border-radius: 0 0 14rem 0;
 
@@ -78,7 +79,7 @@ const CloseButton = styled.button`
 	padding: 1rem;
 
 	&:hover {
-		background-color: #e7e7e7;
+		background-color: ${colors.whiteHover};
 	}
 `;
 
