@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import Item from './Item';
 import { NowPLaing } from '../../types/nowPLayingType';
-import { fontSizes, breakPoint } from '../../styles/style';
+import { ScrollButton } from './ScrollButton';
+import { Header } from './Header';
 
 const arrow = require('../../assets/arrowNext.png');
 
@@ -36,45 +37,6 @@ const ItemsWrapper = styled.div`
 	border-radius: 16px;
 `;
 
-const Header = styled.h2`
-	width: 100%;
-	font-size: ${fontSizes.extraExtraLarge};
-	font-weight: bold;
-
-	@media (min-width: ${breakPoint.large}px) {
-		font-size: ${fontSizes.header};
-	}
-`;
-
-const ScrollButton = styled.button<{ type?: string }>`
-	all: unset;
-	position: absolute;
-	top: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	height: 140px;
-	width: 30px;
-	border-radius: 0 25px 25px 0;
-
-	& img {
-		width: 120px;
-	}
-	${props =>
-		props.type === 'right'
-			? css`
-					right: 0;
-					border-radius: 25px 0 0 25px;
-					& img {
-						transform: rotate(180deg);
-					}
-			  `
-			: css`
-					left: 0;
-			  `}
-`;
-
 type Props = {
 	data: NowPLaing;
 	name: string;
@@ -82,11 +44,6 @@ type Props = {
 
 function ContentScroller({ data, name }: Props) {
 	const elementRef = useRef<any>(null);
-
-	// useEffect(() => {
-	// 	elementRef.current.scrollLeft = +300;
-	// }, []);
-
 	const handleHorizontallScroll = (step: number) => {
 		elementRef.current.scrollLeft += step;
 	};

@@ -1,8 +1,14 @@
 import React from 'react';
 import { MovieById } from '../../types/movieByIdType';
 import styled from 'styled-components';
-
 import { borderRadius, breakPoint, colors, fontSizes } from '../../styles/style';
+
+import { Poster } from './Poster';
+import { Title } from './Title';
+import { Description } from './Description';
+import { AdwanceInfromation } from './AdwanceInformation';
+import { StarReview } from './StarReview';
+import { Genre } from './Genre';
 
 const logoStart = require('../../assets/logoStar.png');
 
@@ -50,58 +56,6 @@ const SectionWrapper = styled.section`
 	}
 `;
 
-//TODO Create a poster UI component Autsinde the fedatures
-const Poster = styled.img`
-	width: 300px;
-	height: 450px;
-	border-radius: ${borderRadius.posterNormal};
-	object-fit: cover;
-
-	@media (min-width: ${breakPoint.large}px) {
-		grid-column: 1/2;
-		grid-row: 1/6;
-	}
-	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		width: 350px;
-		height: 500px;
-		margin-left: 16px;
-	}
-`;
-
-const Title = styled.h1`
-	font-size: ${fontSizes.header};
-	font-weight: bold;
-	color: ${colors.fontWhite};
-	width: 100%;
-	text-align: center;
-
-	@media (min-width: ${breakPoint.large}px) {
-		grid-column: 2/3;
-		grid-row: 1/2;
-	}
-
-	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		text-align: left;
-		width: 90%;
-	}
-`;
-
-const Description = styled.p`
-	color: ${colors.fontWhite};
-	font-size: ${fontSizes.medium};
-	width: 90%;
-	text-align: center;
-
-	@media (min-width: ${breakPoint.large}px) {
-		grid-column: 2/3;
-	}
-
-	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		font-size: ${fontSizes.medium};
-		text-align: left;
-	}
-`;
-
 const GenreWrapper = styled.div`
 	display: flex;
 	justify-content: center;
@@ -119,50 +73,6 @@ const GenreWrapper = styled.div`
 	}
 `;
 
-const Genre = styled.div`
-	background: linear-gradient(264.99deg, #369a52 5.42%, #3e9a36 99.19%);
-	border-radius: 66px;
-	padding: 8px 12px;
-
-	&& h4 {
-		font-size: ${fontSizes.medium};
-		color: ${colors.fontWhite};
-	}
-`;
-
-const StarReview = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: linear-gradient(90deg, #22994a 1.52%, #275e4a 101.3%);
-	border-radius: 93px;
-	padding: 4px 12px;
-
-	& span {
-		font-size: 26px;
-		font-weight: bold;
-		color: ${colors.fontWhite};
-		margin-right: 8px;
-	}
-
-	& img {
-		width: 35px;
-	}
-
-	@media (min-width: ${breakPoint.large}px) {
-		grid-column: 2/3;
-	}
-
-	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		padding: 12px 20px;
-
-		& span {
-			font-size: 32px;
-			margin-right: 16px;
-		}
-	}
-`;
-
 const AdwanceInformationWrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -171,39 +81,6 @@ const AdwanceInformationWrapper = styled.div`
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-column: 2/3;
-	}
-`;
-
-const AdwanceInfromation = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	width: 50%;
-
-	& h4 {
-		width: 100%;
-		font-size: ${fontSizes.medium};
-		color: ${colors.fontWhite};
-		text-align: center;
-	}
-
-	& span {
-		width: 100%;
-		font-size: ${fontSizes.medium};
-		text-align: center;
-		color: ${colors.fontGreyLess};
-	}
-
-	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		padding: 8px 0;
-		& h4 {
-			font-size: ${fontSizes.large};
-		}
-
-		& span {
-			font-size: ${fontSizes.medium};
-		}
 	}
 `;
 
