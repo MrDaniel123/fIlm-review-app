@@ -92,7 +92,7 @@ type Props = {
 function Mobilenavigation({ showNavigation }: Props) {
 	return (
 		<>
-			<BackGround />
+			<BackGround onClick={showNavigation} />
 			<Navigation>
 				<CloseButton onClick={showNavigation}>
 					<img src={logoCloseMenue} alt='Close Menue' />
