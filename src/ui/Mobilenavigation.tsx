@@ -23,7 +23,7 @@ const showMenue = keyframes`
 
 const showBackGround = keyframes`
   from{
-    background-color: #fff;;
+    background-color: transparent;;
   }
   to{
     background-color: ${colors.popUpFilterBlack};
@@ -31,12 +31,13 @@ const showBackGround = keyframes`
 `;
 
 const BackGround = styled.div`
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	background-color: ${colors.popUpFilterBlack};
+	z-index: 1;
 
 	animation: ${showBackGround} 0.3s ease-in-out forwards;
 `;
@@ -51,6 +52,7 @@ const Navigation = styled.nav`
 	align-items: flex-start;
 	gap: 2rem;
 	padding: 1rem;
+	z-index: 2;
 
 	animation: ${showMenue} 0.3s ease-in-out forwards;
 
@@ -98,25 +100,25 @@ function Mobilenavigation({ showNavigation }: Props) {
 				<Logo />
 				<ul>
 					<li>
-						<StyledNavLink to={'/'}>
+						<StyledNavLink to={'/'} onClick={showNavigation}>
 							<img src={logoHome} alt='Home Page' />
 							<span>Home Page</span>
 						</StyledNavLink>
 					</li>
 					<li>
-						<StyledNavLink to={'/movies'}>
+						<StyledNavLink to={'/movies'} onClick={showNavigation}>
 							<img src={logoMovie} alt='Logo movie' />
 							<span>Movies</span>
 						</StyledNavLink>
 					</li>
 					<li>
-						<StyledNavLink to={'/tv-series'}>
+						<StyledNavLink to={'/tv-series'} onClick={showNavigation}>
 							<img src={logoTvSeires} alt='Logo tv-series' />
 							<span>Tv-Series</span>
 						</StyledNavLink>
 					</li>
 					<li>
-						<StyledNavLink to={'/persons'}>
+						<StyledNavLink to={'/persons'} onClick={showNavigation}>
 							<img src={logoPersons} alt='Logo persons' />
 							<span>Persons</span>
 						</StyledNavLink>

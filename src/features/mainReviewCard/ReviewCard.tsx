@@ -95,6 +95,7 @@ function ReviewCard({ data }: Props) {
 			<h4>{genre.name}</h4>
 		</Genre>
 	));
+
 	return (
 		<>
 			<MainReviewWrapper $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
