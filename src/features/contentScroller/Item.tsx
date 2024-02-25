@@ -3,38 +3,37 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { result } from '../../types/nowPLayingType';
-import { colors, fontSizes } from '../../styles/style';
 
 const Wrapper = styled(NavLink)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 130px;
-	min-height: 200px;
+	width: 13rem;
+	min-height: 20rem;
 	text-decoration: none;
 `;
 
 const ImagePoster = styled.img`
-	height: 150px;
-	width: 100px;
-	border-radius: 12px;
+	height: 15rem;
+	width: 10rem;
+	border-radius: var(--border-radius-medium);
 `;
 
 const Title = styled.h4`
-	font-size: ${fontSizes.small};
+	font-size: var(--font-small);
 	text-transform: uppercase;
 	font-weight: bold;
-	letter-spacing: 0.4px;
+	letter-spacing: 0.04rem;
 	width: 100%;
 	text-align: center;
-	color: ${colors.fontBlack};
+	color: var(--color-godGray);
 `;
 
 const Date = styled.h6`
-	font-size: ${fontSizes.extraSmall};
+	font-size: var(--font-small);
 	font-weight: lighter;
-	color: ${colors.fontBlack};
+	color: var(--color-godGray);
 `;
 
 type Props = {

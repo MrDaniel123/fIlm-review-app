@@ -1,35 +1,36 @@
 import styled from 'styled-components';
-import { fontSizes, colors, breakPoint } from '../../styles/style';
+import { breakPoint } from '../../styles/style';
 
 export const AdwanceInfromation = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 50%;
+	margin-bottom: 0.8rem;
+	padding: 10px;
 
 	& h4 {
 		width: 100%;
-		font-size: ${fontSizes.medium};
-		color: ${colors.fontWhite};
+		font-size: var(--font-medium);
+		color: var(--color-white);
 		text-align: center;
 	}
 
 	& span {
 		width: 100%;
-		font-size: ${fontSizes.medium};
+		font-size: var(--font-medium);
 		text-align: center;
-		color: ${colors.fontGreyLess};
+		color: var(--color-silver);
 	}
 
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
 		padding: 8px 0;
 		& h4 {
-			font-size: ${fontSizes.large};
+			font-size: var(--font-large);
 		}
 
 		& span {
-			font-size: ${fontSizes.medium};
+			font-size: var(--font-medium);
 		}
 	}
 `;

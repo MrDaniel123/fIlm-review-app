@@ -56,7 +56,7 @@ const Navigation = styled.nav`
 
 	animation: ${showMenue} 0.3s ease-in-out forwards;
 
-	width: 340px;
+	width: 34rem;
 	height: 40rem;
 	background-color: ${colors.white};
 

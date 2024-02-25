@@ -23,11 +23,11 @@ const StyledInput = styled.input`
 	width: 20rem;
 	height: 3rem;
 	border-radius: 0.8rem;
-	font-size: ${fontSizes.medium};
+	font-size: var(--font-medium);
 
 	&::placeholder {
-		font-size: ${fontSizes.medium};
-		color: ${colors.fontGrey};
+		font-size: var(--font-medium);
+		color: var(--color-river-bed);
 		padding: 0.7rem;
 	}
 `;

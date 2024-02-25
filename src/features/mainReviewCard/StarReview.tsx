@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakPoint, colors } from '../../styles/style';
+import { breakPoint } from '../../styles/style';
 
 export const StarReview = styled.div`
 	display: flex;
@@ -10,14 +10,14 @@ export const StarReview = styled.div`
 	padding: 4px 12px;
 
 	& span {
-		font-size: 26px;
+		font-size: 2.6rem;
 		font-weight: bold;
-		color: ${colors.fontWhite};
+		color: var(--color-white);
 		margin-right: 8px;
 	}
 
 	& img {
-		width: 35px;
+		width: 3.5rem;
 	}
 
 	@media (min-width: ${breakPoint.large}px) {
@@ -28,8 +28,8 @@ export const StarReview = styled.div`
 		padding: 12px 20px;
 
 		& span {
-			font-size: 32px;
-			margin-right: 16px;
+			font-size: 3.2rem;
+			margin-right: 1.6rem;
 		}
 	}
 `;

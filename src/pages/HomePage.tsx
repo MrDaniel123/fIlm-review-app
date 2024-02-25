@@ -11,7 +11,7 @@ const StyledHomePage = styled.main`
 	justify-content: center;
 	align-content: flex-start;
 	flex-wrap: wrap;
-	gap: 20px;
+	gap: 2rem;
 	width: 100%;
 	height: 100vh;
 `;

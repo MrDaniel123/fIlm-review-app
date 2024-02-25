@@ -11,7 +11,7 @@ const NavigationWrapper = styled.div`
 	width: 100%;
 `;
 
-const PreviewWiewBtn = styled.button`
+const BackSlideBtn = styled.button`
 	all: unset;
 	cursor: pointer;
 	transition: 0.3s;
@@ -26,7 +26,7 @@ const PreviewWiewBtn = styled.button`
 		transform: scale(1.4);
 	}
 `;
-const NextWiewBtn = styled.button`
+const NextSlideBtn = styled.button`
 	all: unset;
 	transform: rotate(180deg);
 	cursor: pointer;
@@ -43,13 +43,13 @@ const NextWiewBtn = styled.button`
 	}
 `;
 
-const MoreButton = styled.button`
+const SeeMoreButton = styled.button`
 	all: unset;
 	padding: 1rem;
 	background-color: ${colors.buttonWhite};
 	color: ${colors.fontBlack};
 	font-size: ${fontSizes.small};
-	border-radius: 12px;
+	border-radius: var(--border-radius-medium);
 	cursor: pointer;
 	transition: 0.3s;
 
@@ -66,13 +66,13 @@ interface Props {
 function Navigation({ nextSlide, previewSlide }: Props) {
 	return (
 		<NavigationWrapper>
-			<PreviewWiewBtn onClick={previewSlide}>
+			<BackSlideBtn onClick={previewSlide}>
 				<img src={arrow} alt='' />
-			</PreviewWiewBtn>
-			<MoreButton>See More...</MoreButton>
-			<NextWiewBtn onClick={nextSlide}>
+			</BackSlideBtn>
+			<SeeMoreButton>See More...</SeeMoreButton>
+			<NextSlideBtn onClick={nextSlide}>
 				<img src={arrow} alt='' />
-			</NextWiewBtn>
+			</NextSlideBtn>
 		</NavigationWrapper>
 	);
 }

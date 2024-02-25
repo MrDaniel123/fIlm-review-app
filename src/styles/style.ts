@@ -10,7 +10,7 @@ export const colors = {
 	white: '#ffffff',
 	whiteHover: '#e7e7e7',
 	buttonWhite: '#e7e7e7',
-	popUpFilterBlack: '#00000082',
+	popUpFilterBlack: '00000082#',
 	fontGrey: '#4b5563',
 	fontGreyLess: '#c5c5c5',
 	fontBlack: '#181818',

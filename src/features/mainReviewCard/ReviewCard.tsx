@@ -1,7 +1,7 @@
 import React from 'react';
 import { MovieById } from '../../types/movieByIdType';
 import styled from 'styled-components';
-import { borderRadius, breakPoint, colors, fontSizes } from '../../styles/style';
+import { breakPoint } from '../../styles/style';
 
 import { Poster } from './Poster';
 import { Title } from './Title';
@@ -35,16 +35,16 @@ const SectionWrapper = styled.section`
 	grid-template-columns: 1fr;
 	grid-template-rows: 2fr;
 	align-items: center;
-	gap: 12px;
+	gap: 1.2rem;
 	position: relative;
 	padding: 24px 0;
 	max-width: 1400px;
 	width: 90%;
-	min-width: 360px;
-	min-height: 540px;
+	min-width: 36rem;
+	min-height: 54rem;
 	margin: 48px 0;
-	border-radius: ${borderRadius.posterNormal};
-	background-color: ${colors.popUpFilterBlack};
+	border-radius: var(--border-radius-large);
+	background-color: var(--color-black-filter);
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-template-columns: 2fr 3fr;
@@ -60,7 +60,7 @@ const GenreWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 12px;
+	gap: 1.2rem;
 	width: 90%;
 
 	@media (min-width: ${breakPoint.large}px) {
@@ -69,16 +69,15 @@ const GenreWrapper = styled.div`
 
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
 		justify-content: flex-start;
-		gap: 24px;
+		gap: 2.4rem;
 	}
 `;
 
 const AdwanceInformationWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-wrap: wrap;
-
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	justify-items: center;
 	@media (min-width: ${breakPoint.large}px) {
 		grid-column: 2/3;
 	}

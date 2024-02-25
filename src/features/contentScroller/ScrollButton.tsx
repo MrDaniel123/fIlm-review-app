@@ -3,17 +3,17 @@ import styled, { css } from 'styled-components';
 export const ScrollButton = styled.button<{ type?: string }>`
 	all: unset;
 	position: absolute;
-	top: 80px;
+	top: 8rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	height: 140px;
-	width: 30px;
+	height: 14rem;
+	width: 3rem;
 	border-radius: 0 25px 25px 0;
 
 	& img {
-		width: 120px;
+		width: 12rem;
 	}
 	${props =>
 		props.type === 'right'

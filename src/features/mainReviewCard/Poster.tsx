@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { borderRadius, breakPoint } from '../../styles/style';
+import { breakPoint } from '../../styles/style';
 
 export const Poster = styled.img`
 	width: 300px;
 	height: 450px;
-	border-radius: ${borderRadius.posterNormal};
+	border-radius: var(--border-radius-large);
 	object-fit: cover;
 
 	@media (min-width: ${breakPoint.large}px) {
@@ -12,8 +12,8 @@ export const Poster = styled.img`
 		grid-row: 1/6;
 	}
 	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		width: 350px;
-		height: 500px;
+		width: 35rem;
+		height: 50rem;
 		margin-left: 16px;
 	}
 `;

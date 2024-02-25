@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { fontSizes, colors, breakPoint } from '../../styles/style';
+import { breakPoint } from '../../styles/style';
 
 export const Title = styled.h1`
-	font-size: ${fontSizes.header};
+	font-size: var(--font-header);
 	font-weight: bold;
-	color: ${colors.fontWhite};
-	width: 100%;
+	color: var(--color-white);
 	text-align: center;
+	padding: 12px;
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-column: 2/3;

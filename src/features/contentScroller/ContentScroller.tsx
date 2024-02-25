@@ -11,7 +11,7 @@ const arrow = require('../../assets/arrowNext.png');
 const Wrapper = styled.section`
 	display: flex;
 	flex-wrap: wrap;
-	gap: 12px;
+	gap: 1.2rem;
 	position: relative;
 
 	width: 90%;
@@ -22,10 +22,10 @@ const Wrapper = styled.section`
 
 const ItemsWrapper = styled.div`
 	display: flex;
-	padding: 0 12px;
-	gap: 20px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 0 1.2rem;
+	gap: 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
 
 	overflow: scroll;
 	scroll-behavior: smooth;
