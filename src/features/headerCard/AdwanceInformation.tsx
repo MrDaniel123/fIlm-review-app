@@ -6,8 +6,11 @@ export const AdwanceInfromation = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	margin-bottom: 0.8rem;
 	padding: 10px;
+	width: 200px;
+	height: 62px;
+	background-color: var(--color-black-filter);
+	border-radius: var(--border-radius-large);
 
 	& h4 {
 		width: 100%;

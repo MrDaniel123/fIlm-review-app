@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const StyledMoviePage = styled.div`
 	display: flex;
 	justify-content: center;
+	height: 300vh;
 `;
 
 function MoviePage() {

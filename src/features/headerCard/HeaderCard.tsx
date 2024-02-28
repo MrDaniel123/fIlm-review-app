@@ -12,7 +12,7 @@ import Genres from './Genre';
 
 const logoStart = require('../../assets/logoStar.png');
 
-const Foo = styled.div<{ $bgcImageUrl: string }>`
+const StyledheaderCard = styled.div<{ $bgcImageUrl: string }>`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -29,7 +29,7 @@ const Foo = styled.div<{ $bgcImageUrl: string }>`
 	background-position: center;
 `;
 
-const StyledHeaderCard = styled.header<{ $bgcImageUrl: string }>`
+const Wrapper = styled.header<{ $bgcImageUrl: string }>`
 	display: grid;
 	justify-items: center;
 	grid-template-columns: 1fr;
@@ -44,21 +44,10 @@ const StyledHeaderCard = styled.header<{ $bgcImageUrl: string }>`
 	min-height: 54rem;
 	margin: 48px 0;
 	border-radius: var(--border-radius-large);
-	background-color: var(--color-black-filter);
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: saturate(250%) blur(4px);
 
-	&::after {
-		content: '';
-		background-image: url(${props => props.$bgcImageUrl});
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		background-size: cover;
-		background-position: center;
-		border-radius: var(--border-radius-large);
-	}
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-template-columns: 2fr 3fr;
@@ -75,6 +64,7 @@ const AdwanceInformationWrapper = styled.div`
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	justify-items: center;
+	gap: 12px;
 	@media (min-width: ${breakPoint.large}px) {
 		grid-column: 2/3;
 	}
@@ -87,8 +77,8 @@ type Props = {
 
 function HeaderCard({ data }: Props) {
 	return (
-		<>
-			<StyledHeaderCard $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
+		<StyledheaderCard $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
+			<Wrapper $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
 				<Poster src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} />
 				<Title>{data?.title}</Title>
 				<Description>{data?.overview}</Description>
@@ -115,8 +105,8 @@ function HeaderCard({ data }: Props) {
 						<span>{data?.runtime} Min</span>
 					</AdwanceInfromation>
 				</AdwanceInformationWrapper>
-			</StyledHeaderCard>
-		</>
+			</Wrapper>
+		</StyledheaderCard>
 	);
 }
 

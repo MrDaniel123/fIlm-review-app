@@ -7,6 +7,8 @@ export const Title = styled.h1`
 	color: var(--color-white);
 	text-align: center;
 	padding: 12px;
+	background-color: var(--color-black-filter);
+	border-radius: var(--border-radius-large);
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-column: 2/3;

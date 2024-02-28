@@ -17,14 +17,14 @@ const StyledHomePage = styled.main`
 `;
 
 function HomePage() {
-	const { data: trendingMoviesData, isError, isLoading } = useTrendingMovies();
-	const { data: popularMoviesData } = usePopularMovies();
+	const { data: trendingMovies, isError, isLoading } = useTrendingMovies();
+	const { data: populatMovies } = usePopularMovies();
 
 	return (
 		<StyledHomePage>
 			<NowPlaying />
-			{trendingMoviesData && <Scroller data={trendingMoviesData} name={'Trending'} />}
-			{popularMoviesData && <Scroller data={popularMoviesData} name={'Popular Movies'} />}
+			{trendingMovies && <Scroller data={trendingMovies} name={'Trending'} />}
+			{populatMovies && <Scroller data={populatMovies} name={'Popular Movies'} />}
 		</StyledHomePage>
 	);
 }

@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { nowPlaying } from '../services/nowPLaying';
 import { getNowPlayingMovies } from '../services/apiMovie';
 
 export const useNowPlayingMovies = () => {

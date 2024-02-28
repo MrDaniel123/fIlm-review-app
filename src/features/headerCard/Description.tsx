@@ -7,6 +7,8 @@ export const Description = styled.p`
 	width: 90%;
 	text-align: center;
 	padding: 12px;
+	background-color: var(--color-black-filter);
+	border-radius: var(--border-radius-large);
 
 	@media (min-width: ${breakPoint.large}px) {
 		grid-column: 2/3;
