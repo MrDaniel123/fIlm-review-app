@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import NowPlaying from '../features/nowPlayingCarusel/NowPlaying';
-import ContentScroller from '../features/contentScroller/ContentScroller';
+import NowPlaying from '../features/carusel/NowPlaying';
+import Scroller from '../features/scroller/Scroller';
 import { useTrendingMovies } from '../hooks/useTrendingMovies';
 import { usePopularMovies } from '../hooks/usePopularMovies';
 
@@ -23,8 +23,8 @@ function HomePage() {
 	return (
 		<StyledHomePage>
 			<NowPlaying />
-			{trendingMoviesData && <ContentScroller data={trendingMoviesData} name={'Trending'} />}
-			{popularMoviesData && <ContentScroller data={popularMoviesData} name={'Popular Movies'} />}
+			{trendingMoviesData && <Scroller data={trendingMoviesData} name={'Trending'} />}
+			{popularMoviesData && <Scroller data={popularMoviesData} name={'Popular Movies'} />}
 		</StyledHomePage>
 	);
 }
