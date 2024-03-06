@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Header from './Header';
+import Header from '../features/navigation/Header';
 
 const AppContainer = styled.div`
 	display: flex;
