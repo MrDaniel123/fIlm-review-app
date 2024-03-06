@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 import { type NowPlayingMovieResult } from '../../types/nowPLayingMovieType';
 
+const noImagePlaceholder = require('../../assets/noImagePlaceholder.png');
+
 const Wrapper = styled(NavLink)`
 	display: flex;
 	justify-content: center;
@@ -36,16 +38,31 @@ const Date = styled.h6`
 	color: var(--color-godGray);
 `;
 
-type Props = {
-	data: NowPlayingMovieResult;
+type ItemProps = {
+	header: string;
+	paragraph: string;
+	imagePath: string;
+	id: number;
+	linkTo?: 'movie' | 'tv-series' | 'person';
 };
 
-function Item({ data }: Props) {
+function Item({ header, paragraph, imagePath, id, linkTo = 'movie' }: ItemProps) {
+	let linkToName = '/movie/';
+	let image = `https://image.tmdb.org/t/p/w500${imagePath}`;
+
+	if (linkTo === 'person') {
+		linkToName = '/person/';
+	}
+
+	if (!imagePath) {
+		image = noImagePlaceholder;
+	}
+
 	return (
-		<Wrapper to={`/movie/${data.id}`}>
-			<ImagePoster src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
-			<Title>{data.title}</Title>
-			<Date>{data.release_date}</Date>
+		<Wrapper to={`${linkToName}${id}`}>
+			<ImagePoster src={image} />
+			<Title>{header}</Title>
+			<Date>{paragraph}</Date>
 		</Wrapper>
 	);
 }

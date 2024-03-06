@@ -13,9 +13,9 @@ import Genres from './Genre';
 const logoStart = require('../../assets/logoStar.png');
 
 const StyledheaderCard = styled.div<{ $bgcImageUrl: string }>`
-	position: absolute;
+	/* position: absolute;
 	top: 0;
-	left: 0;
+	left: 0; */
 	z-index: -999999;
 	display: flex;
 	justify-content: center;

@@ -13,6 +13,9 @@ import { breakPoint } from '../../styles/style';
 const logoMenue = require('../../assets/logoMenue.png');
 
 const StyledNavigation = styled.nav`
+	position: absolute;
+	top: 0;
+	left: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;

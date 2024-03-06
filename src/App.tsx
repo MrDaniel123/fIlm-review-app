@@ -10,6 +10,7 @@ import Persons from './pages/Persons';
 import GlobalStyles from './styles/GlobalStyle';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import MoviePage from './pages/MoviePage';
+import PersonPage from './pages/PersonPage';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -36,6 +37,7 @@ function App() {
 							<Route path='tv-series' element={<TvSeries />} />
 							<Route path='persons' element={<Persons />} />
 							<Route path='movie/:movieId' element={<MoviePage />} />
+							<Route path='person/:personId' element={<PersonPage />} />
 						</Route>
 					</Routes>
 				</BrowserRouter>

@@ -16,9 +16,41 @@ const StyledHomePage = styled.main`
 	height: 100vh;
 `;
 
+type TrendingMoviesType = {
+	header: string;
+	paragraph: string;
+	imagePath: string;
+	id: number;
+};
+
 function HomePage() {
-	const { data: trendingMovies, isError, isLoading } = useTrendingMovies();
-	const { data: populatMovies } = usePopularMovies();
+	const { data: trendingMoviesData, isError, isLoading } = useTrendingMovies();
+	const { data: populatMoviesData } = usePopularMovies();
+
+	let trendingMovies: TrendingMoviesType[] | undefined = undefined;
+	let populatMovies: TrendingMoviesType[] | undefined = undefined;
+
+	if (trendingMoviesData) {
+		trendingMovies = trendingMoviesData?.results.map(movie => {
+			return {
+				header: movie.title,
+				paragraph: movie.release_date,
+				imagePath: movie.poster_path,
+				id: movie.id,
+			};
+		});
+	}
+
+	if (populatMoviesData) {
+		populatMovies = populatMoviesData?.results.map(movie => {
+			return {
+				header: movie.title,
+				paragraph: movie.release_date,
+				imagePath: movie.poster_path,
+				id: movie.id,
+			};
+		});
+	}
 
 	return (
 		<StyledHomePage>

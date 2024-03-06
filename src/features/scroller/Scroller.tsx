@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 
 import styled from 'styled-components';
 import Item from './Item';
-import { NowPlaingMovie } from '../../types/nowPLayingMovieType';
 import { ScrollButton } from './ScrollButton';
 import { Header } from './Header';
 
@@ -37,19 +36,36 @@ const ItemsWrapper = styled.div`
 	border-radius: 16px;
 `;
 
-type Props = {
-	data: NowPlaingMovie;
-	name: string;
+type TrendingMoviesType = {
+	header: string;
+	paragraph: string;
+	imagePath: string;
+	id: number;
 };
 
-function Scroller({ data, name }: Props) {
+type ScrollerProps = {
+	data: TrendingMoviesType[];
+	name: string;
+	linkTo?: 'movie' | 'tv-series' | 'person';
+};
+
+function Scroller({ data, name, linkTo = 'movie' }: ScrollerProps) {
 	const elementRef = useRef<any>(null);
 	//!!Any Type
 	const handleHorizontallScroll = (step: number) => {
 		elementRef.current.scrollLeft += step;
 	};
 
-	const renderCard = data.results.map(result => <Item key={result.id} data={result} />);
+	const renderItems = data.map(item => (
+		<Item
+			header={item.header}
+			paragraph={item.paragraph}
+			imagePath={item.imagePath}
+			id={item.id}
+			key={item.id}
+			linkTo={linkTo}
+		/>
+	));
 
 	return (
 		<Wrapper>
@@ -61,7 +77,7 @@ function Scroller({ data, name }: Props) {
 			<ScrollButton type={'right'} onClick={() => handleHorizontallScroll(210)}>
 				<img src={arrow} alt='Rigth Horizontal Scroll' />
 			</ScrollButton>
-			<ItemsWrapper ref={elementRef}>{renderCard}</ItemsWrapper>
+			<ItemsWrapper ref={elementRef}>{renderItems}</ItemsWrapper>
 		</Wrapper>
 	);
 }

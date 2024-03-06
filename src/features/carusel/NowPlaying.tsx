@@ -11,6 +11,7 @@ const StyledNawPlaying = styled.section`
 	gap: 1.2rem;
 	width: 90%;
 	max-width: 1280px;
+	margin-top: 90px;
 
 	& h2 {
 		font-size: var(--font-large-extra);

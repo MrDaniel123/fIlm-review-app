@@ -11,6 +11,8 @@ import {
 import { NowPlaingMovie } from '../types/nowPLayingMovieType';
 import { ActrosListType } from '../types/actorsListType';
 import { MovieById } from '../types/movieByIdType';
+import { TrendingMoviesResponse } from '../types/trendingMoviesType';
+import { PopulatMoviesResponse } from '../types/populatMoviesType';
 
 export const getNowPlayingMovieMovies = async () => {
 	const response = await axios.get<NowPlaingMovie>(`${NowPlayingMovieUrl}?&api_key=${tmdbKey}`);
@@ -25,13 +27,17 @@ export const getMovieById = async (movieId: string) => {
 };
 
 export const getPopularMovies = async () => {
-	const response = await axios.get(`${popularMoviesUrl}?&api_key=${tmdbKey}`);
+	const response = await axios.get<PopulatMoviesResponse>(
+		`${popularMoviesUrl}?&api_key=${tmdbKey}`
+	);
 
 	return response.data;
 };
 
 export const getTrendingMovies = async () => {
-	const response = await axios.get(`${trendingMoviesUrl}?&api_key=${tmdbKey}`);
+	const response = await axios.get<TrendingMoviesResponse>(
+		`${trendingMoviesUrl}?&api_key=${tmdbKey}`
+	);
 
 	return response.data;
 };
