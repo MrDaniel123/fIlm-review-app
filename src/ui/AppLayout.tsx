@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Header from '../features/navigation/Header';
+import Navigation from '../features/navigation/Navigation';
 
 const AppContainer = styled.div`
 	display: flex;
@@ -20,7 +20,7 @@ const MainContentStyled = styled.div`
 function AppLayout() {
 	return (
 		<AppContainer>
-			<Header />
+			<Navigation />
 			<MainContentStyled>
 				<Outlet />
 			</MainContentStyled>

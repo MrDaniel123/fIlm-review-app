@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   --color-river-bed: #4b5563;
   --color-silver:#c5c5c5;
   --color-godGray: #181818;
-  --color-black-filter: #0000008f;
+  --color-black-filter: #000000ad;
 
   --shadow-primary: 0px 0px 19px -4px #000000;
 
