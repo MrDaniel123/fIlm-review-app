@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { breakPoint } from '../../styles/style';
-import { result } from '../../types/nowPLayingType';
+import { type NowPlayingMovieResult } from '../../types/nowPLayingMovieType';
 
 const dot = require('../../assets/dot.png');
 
@@ -40,7 +40,7 @@ const DotRadioButton = styled.button<styleProps>`
 `;
 
 type Props = {
-	results: result[];
+	results: NowPlayingMovieResult[];
 	changeSlide: (index: number) => void;
 	slideIndex: number;
 };

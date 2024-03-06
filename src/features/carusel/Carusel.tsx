@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { NowPLaing } from '../../types/nowPLayingType';
-import { breakPoint } from '../../styles/style';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-// import { CaruselWrapper } from './CaruselWrapper';
+import DotNavigation from './DotNavigation';
+import Navigation from './Navigation';
+
+import { type NowPlaingMovie } from '../../types/nowPLayingMovieType';
+
+import { breakPoint } from '../../styles/style';
 import { PosterImage } from './PosterImage';
 import { Description } from './Description';
 import { BackgroundPoster } from './BackgroundPoster';
-import DotNavigation from './DotNavigation';
 import { Title } from './Title';
-import Navigation from './Navigation';
-import styled from 'styled-components';
 import { mountAnimation } from './animation';
 
 const StyledCarusel = styled.div`
@@ -36,16 +37,18 @@ const StyledCarusel = styled.div`
 	}
 `;
 
-interface Props {
-	data: NowPLaing;
-}
+type Props = {
+	data: NowPlaingMovie;
+};
 
-function generateCurentResult(data: NowPLaing) {
+function generateCurentResult(data: NowPlaingMovie) {
 	const results = data.results.filter(result => {
-		if (result.title && result.overview && result.backdrop_path && result.poster_path)
-			return result;
+		let returnetResult;
+		if (result.title && result.overview && result.backdrop_path && result.poster_path) {
+			returnetResult = result;
+		}
+		return returnetResult;
 	});
-
 	return results.slice(0, 6);
 }
 

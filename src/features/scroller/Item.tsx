@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import { result } from '../../types/nowPLayingType';
+import { type NowPlayingMovieResult } from '../../types/nowPLayingMovieType';
 
 const Wrapper = styled(NavLink)`
 	display: flex;
@@ -37,7 +37,7 @@ const Date = styled.h6`
 `;
 
 type Props = {
-	data: result;
+	data: NowPlayingMovieResult;
 };
 
 function Item({ data }: Props) {

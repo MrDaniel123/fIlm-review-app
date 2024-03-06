@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Item from './Item';
-import { NowPLaing } from '../../types/nowPLayingType';
+import { NowPlaingMovie } from '../../types/nowPLayingMovieType';
 import { ScrollButton } from './ScrollButton';
 import { Header } from './Header';
 
@@ -38,12 +38,13 @@ const ItemsWrapper = styled.div`
 `;
 
 type Props = {
-	data: NowPLaing;
+	data: NowPlaingMovie;
 	name: string;
 };
 
 function Scroller({ data, name }: Props) {
 	const elementRef = useRef<any>(null);
+	//!!Any Type
 	const handleHorizontallScroll = (step: number) => {
 		elementRef.current.scrollLeft += step;
 	};

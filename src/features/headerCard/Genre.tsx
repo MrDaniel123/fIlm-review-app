@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Genres as GenresType } from '../../types/movieByIdType';
+import { type Genres as GenresType } from '../../types/movieByIdType';
 import { breakPoint } from '../../styles/style';
 
 const GenresWrapper = styled.div`

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Carusel from './Carusel';
-import { useNowPlayingMovies } from '../../hooks/useNowPlayingMovies';
+import { useNowPlayingMovieMovies } from '../../hooks/useNowPlayingMovies';
 import { breakPoint } from '../../styles/style';
 
 const StyledNawPlaying = styled.section`
@@ -24,8 +24,8 @@ const StyledNawPlaying = styled.section`
 	}
 `;
 
-function NowPlaying() {
-	const { data, isLoading, isError } = useNowPlayingMovies();
+function NowPlayingMovie() {
+	const { data, isLoading } = useNowPlayingMovieMovies();
 
 	return (
 		<StyledNawPlaying>
@@ -36,4 +36,4 @@ function NowPlaying() {
 	);
 }
 
-export default NowPlaying;
+export default NowPlayingMovie;

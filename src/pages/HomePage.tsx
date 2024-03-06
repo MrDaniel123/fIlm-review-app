@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import NowPlaying from '../features/carusel/NowPlaying';
+import NowPlayingMovie from '../features/carusel/NowPlaying';
 import Scroller from '../features/scroller/Scroller';
 import { useTrendingMovies } from '../hooks/useTrendingMovies';
 import { usePopularMovies } from '../hooks/usePopularMovies';
@@ -22,7 +22,7 @@ function HomePage() {
 
 	return (
 		<StyledHomePage>
-			<NowPlaying />
+			<NowPlayingMovie />
 			{trendingMovies && <Scroller data={trendingMovies} name={'Trending'} />}
 			{populatMovies && <Scroller data={populatMovies} name={'Popular Movies'} />}
 		</StyledHomePage>

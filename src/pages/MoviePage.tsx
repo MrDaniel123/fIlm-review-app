@@ -4,6 +4,7 @@ import { useMovieById } from '../hooks/useMovieById';
 
 import HeaderCard from '../features/headerCard/HeaderCard';
 import styled from 'styled-components';
+import { useActrosFromMovie } from '../hooks/useActrosFromMovie';
 
 const StyledMoviePage = styled.div`
 	display: flex;
@@ -13,14 +14,12 @@ const StyledMoviePage = styled.div`
 
 function MoviePage() {
 	const movieId = useParams();
-	const { data, isError, isLoading } = useMovieById(movieId!.movieId!);
+	const { data: movie, isError, isLoading } = useMovieById(movieId!.movieId!);
+	const { data: actros } = useActrosFromMovie(movieId!.movieId!);
+	console.log(actros);
 
 	if (isLoading) return <div>Loading</div>;
-	return (
-		<StyledMoviePage>
-			<HeaderCard data={data}></HeaderCard>
-		</StyledMoviePage>
-	);
+	return <StyledMoviePage>{movie && <HeaderCard data={movie}></HeaderCard>}</StyledMoviePage>;
 }
 
 export default MoviePage;
