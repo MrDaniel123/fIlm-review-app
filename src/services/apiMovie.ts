@@ -6,6 +6,7 @@ import {
 	popularMoviesUrl,
 	trendingMoviesUrl,
 	actrosFromMovieUrl,
+	movieUrl,
 } from './tmdbService';
 
 import { NowPlaingMovie } from '../types/nowPLayingMovieType';
@@ -13,6 +14,7 @@ import { ActrosListType } from '../types/actorsListType';
 import { MovieById } from '../types/movieByIdType';
 import { TrendingMoviesResponse } from '../types/trendingMoviesType';
 import { PopulatMoviesResponse } from '../types/populatMoviesType';
+import { ReviewType } from '../types/reviewType';
 
 export const getNowPlayingMovieMovies = async () => {
 	const response = await axios.get<NowPlaingMovie>(`${NowPlayingMovieUrl}?&api_key=${tmdbKey}`);
@@ -47,5 +49,12 @@ export const getActrosFromMovie = async (movieId: string) => {
 		`${actrosFromMovieUrl}${movieId}/credits?language=en-US%3F&api_key=${tmdbKey}`
 	);
 
+	return response.data;
+};
+
+export const getReviewFromMovie = async (movieId: string) => {
+	const response = await axios.get<ReviewType>(
+		`${movieUrl}${movieId}/reviews?language=en-US&page=1&api_key=${tmdbKey}`
+	);
 	return response.data;
 };

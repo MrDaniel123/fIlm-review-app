@@ -10,3 +10,5 @@ export const popularMoviesUrl = 'https://api.themoviedb.org/3/movie/popular?lang
 export const trendingMoviesUrl = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
 
 export const actrosFromMovieUrl = 'https://api.themoviedb.org/3/movie/';
+
+export const movieUrl = 'https://api.themoviedb.org/3/movie/';

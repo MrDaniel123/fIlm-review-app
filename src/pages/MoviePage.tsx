@@ -8,6 +8,8 @@ import Scroller from '../features/scroller/Scroller';
 
 import { useActrosFromMovie } from '../hooks/useActrosFromMovie';
 import { ActrosListType } from '../types/actorsListType';
+import { useReviewFromMovie } from '../hooks/useReviewFromMovie';
+import Review from '../features/review/Review';
 
 const StyledMoviePage = styled.div`
 	display: flex;
@@ -15,6 +17,7 @@ const StyledMoviePage = styled.div`
 	align-items: flex-start;
 	flex-wrap: wrap;
 	gap: 32px;
+	padding-bottom: 80px;
 	/* height: 300vh; */
 `;
 
@@ -25,11 +28,23 @@ type ActrosType = {
 	id: number;
 };
 
+type RewiewType = {
+	author: string;
+	content: string;
+	reviewUrl: string;
+	avatarPath: string;
+	id: string;
+	data: string;
+};
+
 function MoviePage() {
 	const movieId = useParams();
 	const { data: movie, isError, isLoading } = useMovieById(movieId!.movieId!);
 	const { data: actrosData } = useActrosFromMovie(movieId!.movieId!);
+	const { data: reviewData } = useReviewFromMovie(movieId!.movieId!);
+
 	let actros: ActrosType[] | undefined = undefined;
+	let reviews: RewiewType[] | undefined = undefined;
 
 	if (actrosData) {
 		actros = actrosData.cast.map(actor => {
@@ -42,11 +57,31 @@ function MoviePage() {
 		});
 	}
 
+	if (reviewData && reviewData.results.length >= 2) {
+		let filteredReview = reviewData.results.filter(review => {
+			if (review.content.length >= 300 && review.author_details.avatar_path) {
+				return true;
+			}
+		});
+
+		reviews = filteredReview.map(review => {
+			return {
+				author: review.author,
+				content: review.content,
+				reviewUrl: review.url,
+				avatarPath: review.author_details.avatar_path,
+				id: review.id,
+				data: review.updated_at,
+			};
+		});
+	}
+
 	if (isLoading) return <div>Loading</div>;
 	return (
 		<StyledMoviePage>
 			{movie && <HeaderCard data={movie}></HeaderCard>}
 			{actros && <Scroller data={actros.slice(0, 20)} name={'Actros'} linkTo={'person'} />}
+			{reviews && <Review data={reviews.slice(0, 2)} />}
 		</StyledMoviePage>
 	);
 }

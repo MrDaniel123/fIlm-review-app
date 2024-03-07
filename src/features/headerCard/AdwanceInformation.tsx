@@ -7,7 +7,9 @@ export const AdwanceInfromation = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	padding: 10px;
-	width: 200px;
+	width: 45%;
+	min-width: 160px;
+	max-width: 220px;
 	height: 62px;
 	background-color: var(--color-black-filter);
 	border-radius: var(--border-radius-large);
