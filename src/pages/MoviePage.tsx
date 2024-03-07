@@ -11,6 +11,8 @@ import { ActrosListType } from '../types/actorsListType';
 import { useReviewFromMovie } from '../hooks/useReviewFromMovie';
 import Review from '../features/review/Review';
 import { useRecomendationsFromMovie } from '../hooks/useRecomendationsFromMovie';
+import { useSimilarMovies } from '../hooks/useSimilarMovies';
+import { SimilarMovietType } from '../types/similarMovieType';
 
 const StyledMoviePage = styled.div`
 	display: flex;
@@ -36,6 +38,13 @@ type RecomendationsMovieType = {
 	id: number;
 };
 
+type SimilatMoviesType = {
+	header: string;
+	paragraph: string;
+	imagePath: string;
+	id: number;
+};
+
 type RewiewType = {
 	author: string;
 	content: string;
@@ -51,10 +60,12 @@ function MoviePage() {
 	const { data: actrosData } = useActrosFromMovie(movieId!.movieId!);
 	const { data: reviewData } = useReviewFromMovie(movieId!.movieId!);
 	const { data: recomendationsData } = useRecomendationsFromMovie(movieId!.movieId!);
+	const { data: similarMoviesData } = useSimilarMovies(movieId!.movieId!);
 
 	let actros: ActrosType[] | undefined = undefined;
 	let reviews: RewiewType[] | undefined = undefined;
 	let recomendationsMovie: RecomendationsMovieType[] | undefined = undefined;
+	let similarMovies: SimilatMoviesType[] | undefined = undefined;
 
 	if (actrosData) {
 		actros = actrosData.cast.map(actor => {
@@ -67,8 +78,19 @@ function MoviePage() {
 		});
 	}
 
-	if (recomendationsData) {
+	if (recomendationsData && recomendationsData.results.length >= 10) {
 		recomendationsMovie = recomendationsData.results.map(movie => {
+			return {
+				header: movie.title,
+				paragraph: movie.release_date,
+				imagePath: movie.poster_path,
+				id: movie.id,
+			};
+		});
+	}
+
+	if (similarMoviesData && similarMoviesData.results.length >= 10) {
+		similarMovies = similarMoviesData.results.map(movie => {
 			return {
 				header: movie.title,
 				paragraph: movie.release_date,
@@ -105,6 +127,9 @@ function MoviePage() {
 			{reviews && <Review data={reviews.slice(0, 2)} />}
 			{recomendationsMovie && (
 				<Scroller data={recomendationsMovie.slice(0.2)} name={'Recomendations'} linkTo={'movie'} />
+			)}
+			{similarMovies && (
+				<Scroller data={similarMovies.slice(0.2)} name={'Similar'} linkTo={'movie'} />
 			)}
 		</StyledMoviePage>
 	);

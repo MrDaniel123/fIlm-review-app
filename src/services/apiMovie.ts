@@ -16,6 +16,7 @@ import { TrendingMoviesResponse } from '../types/trendingMoviesType';
 import { PopulatMoviesResponse } from '../types/populatMoviesType';
 import { ReviewType } from '../types/reviewType';
 import { RecomendationsMovieType } from '../types/recomendationsMovieType';
+import { SimilarMovietType } from '../types/similarMovieType';
 
 export const getNowPlayingMovieMovies = async () => {
 	const response = await axios.get<NowPlaingMovie>(`${NowPlayingMovieUrl}?&api_key=${tmdbKey}`);
@@ -63,6 +64,13 @@ export const getReviewFromMovie = async (movieId: string) => {
 export const getRecomendationsFromMovie = async (movieId: string) => {
 	const response = await axios.get<RecomendationsMovieType>(
 		`${movieUrl}${movieId}/recommendations?language=en-US&page=1&api_key=${tmdbKey}`
+	);
+	return response.data;
+};
+
+export const getSimilarMovies = async (movieId: string) => {
+	const response = await axios.get<SimilarMovietType>(
+		`${movieUrl}${movieId}/similar?language=en-US&page=1?&api_key=${tmdbKey}`
 	);
 	return response.data;
 };
