@@ -59,7 +59,7 @@ function Item({ header, paragraph, imagePath, id, linkTo = 'movie' }: ItemProps)
 	}
 
 	return (
-		<Wrapper to={`${linkToName}${id}`}>
+		<Wrapper to={`${linkToName}${id}`} reloadDocument={true}>
 			<ImagePoster src={image} />
 			<Title>{header}</Title>
 			<Date>{paragraph}</Date>
