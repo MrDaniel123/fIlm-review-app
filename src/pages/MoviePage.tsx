@@ -13,6 +13,8 @@ import Review from '../features/review/Review';
 import { useRecomendationsFromMovie } from '../hooks/useRecomendationsFromMovie';
 import { useSimilarMovies } from '../hooks/useSimilarMovies';
 import { SimilarMovietType } from '../types/similarMovieType';
+import ImageSlider from '../features/imageSlider/ImageSlider';
+import { useMoviesImages } from '../hooks/useMovieImages';
 
 const StyledMoviePage = styled.div`
 	display: flex;
@@ -21,7 +23,6 @@ const StyledMoviePage = styled.div`
 	flex-wrap: wrap;
 	gap: 32px;
 	padding-bottom: 80px;
-	/* height: 300vh; */
 `;
 
 type ActrosType = {
@@ -61,6 +62,7 @@ function MoviePage() {
 	const { data: reviewData } = useReviewFromMovie(movieId!.movieId!);
 	const { data: recomendationsData } = useRecomendationsFromMovie(movieId!.movieId!);
 	const { data: similarMoviesData } = useSimilarMovies(movieId!.movieId!);
+	const { data: imageData } = useMoviesImages(movieId!.movieId!);
 
 	let actros: ActrosType[] | undefined = undefined;
 	let reviews: RewiewType[] | undefined = undefined;
@@ -125,6 +127,7 @@ function MoviePage() {
 			{movie && <HeaderCard data={movie}></HeaderCard>}
 			{actros && <Scroller data={actros.slice(0, 20)} name={'Actros'} linkTo={'person'} />}
 			{reviews && <Review data={reviews.slice(0, 2)} />}
+			{imageData && <ImageSlider data={imageData.backdrops.slice(0, 20)} />}
 			{recomendationsMovie && (
 				<Scroller data={recomendationsMovie.slice(0.2)} name={'Recomendations'} linkTo={'movie'} />
 			)}

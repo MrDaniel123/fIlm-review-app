@@ -17,6 +17,7 @@ import { PopulatMoviesResponse } from '../types/populatMoviesType';
 import { ReviewType } from '../types/reviewType';
 import { RecomendationsMovieType } from '../types/recomendationsMovieType';
 import { SimilarMovietType } from '../types/similarMovieType';
+import { GalleryType } from '../types/galleryType';
 
 export const getNowPlayingMovieMovies = async () => {
 	const response = await axios.get<NowPlaingMovie>(`${NowPlayingMovieUrl}?&api_key=${tmdbKey}`);
@@ -72,5 +73,10 @@ export const getSimilarMovies = async (movieId: string) => {
 	const response = await axios.get<SimilarMovietType>(
 		`${movieUrl}${movieId}/similar?language=en-US&page=1?&api_key=${tmdbKey}`
 	);
+	return response.data;
+};
+
+export const getImages = async (movieId: string) => {
+	const response = await axios.get<GalleryType>(`${movieUrl}${movieId}/images?&api_key=${tmdbKey}`);
 	return response.data;
 };
