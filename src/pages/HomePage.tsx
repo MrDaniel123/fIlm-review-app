@@ -5,6 +5,7 @@ import NowPlayingMovie from '../features/carusel/NowPlaying';
 import Scroller from '../features/scroller/Scroller';
 import { useTrendingMovies } from '../hooks/useTrendingMovies';
 import { usePopularMovies } from '../hooks/usePopularMovies';
+import { usePopularActres } from '../hooks/usePupularActros';
 
 const StyledHomePage = styled.main`
 	display: flex;
@@ -16,7 +17,7 @@ const StyledHomePage = styled.main`
 	height: 100vh;
 `;
 
-type TrendingMoviesType = {
+type ScrollerDataType = {
 	header: string;
 	paragraph: string;
 	imagePath: string;
@@ -26,9 +27,11 @@ type TrendingMoviesType = {
 function HomePage() {
 	const { data: trendingMoviesData, isError, isLoading } = useTrendingMovies();
 	const { data: populatMoviesData } = usePopularMovies();
+	const { data: populatActrosData } = usePopularActres();
 
-	let trendingMovies: TrendingMoviesType[] | undefined = undefined;
-	let populatMovies: TrendingMoviesType[] | undefined = undefined;
+	let trendingMovies: ScrollerDataType[] | undefined = undefined;
+	let populatMovies: ScrollerDataType[] | undefined = undefined;
+	let popularActros: ScrollerDataType[] | undefined = undefined;
 
 	if (trendingMoviesData) {
 		trendingMovies = trendingMoviesData?.results.map(movie => {
@@ -52,10 +55,22 @@ function HomePage() {
 		});
 	}
 
+	if (populatActrosData) {
+		popularActros = populatActrosData.results.map(actor => {
+			return {
+				header: actor.name,
+				paragraph: '',
+				imagePath: actor.profile_path,
+				id: actor.id,
+			};
+		});
+	}
+
 	return (
 		<StyledHomePage>
 			<NowPlayingMovie />
-			{trendingMovies && <Scroller data={trendingMovies} name={'Trending'} />}
+			{trendingMovies && <Scroller data={trendingMovies} name={'Trending Movies'} />}
+			{popularActros && <Scroller data={popularActros} name={'Popular Actros'} linkTo={'person'} />}
 			{populatMovies && <Scroller data={populatMovies} name={'Popular Movies'} />}
 		</StyledHomePage>
 	);

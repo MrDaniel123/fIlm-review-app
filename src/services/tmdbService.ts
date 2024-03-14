@@ -12,3 +12,7 @@ export const trendingMoviesUrl = 'https://api.themoviedb.org/3/trending/movie/da
 export const actrosFromMovieUrl = 'https://api.themoviedb.org/3/movie/';
 
 export const movieUrl = 'https://api.themoviedb.org/3/movie/';
+
+//TODO New way to url
+
+export const populatActrossUrl = `https://api.themoviedb.org/3/person/popular?language=en-US&page=1?&api_key=${tmdbKey}`;
