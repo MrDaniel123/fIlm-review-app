@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { breakPoint } from '../../styles/style';
 
-const ImageWrapper = styled.div<{ inWindow?: boolean }>`
+const ImageWrapper = styled.div<{ $inWindow?: boolean }>`
 	height: 22rem;
 	min-width: 22em;
 	overflow: hidden;
@@ -15,7 +15,7 @@ const ImageWrapper = styled.div<{ inWindow?: boolean }>`
 	}
 
 	${props =>
-		props.inWindow &&
+		props.$inWindow &&
 		css`
 			height: 14rem;
 			min-width: 14rem;
@@ -51,7 +51,7 @@ type ImageItemType = {
 
 function ImageItem({ imgPath, imageIndex, onClickHandler, showInWindow }: ImageItemType) {
 	return (
-		<ImageWrapper onClick={() => onClickHandler(imageIndex)} inWindow={showInWindow}>
+		<ImageWrapper onClick={() => onClickHandler(imageIndex)} $inWindow={showInWindow}>
 			<img
 				src={`https://image.tmdb.org/t/p/w500${imgPath}`}
 				alt='From Movie'

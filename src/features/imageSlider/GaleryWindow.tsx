@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { ImageType } from '../../types/galleryType';
 import ImageItem from './ImageItem';
-import { breakPoint } from '../../styles/style';
 import CloseButton from './CloseButton';
 import ImageCarusel from './ImageCarusel';
 

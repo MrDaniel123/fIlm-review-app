@@ -12,6 +12,7 @@ const CloseBtn = styled.button`
 	height: 5rem;
 	width: 5rem;
 	transition: transform 0.3s;
+	z-index: 2;
 
 	&:hover {
 		transform: scale(1.2);
