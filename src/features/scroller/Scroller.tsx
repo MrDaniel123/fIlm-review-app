@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
-
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
 import Item from './Item';
 import { ScrollButton } from './ScrollButton';
 import { Header } from './Header';
 
 const arrow = require('../../assets/arrowNext.png');
 
-const Wrapper = styled.section`
+const StyledScroller = styled(motion.section)`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.2rem;
@@ -68,7 +69,10 @@ function Scroller({ data, name, linkTo = 'movie' }: ScrollerProps) {
 	));
 
 	return (
-		<Wrapper>
+		<StyledScroller
+			initial={{ x: 120 }}
+			animate={{ x: 0 }}
+			transition={{ duration: 0.4, delay: 0.2 }}>
 			<Header>{name}</Header>
 
 			<ScrollButton onClick={() => handleHorizontallScroll(-210)}>
@@ -78,7 +82,7 @@ function Scroller({ data, name, linkTo = 'movie' }: ScrollerProps) {
 				<img src={arrow} alt='Rigth Horizontal Scroll' />
 			</ScrollButton>
 			<ItemsWrapper ref={elementRef}>{renderItems}</ItemsWrapper>
-		</Wrapper>
+		</StyledScroller>
 	);
 }
 

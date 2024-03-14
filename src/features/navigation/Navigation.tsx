@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import Search from './Search';
 import NavigationDesktop from './NavigationDesktop';
@@ -50,23 +51,26 @@ function Navigation() {
 		setShowMobileMenue(prevValue => !prevValue);
 	};
 	return (
-		<StyledNavigation>
-			{windowWidth < Number(breakPoint.large) && (
-				<ShowHideMenueButton
-					onClickFn={handleShowHideMenue}
-					imagePath={logoMenue}
-					alt='Show Menue Button'
-				/>
-			)}
-			<NavLink to={'/'}>
-				<Logo />
-			</NavLink>
-			{windowWidth > Number(breakPoint.large) && <NavigationDesktop />}
+		<>
+			<StyledNavigation>
+				{windowWidth < Number(breakPoint.large) && (
+					<ShowHideMenueButton
+						onClickFn={handleShowHideMenue}
+						imagePath={logoMenue}
+						alt='Show Menue Button'
+					/>
+				)}
+				<NavLink to={'/'}>
+					<Logo />
+				</NavLink>
+				{windowWidth > Number(breakPoint.large) && <NavigationDesktop />}
 
-			{showMobileMenu && <Mobilenavigation showHideNavigation={handleShowHideMenue} />}
-
-			{windowWidth > Number(breakPoint.large) ? <Search /> : <Search type={'small'} />}
-		</StyledNavigation>
+				{windowWidth > Number(breakPoint.large) ? <Search /> : <Search type={'small'} />}
+			</StyledNavigation>
+			<AnimatePresence>
+				{showMobileMenu && <Mobilenavigation showHideNavigation={handleShowHideMenue} />}
+			</AnimatePresence>
+		</>
 	);
 }
 

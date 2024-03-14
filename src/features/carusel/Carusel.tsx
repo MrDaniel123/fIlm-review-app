@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { type NowPlaingMovie } from '../../types/nowPLayingMovieType';
+import { motion } from 'framer-motion';
 
 import DotNavigation from './DotNavigation';
 import Navigation from './Navigation';
-
-import { type NowPlaingMovie } from '../../types/nowPLayingMovieType';
 
 import { breakPoint } from '../../styles/style';
 import { PosterImage } from './PosterImage';
 import { Description } from './Description';
 import { BackgroundPoster } from './BackgroundPoster';
 import { Title } from './Title';
-import { mountAnimation } from './animation';
 
-const StyledCarusel = styled.div`
+const StyledCarusel = styled(motion.div)`
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-template-rows: 2fr 7fr 3fr 1fr;
@@ -27,7 +26,7 @@ const StyledCarusel = styled.div`
 	max-width: 1440px;
 	min-height: 220px;
 	border-radius: var(--border-radius-small);
-	animation: ${mountAnimation} 0.6s ease-in-out;
+	overflow: hidden;
 
 	@media (min-width: ${breakPoint.small}px) {
 		min-height: 360px;
@@ -85,7 +84,7 @@ function Carusel({ data }: Props) {
 	}
 
 	return (
-		<StyledCarusel>
+		<StyledCarusel initial={{ x: 120 }} animate={{ x: 0 }} transition={{ duration: 0.4 }}>
 			<BackgroundPoster
 				key={results[slideNumber].backdrop_path}
 				src={`https://image.tmdb.org/t/p/original${results[slideNumber].backdrop_path}`}
@@ -97,9 +96,18 @@ function Carusel({ data }: Props) {
 			<Title key={results[slideNumber].title}>{results[slideNumber].title.slice(0, 20)}</Title>
 
 			<Description key={results[slideNumber].overview}>{descriptionInDifrentSize}...</Description>
-			<Navigation nextSlide={handleNextSLide} previewSlide={handlePreviewSlide} />
+			<Navigation
+				nextSlide={handleNextSLide}
+				previewSlide={handlePreviewSlide}
+				key={'Carusel Navigation'}
+			/>
 
-			<DotNavigation results={results} changeSlide={handleChangeSlide} slideIndex={slideNumber} />
+			<DotNavigation
+				results={results}
+				changeSlide={handleChangeSlide}
+				slideIndex={slideNumber}
+				key={'Dot Navigation'}
+			/>
 		</StyledCarusel>
 	);
 }

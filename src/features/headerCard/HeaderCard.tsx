@@ -1,21 +1,20 @@
 import React from 'react';
-import { MovieById } from '../../types/movieByIdType';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+import { type MovieById } from '../../types/movieByIdType';
 import { breakPoint } from '../../styles/style';
 
+import Genres from './Genre';
 import { Poster } from './Poster';
 import { Title } from './Title';
 import { Description } from './Description';
 import { AdwanceInfromation } from './AdwanceInformation';
 import { StarReview } from './StarReview';
-import Genres from './Genre';
 
 const logoStart = require('../../assets/logoStar.png');
 
-const StyledheaderCard = styled.div<{ $bgcImageUrl: string }>`
-	/* position: absolute;
-	top: 0;
-	left: 0; */
+const StyledheaderCard = styled(motion.div)<{ $bgcImageUrl: string }>`
 	z-index: -999999;
 	display: flex;
 	justify-content: center;
@@ -53,10 +52,6 @@ const Wrapper = styled.header<{ $bgcImageUrl: string }>`
 		grid-template-columns: 2fr 3fr;
 		grid-template-rows: auto;
 	}
-
-	@media (min-width: ${breakPoint.extraExtraLarge}px) {
-		justify-items: flex-start;
-	}
 `;
 
 const AdwanceInformationWrapper = styled.div`
@@ -77,7 +72,11 @@ type Props = {
 
 function HeaderCard({ data }: Props) {
 	return (
-		<StyledheaderCard $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
+		<StyledheaderCard
+			$bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ duration: 0.6 }}>
 			<Wrapper $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
 				<Poster src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} />
 				<Title>{data?.title}</Title>
