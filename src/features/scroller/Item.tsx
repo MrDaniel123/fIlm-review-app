@@ -53,6 +53,9 @@ function Item({ header, paragraph, imagePath, id, linkTo = 'movie' }: ItemProps)
 	if (linkTo === 'person') {
 		linkToName = '/person/';
 	}
+	if (linkTo === 'tv-series') {
+		linkToName = '/tv/';
+	}
 
 	if (!imagePath) {
 		image = noImagePlaceholder;

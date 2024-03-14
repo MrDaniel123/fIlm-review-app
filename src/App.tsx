@@ -5,12 +5,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import HomePage from './pages/HomePage';
 import AppLayout from './ui/AppLayout';
 import Movies from './pages/Movies';
-import TvSeries from './pages/TvSeries';
+import TvSeries from './pages/TvSeriesPage';
 import Persons from './pages/Persons';
 import GlobalStyles from './styles/GlobalStyle';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import MoviePage from './pages/MoviePage';
 import PersonPage from './pages/PersonPage';
+import TvSeriesPage from './pages/SeriesPage';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -38,6 +39,7 @@ function App() {
 							<Route path='persons' element={<Persons />} />
 							<Route path='movie/:movieId' element={<MoviePage />} />
 							<Route path='person/:personId' element={<PersonPage />} />
+							<Route path='tv/:tv' element={<TvSeriesPage />} />
 						</Route>
 					</Routes>
 				</BrowserRouter>
