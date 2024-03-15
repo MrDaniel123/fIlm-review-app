@@ -55,16 +55,35 @@ type RewiewType = {
 	data: string;
 };
 
+type Genres = {
+	id: number;
+	name: string;
+};
+
+type HeaderCardMovieProps = {
+	backDropImagePath: string;
+	posterPath: string;
+	header: string;
+	description: string;
+	genres: Genres[];
+	vote: number;
+	budget: number;
+	revenue: number;
+	date: string;
+	runtime: number;
+};
+
 function MoviePage() {
 	//!!{movieID} w usepartams powinno być w nawiasahc klamrowych Błąd do poprawy
 	const movieId = useParams();
-	const { data: movie, isLoading } = useMovieById(movieId!.movieId!);
+	const { data: movieData, isLoading } = useMovieById(movieId!.movieId!);
 	const { data: actrosData } = useActrosFromMovie(movieId!.movieId!);
 	const { data: reviewData } = useReviewFromMovie(movieId!.movieId!);
 	const { data: recomendationsData } = useRecomendationsFromMovie(movieId!.movieId!);
 	const { data: similarMoviesData } = useSimilarMovies(movieId!.movieId!);
 	const { data: imageData } = useMoviesImages(movieId!.movieId!);
 
+	let dataToHeaderCard: HeaderCardMovieProps | undefined = undefined;
 	let actros: ActrosType[] | undefined = undefined;
 	let reviews: RewiewType[] | undefined = undefined;
 	let recomendationsMovie: RecomendationsMovieType[] | undefined = undefined;
@@ -122,10 +141,32 @@ function MoviePage() {
 		});
 	}
 
+	if (movieData) {
+		let genres = movieData.genres.map(genre => {
+			return {
+				id: genre.id,
+				name: genre.name,
+			};
+		});
+
+		dataToHeaderCard = {
+			backDropImagePath: movieData.backdrop_path,
+			posterPath: movieData.poster_path,
+			header: movieData.title,
+			description: movieData.overview,
+			genres: genres,
+			vote: movieData.vote_average,
+			budget: movieData.budget,
+			revenue: movieData.revenue,
+			date: movieData.release_date,
+			runtime: movieData.runtime,
+		};
+	}
+
 	if (isLoading) return <div>Loading</div>;
 	return (
 		<StyledMoviePage>
-			{/* {movie && <HeaderCard data={movie}></HeaderCard>} */}
+			{dataToHeaderCard && <HeaderCard data={dataToHeaderCard} type={'movie'} />}
 			{actros && <Scroller data={actros.slice(0, 20)} name={'Actros'} linkTo={'person'} />}
 			{reviews && <Review data={reviews.slice(0, 2)} />}
 			{imageData && <ImageSlider data={imageData.backdrops.slice(0, 20)} />}

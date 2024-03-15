@@ -95,7 +95,7 @@ type HeaderCardMovieProps = {
 	budget: number;
 	revenue: number;
 	date: string;
-	runtime: string;
+	runtime: number;
 };
 
 type HeaderCardTvSeriesProps = {
