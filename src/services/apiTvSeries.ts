@@ -3,10 +3,17 @@ import axios from 'axios';
 import { type TrendingTvSeriesResponse } from '../types/trendindTvSeries';
 import { type TvSeriesbyIdResponseType } from '../types/tvSeriesByIdType';
 
-import { tmdbKey, trendingTvSeriesUrl, tvSeriesActrosUrl } from './tmdbService';
+import {
+	tmdbKey,
+	trendingTvSeriesUrl,
+	tvSeriesActrosUrl,
+	tvSeriesRecomendationUrl,
+} from './tmdbService';
 import { tvSeriesByIdUrl } from './tmdbService';
 import { ActrosListType } from '../types/actorsListType';
 import { ReviewType } from '../types/reviewType';
+import { RecomendationsTvSeriesResponse } from '../types/recomendationsTvSeriesType';
+import { SimilarTvSeriesResponse } from '../types/similarTvSeriesType';
 
 export const getTrendingTvSeries = async () => {
 	const response = await axios.get<TrendingTvSeriesResponse>(trendingTvSeriesUrl);
@@ -33,6 +40,22 @@ export const getActrosFromTvSeries = async (tvSeriesId: string) => {
 export const getReviewFromTvSeries = async (tvSeriesId: string) => {
 	const response = await axios.get<ReviewType>(
 		`${tvSeriesActrosUrl}${tvSeriesId}/reviews?language=en-US&page=1&api_key=${tmdbKey}`
+	);
+
+	return response.data;
+};
+
+export const getRecomendationsFromTvSeries = async (tvSeriesId: string) => {
+	const response = await axios.get<RecomendationsTvSeriesResponse>(
+		`${tvSeriesRecomendationUrl}${tvSeriesId}/recommendations?language=en-US&page=1?&api_key=${tmdbKey}`
+	);
+
+	return response.data;
+};
+
+export const getSimilarTvSeries = async (tvSeriesId: string) => {
+	const response = await axios.get<SimilarTvSeriesResponse>(
+		`${tvSeriesRecomendationUrl}${tvSeriesId}/similar?language=en-US&page=1?&api_key=${tmdbKey}`
 	);
 
 	return response.data;

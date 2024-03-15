@@ -8,6 +8,8 @@ import { useTvSeriesActrsoById } from '../hooks/useActrosFromtvSeries';
 import Scroller from '../features/scroller/Scroller';
 import { useReviewFromTvSeries } from '../hooks/useReviewFromTvSeries';
 import Review from '../features/review/Review';
+import { useRecomenDationsFromTvSeries } from '../hooks/useRecomendationsFromTvSeries';
+import { useSimilarTvSeries } from '../hooks/useSimilarTvSeries';
 
 const StyledSeriesPage = styled.div`
 	display: flex;
@@ -52,11 +54,14 @@ function TvSeriesPage() {
 	const { data: tvSeriesData } = useTvSeriesById(tv!);
 	const { data: actrosData } = useTvSeriesActrsoById(tv!);
 	const { data: reviewData } = useReviewFromTvSeries(tv!);
-	console.log(reviewData);
+	const { data: recomendationsData } = useRecomenDationsFromTvSeries(tv!);
+	const { data: similarData } = useSimilarTvSeries(tv!);
 
 	let dataToHeaderCard: HeaderCardTypeSeriesType | undefined = undefined;
-	let dataToScroller: ScrollerType[] | undefined = undefined;
+	let dataToScrollerActros: ScrollerType[] | undefined = undefined;
 	let dataToReview: ReviewType[] | undefined = undefined;
+	let dataToScrollerRedomendations: ScrollerType[] | undefined = undefined;
+	let dataToScrollerSimilar: ScrollerType[] | undefined = undefined;
 
 	if (tvSeriesData) {
 		let genre = tvSeriesData.genres.map(genre => {
@@ -83,7 +88,7 @@ function TvSeriesPage() {
 	}
 
 	if (actrosData) {
-		dataToScroller = actrosData.cast.map(actor => {
+		dataToScrollerActros = actrosData.cast.map(actor => {
 			return {
 				header: actor.character,
 				paragraph: actor.name,
@@ -112,11 +117,45 @@ function TvSeriesPage() {
 		});
 	}
 
+	if (recomendationsData) {
+		dataToScrollerRedomendations = recomendationsData.results.map(series => {
+			return {
+				header: series.name,
+				paragraph: series.first_air_date,
+				imagePath: series.poster_path,
+				id: series.id,
+			};
+		});
+	}
+
+	if (similarData) {
+		dataToScrollerSimilar = similarData.results.map(series => {
+			return {
+				header: series.name,
+				paragraph: series.first_air_date,
+				imagePath: series.poster_path,
+				id: series.id,
+			};
+		});
+	}
+
 	return (
 		<StyledSeriesPage>
 			{dataToHeaderCard && <HeaderCard data={dataToHeaderCard} type={'series'} />}
-			{dataToScroller && <Scroller data={dataToScroller} name={'Actros'} linkTo={'person'} />}
+			{dataToScrollerActros && (
+				<Scroller data={dataToScrollerActros} name={'Actros'} linkTo={'person'} />
+			)}
 			{dataToReview && <Review data={dataToReview.slice(0, 2)} />}
+			{dataToScrollerRedomendations && (
+				<Scroller
+					data={dataToScrollerRedomendations}
+					name={'Recomendations'}
+					linkTo={'tv-series'}
+				/>
+			)}
+			{dataToScrollerSimilar && (
+				<Scroller data={dataToScrollerSimilar} name={'Similar'} linkTo={'tv-series'} />
+			)}
 		</StyledSeriesPage>
 	);
 }
