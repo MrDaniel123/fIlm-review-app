@@ -18,3 +18,5 @@ export const movieUrl = 'https://api.themoviedb.org/3/movie/';
 export const populatActrossUrl = `https://api.themoviedb.org/3/person/popular?language=en-US&page=1?&api_key=${tmdbKey}`;
 
 export const trendingTvSeriesUrl = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${tmdbKey}`;
+
+export const tvSeriesByIdUrl = 'https://api.themoviedb.org/3/tv/';

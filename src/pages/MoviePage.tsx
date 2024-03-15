@@ -56,6 +56,7 @@ type RewiewType = {
 };
 
 function MoviePage() {
+	//!!{movieID} w usepartams powinno być w nawiasahc klamrowych Błąd do poprawy
 	const movieId = useParams();
 	const { data: movie, isLoading } = useMovieById(movieId!.movieId!);
 	const { data: actrosData } = useActrosFromMovie(movieId!.movieId!);
@@ -124,7 +125,7 @@ function MoviePage() {
 	if (isLoading) return <div>Loading</div>;
 	return (
 		<StyledMoviePage>
-			{movie && <HeaderCard data={movie}></HeaderCard>}
+			{/* {movie && <HeaderCard data={movie}></HeaderCard>} */}
 			{actros && <Scroller data={actros.slice(0, 20)} name={'Actros'} linkTo={'person'} />}
 			{reviews && <Review data={reviews.slice(0, 2)} />}
 			{imageData && <ImageSlider data={imageData.backdrops.slice(0, 20)} />}

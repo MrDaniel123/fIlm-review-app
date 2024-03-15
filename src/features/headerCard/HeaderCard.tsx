@@ -65,44 +65,125 @@ const AdwanceInformationWrapper = styled.div`
 	}
 `;
 
-//!!Fix undefinded type
-type Props = {
-	data: MovieById | undefined;
+// type HeaderCardDataType = {
+// 	backDropImagePath: string;
+// 	posterPath: string;
+// 	header: string;
+// 	description: string;
+// 	genres?: { id: number; name: string }[];
+// 	vote: number;
+// 	budget?: number;
+// 	revenue?: number;
+// 	date?: string;
+// 	runtime?: string;
+// 	status?: string;
+// 	popularity?: number;
+// };
+
+type Genres = {
+	id: number;
+	name: string;
 };
 
-function HeaderCard({ data }: Props) {
+type HeaderCardMovieProps = {
+	backDropImagePath: string;
+	posterPath: string;
+	header: string;
+	description: string;
+	genres: Genres[];
+	vote: number;
+	budget: number;
+	revenue: number;
+	date: string;
+	runtime: string;
+};
+
+type HeaderCardTvSeriesProps = {
+	backDropImagePath: string;
+	posterPath: string;
+	header: string;
+	description: string;
+	genres: Genres[];
+	vote: number;
+	popularity: number;
+	firstAirDate: string;
+	lastAirDate: string;
+	productionCompany: string;
+};
+
+type HeaderCardMovieType = {
+	type: 'movie';
+	data: HeaderCardMovieProps;
+};
+
+type HeaderCardTvSeriesType = {
+	type: 'series';
+	data: HeaderCardTvSeriesProps;
+};
+
+type HeaderCardProps = HeaderCardMovieType | HeaderCardTvSeriesType;
+
+function HeaderCard(props: HeaderCardProps) {
 	return (
 		<StyledheaderCard
-			$bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}
+			$bgcImageUrl={`https://image.tmdb.org/t/p/original${props.data.backDropImagePath}`}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.6 }}>
-			<Wrapper $bgcImageUrl={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}>
-				<Poster src={`https://image.tmdb.org/t/p/w500${data?.poster_path}`} />
-				<Title>{data?.title}</Title>
-				<Description>{data?.overview}</Description>
-				<Genres data={data?.genres} />
+			<Wrapper $bgcImageUrl={`https://image.tmdb.org/t/p/original${props.data.backDropImagePath}`}>
+				<Poster src={`https://image.tmdb.org/t/p/w500${props.data.posterPath}`} />
+				<Title>{props.data.header}</Title>
+				<Description>{props.data.description}</Description>
+				<Genres data={props.data.genres} />
 				<StarReview>
-					<span>{data?.vote_average.toFixed(1)}</span>
+					<span>{props.data.vote.toFixed(1)}</span>
 					<img src={logoStart} alt='' />
 				</StarReview>
 				<AdwanceInformationWrapper>
-					<AdwanceInfromation>
-						<h4>Budget</h4>
-						<span>{data?.budget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}$</span>
-					</AdwanceInfromation>
-					<AdwanceInfromation>
-						<h4>Revenue</h4>
-						<span>{data?.revenue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}$</span>
-					</AdwanceInfromation>
-					<AdwanceInfromation>
-						<h4>Relase Datet</h4>
-						<span>{data?.release_date}</span>
-					</AdwanceInfromation>
-					<AdwanceInfromation>
-						<h4>Runtime</h4>
-						<span>{data?.runtime} Min</span>
-					</AdwanceInfromation>
+					{props.type === 'movie' && (
+						<>
+							<AdwanceInfromation>
+								{props.data.budget && ''}
+								<h4>Budget</h4>
+								<span>{props.data.budget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}$</span>
+							</AdwanceInfromation>
+							<AdwanceInfromation>
+								<h4>Revenue</h4>
+								<span>{props.data.revenue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}$</span>
+							</AdwanceInfromation>
+							<AdwanceInfromation>
+								<h4>Relase Datet</h4>
+								<span>{props.data.date}</span>
+							</AdwanceInfromation>
+
+							<AdwanceInfromation>
+								<h4>Runtime</h4>
+								<span>{props.data.runtime} Min</span>
+							</AdwanceInfromation>
+						</>
+					)}
+
+					{props.type === 'series' && (
+						<>
+							<AdwanceInfromation>
+								<h4>Company</h4>
+								<span>{props.data.productionCompany}</span>
+							</AdwanceInfromation>
+							<AdwanceInfromation>
+								<h4>First Episode date</h4>
+								<span>{props.data.firstAirDate} </span>
+							</AdwanceInfromation>
+							<AdwanceInfromation>
+								<h4>Popularity</h4>
+								<span>{props.data.popularity}</span>
+							</AdwanceInfromation>
+
+							<AdwanceInfromation>
+								<h4>Last Episode date</h4>
+								<span>{props.data.lastAirDate} </span>
+							</AdwanceInfromation>
+						</>
+					)}
 				</AdwanceInformationWrapper>
 			</Wrapper>
 		</StyledheaderCard>
