@@ -7,6 +7,7 @@ import {
 	tmdbKey,
 	trendingTvSeriesUrl,
 	tvSeriesActrosUrl,
+	tvSeriesImageUrl,
 	tvSeriesRecomendationUrl,
 } from './tmdbService';
 import { tvSeriesByIdUrl } from './tmdbService';
@@ -14,6 +15,7 @@ import { ActrosListType } from '../types/actorsListType';
 import { ReviewType } from '../types/reviewType';
 import { RecomendationsTvSeriesResponse } from '../types/recomendationsTvSeriesType';
 import { SimilarTvSeriesResponse } from '../types/similarTvSeriesType';
+import { GalleryType } from '../types/galleryType';
 
 export const getTrendingTvSeries = async () => {
 	const response = await axios.get<TrendingTvSeriesResponse>(trendingTvSeriesUrl);
@@ -56,6 +58,14 @@ export const getRecomendationsFromTvSeries = async (tvSeriesId: string) => {
 export const getSimilarTvSeries = async (tvSeriesId: string) => {
 	const response = await axios.get<SimilarTvSeriesResponse>(
 		`${tvSeriesRecomendationUrl}${tvSeriesId}/similar?language=en-US&page=1?&api_key=${tmdbKey}`
+	);
+
+	return response.data;
+};
+
+export const getTvSeriesImage = async (tvSeriesId: string) => {
+	const response = await axios.get<GalleryType>(
+		`${tvSeriesImageUrl}${tvSeriesId}/images?&api_key=${tmdbKey}`
 	);
 
 	return response.data;

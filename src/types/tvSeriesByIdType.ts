@@ -27,7 +27,7 @@ type LastEpisodeToAir = {
 	still_path: number;
 };
 
-type Networks = {
+export type Networks = {
 	id: number;
 	logo_path: string;
 	name: string;

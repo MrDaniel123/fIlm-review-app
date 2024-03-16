@@ -7,12 +7,12 @@ import styled from 'styled-components';
 import Scroller from '../features/scroller/Scroller';
 
 import { useActrosFromMovie } from '../hooks/useActrosFromMovie';
-import { ActrosListType } from '../types/actorsListType';
+
 import { useReviewFromMovie } from '../hooks/useReviewFromMovie';
 import Review from '../features/review/Review';
 import { useRecomendationsFromMovie } from '../hooks/useRecomendationsFromMovie';
 import { useSimilarMovies } from '../hooks/useSimilarMovies';
-import { SimilarMovietType } from '../types/similarMovieType';
+
 import ImageSlider from '../features/imageSlider/ImageSlider';
 import { useMoviesImages } from '../hooks/useMovieImages';
 

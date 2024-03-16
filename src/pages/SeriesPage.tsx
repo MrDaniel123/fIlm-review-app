@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useTvSeriesById } from '../hooks/useTvSeriesById';
-import { TvSeriesbyIdResponseType } from '../types/tvSeriesByIdType';
+import { Networks, TvSeriesbyIdResponseType } from '../types/tvSeriesByIdType';
 import HeaderCard from '../features/headerCard/HeaderCard';
 import { useTvSeriesActrsoById } from '../hooks/useActrosFromtvSeries';
 import Scroller from '../features/scroller/Scroller';
@@ -10,6 +10,8 @@ import { useReviewFromTvSeries } from '../hooks/useReviewFromTvSeries';
 import Review from '../features/review/Review';
 import { useRecomenDationsFromTvSeries } from '../hooks/useRecomendationsFromTvSeries';
 import { useSimilarTvSeries } from '../hooks/useSimilarTvSeries';
+import { useTvSeriesImage } from '../hooks/useTvSeriesImage';
+import ImageSlider from '../features/imageSlider/ImageSlider';
 
 const StyledSeriesPage = styled.div`
 	display: flex;
@@ -56,6 +58,7 @@ function TvSeriesPage() {
 	const { data: reviewData } = useReviewFromTvSeries(tv!);
 	const { data: recomendationsData } = useRecomenDationsFromTvSeries(tv!);
 	const { data: similarData } = useSimilarTvSeries(tv!);
+	const { data: imageData } = useTvSeriesImage(tv!);
 
 	let dataToHeaderCard: HeaderCardTypeSeriesType | undefined = undefined;
 	let dataToScrollerActros: ScrollerType[] | undefined = undefined;
@@ -64,14 +67,21 @@ function TvSeriesPage() {
 	let dataToScrollerSimilar: ScrollerType[] | undefined = undefined;
 
 	if (tvSeriesData) {
-		let genre = tvSeriesData.genres.map(genre => {
-			return {
-				id: genre.id,
-				name: genre.name,
-			};
-		});
+		let genre: { id: number; name: string }[] | undefined = [];
+		let company = 'No Data';
 
-		let company = tvSeriesData.networks[0].name;
+		if (tvSeriesData.networks.length > 0) {
+			company = tvSeriesData.networks[0].name;
+		}
+
+		if (tvSeriesData.genres.length > 0) {
+			genre = tvSeriesData.genres.map(genre => {
+				return {
+					id: genre.id,
+					name: genre.name,
+				};
+			});
+		}
 
 		dataToHeaderCard = {
 			backDropImagePath: tvSeriesData.backdrop_path,
@@ -146,6 +156,7 @@ function TvSeriesPage() {
 				<Scroller data={dataToScrollerActros} name={'Actros'} linkTo={'person'} />
 			)}
 			{dataToReview && <Review data={dataToReview.slice(0, 2)} />}
+			{imageData && <ImageSlider data={imageData.backdrops.slice(0, 20)} />}
 			{dataToScrollerRedomendations && (
 				<Scroller
 					data={dataToScrollerRedomendations}

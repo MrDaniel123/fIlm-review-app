@@ -28,3 +28,5 @@ export const tvSeriesReviewUrl = 'https://api.themoviedb.org/3/tv/';
 export const tvSeriesRecomendationUrl = 'https://api.themoviedb.org/3/tv/';
 
 export const tvSeriesSimilarUrl = 'https://api.themoviedb.org/3/tv/';
+
+export const tvSeriesImageUrl = 'https://api.themoviedb.org/3/tv/';
