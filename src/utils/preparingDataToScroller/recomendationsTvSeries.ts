@@ -7,7 +7,7 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const recomendationsTvSeries = (tvSeries: RecomendationsTvSeries) => {
+export const preparingTvSeriesRecomendationsData = (tvSeries: RecomendationsTvSeries) => {
 	let recomendationtvSeries: ScrollerDataType[] = tvSeries.results.map(tvSeries => {
 		return {
 			header: tvSeries.name,

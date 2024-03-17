@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { ImageType } from '../../types/galleryType';
+import { ImageType } from '../../types/images/imagesType';
 import ImageItem from './ImageItem';
 import CloseButton from './CloseButton';
 import ImageCarusel from './ImageCarusel';

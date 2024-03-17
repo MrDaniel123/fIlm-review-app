@@ -1,4 +1,4 @@
-import { PopularActros } from '../../types/popular/actros';
+import { ActrosType } from '../../types/actors/actrosType';
 
 type ScrollerDataType = {
 	header: string;
@@ -7,8 +7,8 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const popularActros = (actors: PopularActros) => {
-	let popularActros: ScrollerDataType[] = actors.results.map(actor => {
+export const preparingActorsDataToScroller = (actors: ActrosType) => {
+	let actorsData: ScrollerDataType[] = actors.cast.map(actor => {
 		return {
 			header: actor.name,
 			paragraph: '',
@@ -17,5 +17,5 @@ export const popularActros = (actors: PopularActros) => {
 		};
 	});
 
-	return popularActros;
+	return actorsData;
 };

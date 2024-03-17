@@ -7,7 +7,7 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const similarMovies = (movies: SimilarMovies) => {
+export const preparingMoviesSimilarData = (movies: SimilarMovies) => {
 	let similarMovies: ScrollerDataType[] = movies.results.map(movie => {
 		return {
 			header: movie.title,

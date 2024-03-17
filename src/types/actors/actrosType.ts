@@ -27,7 +27,7 @@ export interface Crew {
 	profile_path: string;
 }
 
-export interface ActrosListType {
+export interface ActrosType {
 	id: string;
 	cast: Actros[];
 	crew: Crew[];

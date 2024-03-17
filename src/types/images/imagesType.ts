@@ -8,7 +8,7 @@ export type ImageType = {
 	width: number;
 };
 
-export type GalleryType = {
+export type ImagesType = {
 	backdrops: ImageType[];
 	id: number;
 	logos: ImageType[];

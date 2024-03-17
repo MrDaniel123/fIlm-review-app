@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ImageType } from '../../types/galleryType';
+import { ImageType } from '../../types/images/imagesType';
 
 import GaleryWindow from './GaleryWindow';
 import ImageItem from './ImageItem';
