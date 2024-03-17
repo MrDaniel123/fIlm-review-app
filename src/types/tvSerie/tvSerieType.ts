@@ -1,5 +1,5 @@
 type Creators = {
-	id: Number;
+	id: number;
 	credit_id: string;
 	name: string;
 	gender: number;
@@ -27,7 +27,7 @@ type LastEpisodeToAir = {
 	still_path: number;
 };
 
-export type Networks = {
+type Networks = {
 	id: number;
 	logo_path: string;
 	name: string;
@@ -63,7 +63,7 @@ type SpokenLanguages = {
 	name: string;
 };
 
-export type TvSeriesbyIdResponseType = {
+export type TvSerieType = {
 	adult: boolean;
 	backdrop_path: string;
 	created_by: Creators[];

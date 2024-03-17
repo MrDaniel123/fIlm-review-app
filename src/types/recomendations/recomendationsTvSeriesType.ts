@@ -16,7 +16,7 @@ type RecomendationsTvSeriesResult = {
 	origin_country: string[];
 };
 
-export type RecomendationsTvSeriesResponse = {
+export type RecomendationsTvSeries = {
 	page: number;
 	results: RecomendationsTvSeriesResult[];
 	total_pages: number;

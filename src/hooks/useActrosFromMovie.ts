@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getActrosFromMovie } from '../services/apiMovie';
+import { getActrosFromMovie } from '../services/apiMovies';
 
 export const useActrosFromMovie = (movieId: string) => {
 	const { data, isLoading, isError } = useQuery({

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getSimilarTvSeries } from '../services/apiTvSeries';
+import { getSimilarTvSeries } from '../../services/similar/apiSimilar';
 
 export const useSimilarTvSeries = (seriesId: string) => {
 	const { data, isLoading, isError } = useQuery({

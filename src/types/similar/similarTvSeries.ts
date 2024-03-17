@@ -1,24 +1,23 @@
-export type SimilarMovieResultType = {
+type SimiralTvSeriesResult = {
 	adult: boolean;
-	backdrop_path: string;
+	backdrop_path: boolean;
 	genre_ids: number[];
 	id: number;
-	media_type: string;
+	origin_country: string[];
 	original_language: string;
-	original_title: string;
+	original_name: string;
 	overview: string;
 	popularity: number;
 	poster_path: string;
-	release_date: string;
-	title: string;
-	video: boolean;
+	first_air_date: string;
+	name: string;
 	vote_average: number;
 	vote_count: number;
 };
 
-export type SimilarMovietType = {
+export type SimilarTvSeries = {
 	page: number;
-	results: SimilarMovieResultType[];
+	results: SimiralTvSeriesResult[];
 	total_pages: number;
 	total_results: number;
 };

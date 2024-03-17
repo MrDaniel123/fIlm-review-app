@@ -39,7 +39,7 @@ function App() {
 							<Route path='persons' element={<Persons />} />
 							<Route path='movie/:movieId' element={<MoviePage />} />
 							<Route path='person/:personId' element={<PersonPage />} />
-							<Route path='tv/:tv' element={<TvSeriesPage />} />
+							<Route path='tv/:tvId' element={<TvSeriesPage />} />
 						</Route>
 					</Routes>
 				</BrowserRouter>

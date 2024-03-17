@@ -8,7 +8,7 @@ type ScrollerDataType = {
 };
 
 export const popularActros = (movies: PopularActros) => {
-	let trendingMovies: ScrollerDataType[] = movies.results.map(actor => {
+	let popularActros: ScrollerDataType[] = movies.results.map(actor => {
 		return {
 			header: actor.name,
 			paragraph: '',
@@ -17,5 +17,5 @@ export const popularActros = (movies: PopularActros) => {
 		};
 	});
 
-	return trendingMovies;
+	return popularActros;
 };

@@ -1,20 +1,24 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useMovieById } from '../hooks/useMovieById';
+
+import { useRecomendationMovies } from '../hooks/recomendations/useRecomendationsMovies';
+import { useSimilarMovies } from '../hooks/similar/useSimilarMovies';
+import { useMovie } from '../hooks/movie/useMovie';
+
+import { recomendationsMovies as preparingRecomendationsMovies } from '../utils/preparingDataToScroller/recomendationsMovies';
+import { similarMovies as preparingSimilarMovies } from '../utils/preparingDataToScroller/similarMovies';
+import { preparingMovieData } from '../utils/preparingDataToHeaderCard/perparingMovieData';
+
+import { useActrosFromMovie } from '../hooks/useActrosFromMovie';
+import { useReviewFromMovie } from '../hooks/useReviewFromMovie';
+import Review from '../features/review/Review';
+
+import ImageSlider from '../features/imageSlider/ImageSlider';
+import { useMoviesImages } from '../hooks/useMovieImages';
 
 import HeaderCard from '../features/headerCard/HeaderCard';
 import styled from 'styled-components';
 import Scroller from '../features/scroller/Scroller';
-
-import { useActrosFromMovie } from '../hooks/useActrosFromMovie';
-
-import { useReviewFromMovie } from '../hooks/useReviewFromMovie';
-import Review from '../features/review/Review';
-import { useRecomendationsFromMovie } from '../hooks/useRecomendationsFromMovie';
-import { useSimilarMovies } from '../hooks/useSimilarMovies';
-
-import ImageSlider from '../features/imageSlider/ImageSlider';
-import { useMoviesImages } from '../hooks/useMovieImages';
+import { useSimilarTvSeries } from '../hooks/similar/useSimilarTvSeries';
 
 const StyledMoviePage = styled.div`
 	display: flex;
@@ -74,107 +78,71 @@ type HeaderCardMovieProps = {
 };
 
 function MoviePage() {
-	//!!{movieID} w usepartams powinno być w nawiasahc klamrowych Błąd do poprawy
-	const movieId = useParams();
-	const { data: movieData, isLoading } = useMovieById(movieId!.movieId!);
-	const { data: actrosData } = useActrosFromMovie(movieId!.movieId!);
-	const { data: reviewData } = useReviewFromMovie(movieId!.movieId!);
-	const { data: recomendationsData } = useRecomendationsFromMovie(movieId!.movieId!);
-	const { data: similarMoviesData } = useSimilarMovies(movieId!.movieId!);
-	const { data: imageData } = useMoviesImages(movieId!.movieId!);
+	const { movieId } = useParams();
+	// const { data: movieData, isLoading } = useMovieById(movieId!.movieId!);
+	// const { data: actrosData } = useActrosFromMovie(movieId!.movieId!);
+	// const { data: reviewData } = useReviewFromMovie(movieId!.movieId!);
+	// // const { data: recomendationsData } = useRecomendationsFromMovie(movieId!.movieId!);
+	// const { data: similarMoviesData } = useSimilarMovies(movieId!.movieId!);
+	// const { data: imageData } = useMoviesImages(movieId!.movieId!);
 
-	let dataToHeaderCard: HeaderCardMovieProps | undefined = undefined;
-	let actros: ActrosType[] | undefined = undefined;
-	let reviews: RewiewType[] | undefined = undefined;
-	let recomendationsMovie: RecomendationsMovieType[] | undefined = undefined;
-	let similarMovies: SimilatMoviesType[] | undefined = undefined;
+	// let dataToHeaderCard: HeaderCardMovieProps | undefined = undefined;
+	// let actros: ActrosType[] | undefined = undefined;
+	// let reviews: RewiewType[] | undefined = undefined;
+	// let recomendationsMovie: RecomendationsMovieType[] | undefined = undefined;
+	// let similarMovies: SimilatMoviesType[] | undefined = undefined;
 
-	if (actrosData) {
-		actros = actrosData.cast.map(actor => {
-			return {
-				header: actor.character,
-				paragraph: actor.name,
-				imagePath: actor.profile_path,
-				id: actor.id,
-			};
-		});
-	}
+	//-----------------------------
 
-	if (recomendationsData && recomendationsData.results.length >= 10) {
-		recomendationsMovie = recomendationsData.results.map(movie => {
-			return {
-				header: movie.title,
-				paragraph: movie.release_date,
-				imagePath: movie.poster_path,
-				id: movie.id,
-			};
-		});
-	}
+	const { data: movieData } = useMovie(movieId!);
+	const { data: recomendationsMovies } = useRecomendationMovies(movieId!);
+	const { data: similarMovies } = useSimilarMovies(movieId!);
 
-	if (similarMoviesData && similarMoviesData.results.length >= 10) {
-		similarMovies = similarMoviesData.results.map(movie => {
-			return {
-				header: movie.title,
-				paragraph: movie.release_date,
-				imagePath: movie.poster_path,
-				id: movie.id,
-			};
-		});
-	}
+	// if (actrosData) {
+	// 	actros = actrosData.cast.map(actor => {
+	// 		return {
+	// 			header: actor.character,
+	// 			paragraph: actor.name,
+	// 			imagePath: actor.profile_path,
+	// 			id: actor.id,
+	// 		};
+	// 	});
+	// }
 
-	if (reviewData && reviewData.results.length >= 2) {
-		let filteredReview = reviewData.results.filter(review => {
-			if (review.content.length >= 300 && review.author_details.avatar_path) {
-				return true;
-			}
-		});
+	// if (reviewData && reviewData.results.length >= 2) {
+	// 	let filteredReview = reviewData.results.filter(review => {
+	// 		if (review.content.length >= 300 && review.author_details.avatar_path) {
+	// 			return true;
+	// 		}
+	// 	});
 
-		reviews = filteredReview.map(review => {
-			return {
-				author: review.author,
-				content: review.content,
-				reviewUrl: review.url,
-				avatarPath: review.author_details.avatar_path,
-				id: review.id,
-				data: review.updated_at,
-			};
-		});
-	}
+	// 	reviews = filteredReview.map(review => {
+	// 		return {
+	// 			author: review.author,
+	// 			content: review.content,
+	// 			reviewUrl: review.url,
+	// 			avatarPath: review.author_details.avatar_path,
+	// 			id: review.id,
+	// 			data: review.updated_at,
+	// 		};
+	// 	});
+	// }
 
-	if (movieData) {
-		let genres = movieData.genres.map(genre => {
-			return {
-				id: genre.id,
-				name: genre.name,
-			};
-		});
-
-		dataToHeaderCard = {
-			backDropImagePath: movieData.backdrop_path,
-			posterPath: movieData.poster_path,
-			header: movieData.title,
-			description: movieData.overview,
-			genres: genres,
-			vote: movieData.vote_average,
-			budget: movieData.budget,
-			revenue: movieData.revenue,
-			date: movieData.release_date,
-			runtime: movieData.runtime,
-		};
-	}
-
-	if (isLoading) return <div>Loading</div>;
 	return (
 		<StyledMoviePage>
-			{dataToHeaderCard && <HeaderCard data={dataToHeaderCard} type={'movie'} />}
-			{actros && <Scroller data={actros.slice(0, 20)} name={'Actros'} linkTo={'person'} />}
-			{reviews && <Review data={reviews.slice(0, 2)} />}
-			{imageData && <ImageSlider data={imageData.backdrops.slice(0, 20)} />}
-			{recomendationsMovie && (
-				<Scroller data={recomendationsMovie.slice(0.2)} name={'Recomendations'} linkTo={'movie'} />
+			{movieData && <HeaderCard data={preparingMovieData(movieData)} type={'movie'} />}
+			{/* {actros && <Scroller data={actros.slice(0, 20)} name={'Actros'} linkTo={'person'} />} */}
+			{/* {reviews && <Review data={reviews.slice(0, 2)} />} */}
+			{/* {imageData && <ImageSlider data={imageData.backdrops.slice(0, 20)} />} */}
+			{recomendationsMovies && (
+				<Scroller
+					data={preparingRecomendationsMovies(recomendationsMovies)}
+					name={'Recomendations'}
+					linkTo={'movie'}
+				/>
 			)}
 			{similarMovies && (
-				<Scroller data={similarMovies.slice(0.2)} name={'Similar'} linkTo={'movie'} />
+				<Scroller data={preparingSimilarMovies(similarMovies)} name={'Similar'} linkTo={'movie'} />
 			)}
 		</StyledMoviePage>
 	);

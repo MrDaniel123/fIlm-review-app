@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getImages } from '../services/apiMovie';
+import { getImages } from '../services/apiMovies';
 
 export const useMoviesImages = (movieId: string) => {
 	const { data, isError, isLoading } = useQuery({

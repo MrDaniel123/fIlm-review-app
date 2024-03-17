@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import { type Genres as GenresType } from '../../types/movieByIdType';
 import { breakPoint } from '../../styles/style';
+
+type GenresType = {
+	id: number;
+	name: string;
+};
 
 const GenresWrapper = styled.div`
 	display: flex;

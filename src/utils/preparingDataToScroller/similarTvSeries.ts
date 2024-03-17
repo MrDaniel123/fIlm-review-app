@@ -1,4 +1,4 @@
-import { TrendingTvSeries } from '../../types/trending/tvSeries';
+import { type SimilarTvSeries } from '../../types/similar/similarTvSeries';
 
 type ScrollerDataType = {
 	header: string;
@@ -7,8 +7,8 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const trendingTvSeries = (movies: TrendingTvSeries) => {
-	let trednidngTvSeries: ScrollerDataType[] = movies.results.map(tvSeries => {
+export const similarTvSeries = (tvSeries: SimilarTvSeries) => {
+	let similatMovies: ScrollerDataType[] = tvSeries.results.map(tvSeries => {
 		return {
 			header: tvSeries.name,
 			paragraph: tvSeries.first_air_date,
@@ -17,5 +17,5 @@ export const trendingTvSeries = (movies: TrendingTvSeries) => {
 		};
 	});
 
-	return trednidngTvSeries;
+	return similatMovies;
 };

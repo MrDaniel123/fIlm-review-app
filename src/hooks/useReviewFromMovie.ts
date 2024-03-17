@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getReviewFromMovie } from '../services/apiMovie';
+import { getReviewFromMovie } from '../services/apiMovies';
 
 export const useReviewFromMovie = (movieId: string) => {
 	const { data, isLoading, isError } = useQuery({

@@ -1,4 +1,4 @@
-import { type PopulatMovies } from '../../types/popular/movies';
+import { type SimilarMovies } from '../../types/similar/similarMovies';
 
 type ScrollerDataType = {
 	header: string;
@@ -7,8 +7,8 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const popularMovies = (movies: PopulatMovies) => {
-	let popularMovies: ScrollerDataType[] = movies.results.map(movie => {
+export const similarMovies = (movies: SimilarMovies) => {
+	let similarMovies: ScrollerDataType[] = movies.results.map(movie => {
 		return {
 			header: movie.title,
 			paragraph: movie.release_date,
@@ -17,5 +17,5 @@ export const popularMovies = (movies: PopulatMovies) => {
 		};
 	});
 
-	return popularMovies;
+	return similarMovies;
 };

@@ -1,4 +1,4 @@
-export type RecomendationsMovieResultsType = {
+export type SimilarMovieResult = {
 	adult: boolean;
 	backdrop_path: string;
 	genre_ids: number[];
@@ -16,9 +16,9 @@ export type RecomendationsMovieResultsType = {
 	vote_count: number;
 };
 
-export type RecomendationsMovieType = {
+export type SimilarMovies = {
 	page: number;
-	results: RecomendationsMovieResultsType[];
+	results: SimilarMovieResult[];
 	total_pages: number;
 	total_results: number;
 };
