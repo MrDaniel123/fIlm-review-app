@@ -1,4 +1,4 @@
-export type TrendingMoviesType = {
+type PopulatMoviesResults = {
 	adult: boolean;
 	backdrop_path: string;
 	genre_ids: number[];
@@ -16,9 +16,9 @@ export type TrendingMoviesType = {
 	vote_count: number;
 };
 
-export type TrendingMoviesResponse = {
+export type PopulatMovies = {
 	page: number;
-	results: TrendingMoviesType[];
+	results: PopulatMoviesResults[];
 	total_pages: number;
 	total_results: number;
 };

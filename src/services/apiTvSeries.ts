@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-import { type TrendingTvSeriesResponse } from '../types/trendindTvSeries';
 import { type TvSeriesbyIdResponseType } from '../types/tvSeriesByIdType';
 
 import {
@@ -17,11 +16,11 @@ import { RecomendationsTvSeriesResponse } from '../types/recomendationsTvSeriesT
 import { SimilarTvSeriesResponse } from '../types/similarTvSeriesType';
 import { GalleryType } from '../types/galleryType';
 
-export const getTrendingTvSeries = async () => {
-	const response = await axios.get<TrendingTvSeriesResponse>(trendingTvSeriesUrl);
+// export const getTrendingTvSeries = async () => {
+// 	const response = await axios.get<TrendingTvSeriesResponse>(trendingTvSeriesUrl);
 
-	return response.data;
-};
+// 	return response.data;
+// };
 
 export const getTvSeriesById = async (id: string) => {
 	const response = await axios.get<TvSeriesbyIdResponseType>(

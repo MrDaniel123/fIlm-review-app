@@ -1,4 +1,4 @@
-export type TrendingTvSeriesResult = {
+type TrendingTvSeriesResult = {
 	adult: boolean;
 	backdrop_path: string;
 	id: number;
@@ -16,7 +16,7 @@ export type TrendingTvSeriesResult = {
 	origin_country: string[];
 };
 
-export type TrendingTvSeriesResponse = {
+export type TrendingTvSeries = {
 	page: number;
 	results: TrendingTvSeriesResult[];
 	total_pages: number;

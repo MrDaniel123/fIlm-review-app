@@ -1,12 +1,19 @@
-import React from 'react';
 import styled from 'styled-components';
 
+import { useTrendingMovies } from '../hooks/trending/useTrendingMovies';
+import { useTrendingTvSeries } from '../hooks/trending/useTrendingTvSeries';
+import { usePopularMovies } from '../hooks/popular/usePopularMovies';
+import { usePopularActros } from '../hooks/popular/usePopularActros';
+
+import { trendingMovies as preparingTrendingMovies } from '../utils/preparingDataToScroller/trendingMovies';
+import { trendingTvSeries as preparingTrendingtvSeries } from '../utils/preparingDataToScroller/trendingTvSeries';
+import { popularMovies as preparingPopularMovies } from '../utils/preparingDataToScroller/popularMovies';
+import { popularActros as preparingPopularActros } from '../utils/preparingDataToScroller/popularActros';
+
 import NowPlayingMovie from '../features/carusel/NowPlaying';
+//TODO nowplaying Movie Has olders wersion data flow Fix it
+
 import Scroller from '../features/scroller/Scroller';
-import { useTrendingMovies } from '../hooks/useTrendingMovies';
-import { usePopularMovies } from '../hooks/usePopularMovies';
-import { usePopularActres } from '../hooks/usePupularActros';
-import { useTrendingTvSeries } from '../hooks/useTrendingTvSeries';
 
 const StyledHomePage = styled.main`
 	display: flex;
@@ -18,78 +25,36 @@ const StyledHomePage = styled.main`
 	height: 100vh;
 `;
 
-type ScrollerDataType = {
-	header: string;
-	paragraph: string;
-	imagePath: string;
-	id: number;
-};
-
 function HomePage() {
-	const { data: trendingMoviesData } = useTrendingMovies();
-	const { data: populatMoviesData } = usePopularMovies();
-	const { data: populatActrosData } = usePopularActres();
-	const { data: trendingTvSeriesData } = useTrendingTvSeries();
+	const { data: trendingMovies } = useTrendingMovies();
+	const { data: trendingTvSeries } = useTrendingTvSeries();
 
-	let trendingMovies: ScrollerDataType[] | undefined = undefined;
-	let populatMovies: ScrollerDataType[] | undefined = undefined;
-	let popularActros: ScrollerDataType[] | undefined = undefined;
-	let trendingTvSeries: ScrollerDataType[] | undefined = undefined;
-
-	//TODO Add a new function to validatet data to scroller component
-	if (trendingMoviesData) {
-		trendingMovies = trendingMoviesData?.results.map(movie => {
-			return {
-				header: movie.title,
-				paragraph: movie.release_date,
-				imagePath: movie.poster_path,
-				id: movie.id,
-			};
-		});
-	}
-
-	if (trendingTvSeriesData) {
-		trendingTvSeries = trendingTvSeriesData.results.map(tvSeries => {
-			return {
-				header: tvSeries.name,
-				paragraph: tvSeries.first_air_date,
-				imagePath: tvSeries.poster_path,
-				id: tvSeries.id,
-			};
-		});
-	}
-
-	if (populatMoviesData) {
-		populatMovies = populatMoviesData?.results.map(movie => {
-			return {
-				header: movie.title,
-				paragraph: movie.release_date,
-				imagePath: movie.poster_path,
-				id: movie.id,
-			};
-		});
-	}
-
-	if (populatActrosData) {
-		popularActros = populatActrosData.results.map(actor => {
-			return {
-				header: actor.name,
-				paragraph: '',
-				imagePath: actor.profile_path,
-				id: actor.id,
-			};
-		});
-	}
+	const { data: populatMovies } = usePopularMovies();
+	const { data: populatActros } = usePopularActros();
 
 	return (
 		<StyledHomePage>
 			<NowPlayingMovie />
-			{trendingMovies && <Scroller data={trendingMovies} name={'Trending Movies'} />}
-			{trendingTvSeries && (
-				<Scroller data={trendingTvSeries} name={'Trending Tv-Series'} linkTo={'tv-series'} />
+			{trendingMovies && (
+				<Scroller data={preparingTrendingMovies(trendingMovies)} name={'Trending Movies'} />
 			)}
-			{popularActros && <Scroller data={popularActros} name={'Popular Actros'} linkTo={'person'} />}
-			{populatMovies && <Scroller data={populatMovies} name={'Popular Movies'} />}
+			{trendingTvSeries && (
+				<Scroller
+					data={preparingTrendingtvSeries(trendingTvSeries)}
+					name={'Trending Tv-Series'}
+					linkTo={'tv-series'}
+				/>
+			)}
+			{populatActros && (
+				<Scroller
+					data={preparingPopularActros(populatActros)}
+					name={'Popular Actros'}
+					linkTo={'person'}
+				/>
+			)}
+			{populatMovies && (
+				<Scroller data={preparingPopularMovies(populatMovies)} name={'Popular Movies'} />
+			)}
 		</StyledHomePage>
 	);
 }

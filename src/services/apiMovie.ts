@@ -12,8 +12,7 @@ import {
 import { NowPlaingMovie } from '../types/nowPLayingMovieType';
 import { ActrosListType } from '../types/actorsListType';
 import { MovieById } from '../types/movieByIdType';
-import { TrendingMoviesResponse } from '../types/trendingMoviesType';
-import { PopulatMoviesResponse } from '../types/populatMoviesType';
+
 import { ReviewType } from '../types/reviewType';
 import { RecomendationsMovieType } from '../types/recomendationsMovieType';
 import { SimilarMovietType } from '../types/similarMovieType';
@@ -31,21 +30,21 @@ export const getMovieById = async (movieId: string) => {
 	return response.data;
 };
 
-export const getPopularMovies = async () => {
-	const response = await axios.get<PopulatMoviesResponse>(
-		`${popularMoviesUrl}?&api_key=${tmdbKey}`
-	);
+// export const getPopularMovies = async () => {
+// 	const response = await axios.get<PopulatMoviesResponse>(
+// 		`${popularMoviesUrl}?&api_key=${tmdbKey}`
+// 	);
 
-	return response.data;
-};
+// 	return response.data;
+// };
 
-export const getTrendingMovies = async () => {
-	const response = await axios.get<TrendingMoviesResponse>(
-		`${trendingMoviesUrl}?&api_key=${tmdbKey}`
-	);
+// export const getTrendingMovies = async () => {
+// 	const response = await axios.get<TrendingMoviesResponse>(
+// 		`${trendingMoviesUrl}?&api_key=${tmdbKey}`
+// 	);
 
-	return response.data;
-};
+// 	return response.data;
+// };
 
 export const getActrosFromMovie = async (movieId: string) => {
 	const response = await axios.get<ActrosListType>(
