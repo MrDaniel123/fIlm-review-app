@@ -7,7 +7,7 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const popularActros = (actors: PopularActros) => {
+export const preparingPopularActros = (actors: PopularActros) => {
 	let popularActros: ScrollerDataType[] = actors.results.map(actor => {
 		return {
 			header: actor.name,

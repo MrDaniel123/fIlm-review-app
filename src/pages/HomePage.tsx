@@ -5,10 +5,10 @@ import { useTrendingTvSeries } from '../hooks/trending/useTrendingTvSeries';
 import { usePopularMovies } from '../hooks/popular/usePopularMovies';
 import { usePopularActros } from '../hooks/popular/usePopularActros';
 
-import { trendingMovies as preparingTrendingMovies } from '../utils/preparingDataToScroller/trendingMovies';
-import { trendingTvSeries as preparingTrendingtvSeries } from '../utils/preparingDataToScroller/trendingTvSeries';
-import { popularMovies as preparingPopularMovies } from '../utils/preparingDataToScroller/popularMovies';
-import { popularActros as preparingPopularActros } from '../utils/preparingDataToScroller/popularActros';
+import { preparingTrendingMovies } from '../utils/preparingDataToScroller/trendingMovies';
+import { preparingTrendingTvSeries } from '../utils/preparingDataToScroller/trendingTvSeries';
+import { preparingPopularMovies } from '../utils/preparingDataToScroller/popularMovies';
+import { preparingPopularActros } from '../utils/preparingDataToScroller/popularActros';
 
 import NowPlayingMovie from '../features/carusel/NowPlaying';
 //TODO nowplaying Movie Has olders wersion data flow Fix it
@@ -40,7 +40,7 @@ function HomePage() {
 			)}
 			{trendingTvSeries && (
 				<Scroller
-					data={preparingTrendingtvSeries(trendingTvSeries)}
+					data={preparingTrendingTvSeries(trendingTvSeries)}
 					name={'Trending Tv-Series'}
 					linkTo={'tv-series'}
 				/>

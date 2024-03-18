@@ -7,7 +7,7 @@ type ScrollerDataType = {
 	id: number;
 };
 
-export const trendingMovies = (movies: TrendingMovies) => {
+export const preparingTrendingMovies = (movies: TrendingMovies) => {
 	let trendingMovies: ScrollerDataType[] = movies.results.map(movie => {
 		return {
 			header: movie.title,
