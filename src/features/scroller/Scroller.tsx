@@ -63,7 +63,7 @@ function Scroller({ data, name, linkTo = 'movie' }: ScrollerProps) {
 			paragraph={item.paragraph}
 			imagePath={item.imagePath}
 			id={item.id}
-			key={item.id}
+			key={item.id + Math.random()}
 			linkTo={linkTo}
 		/>
 	));
