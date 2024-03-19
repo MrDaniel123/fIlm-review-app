@@ -17,6 +17,7 @@ type Cast = {
 	credit_id: string;
 	order: number;
 	media_type: string;
+	name?: string;
 };
 
 type Crew = {

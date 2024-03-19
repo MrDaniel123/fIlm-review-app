@@ -10,6 +10,7 @@ import { useActorMovies } from '../hooks/actros/useActorMovies';
 import { useActortvSeries } from '../hooks/actros/useActorTvSeries';
 import { preparingActorMoviestoScroller } from '../utils/preparingDataToScroller/actorMovies';
 import { preparingActorTvSeriestoScroller } from '../utils/preparingDataToScroller/actorTvSeries';
+import FilmographyList from '../features/filmographyList/FilmographyList';
 
 const StyledPersonPage = styled.div`
 	display: flex;
@@ -17,10 +18,10 @@ const StyledPersonPage = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 32px;
-	margin: 80px 0;
+	padding: 80px 0;
 
 	@media (min-width: ${breakPoint.large}px) {
-		margin: 120px 0;
+		padding: 120px 0;
 	}
 `;
 
@@ -48,6 +49,8 @@ function PersonPage() {
 					linkTo={'tv-series'}
 				/>
 			) : null}
+
+			{actorFilmography && <FilmographyList list={actorFilmography} />}
 		</StyledPersonPage>
 	);
 }
