@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { breakPoint } from '../../styles/style';
-import { type NowPlayingMovieResult } from '../../types/nowPLayingMovieType';
+import { type NowPlayingMovieResult } from '../../types/nowPlaying/nowPlayingMoviesType';
 
 const dot = require('../../assets/dot.png');
 

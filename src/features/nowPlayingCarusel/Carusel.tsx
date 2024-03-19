@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { type NowPlaingMovie } from '../../types/nowPLayingMovieType';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 import DotNavigation from './DotNavigation';
 import Navigation from './Navigation';
@@ -11,6 +10,8 @@ import { PosterImage } from './PosterImage';
 import { Description } from './Description';
 import { BackgroundPoster } from './BackgroundPoster';
 import { Title } from './Title';
+
+import { type NowPlaingMovies } from '../../types/nowPlaying/nowPlayingMoviesType';
 
 const StyledCarusel = styled(motion.div)`
 	display: grid;
@@ -36,11 +37,11 @@ const StyledCarusel = styled(motion.div)`
 	}
 `;
 
-type Props = {
-	data: NowPlaingMovie;
+type CaruselProps = {
+	data: NowPlaingMovies;
 };
 
-function generateCurentResult(data: NowPlaingMovie) {
+function generateCurentResult(data: NowPlaingMovies) {
 	const results = data.results.filter(result => {
 		let returnetResult;
 		if (result.title && result.overview && result.backdrop_path && result.poster_path) {
@@ -51,7 +52,7 @@ function generateCurentResult(data: NowPlaingMovie) {
 	return results.slice(0, 6);
 }
 
-function Carusel({ data }: Props) {
+function Carusel({ data }: CaruselProps) {
 	const [slideNumber, setSlideNumber] = useState(0);
 	const [windowWidth, setWindowWitch] = useState<number>(window.innerWidth);
 	const results = generateCurentResult(data);
@@ -100,6 +101,7 @@ function Carusel({ data }: Props) {
 				nextSlide={handleNextSLide}
 				previewSlide={handlePreviewSlide}
 				key={'Carusel Navigation'}
+				movieid={results[slideNumber].id}
 			/>
 
 			<DotNavigation

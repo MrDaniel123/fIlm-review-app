@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { getNowPlayingMovieMovies } from '../services/apiMovies';
+import { getNowPlayingMovies } from '../../services/nowplaying/apiNowPlaying';
 
 export const useNowPlayingMovieMovies = () => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['now-playing-movies'],
-		queryFn: getNowPlayingMovieMovies,
+		queryKey: ['now-playingMovies'],
+		queryFn: getNowPlayingMovies,
 	});
 	return { data, isLoading, isError };
 };

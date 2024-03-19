@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import Carusel from './Carusel';
-import { useNowPlayingMovieMovies } from '../../hooks/useNowPlayingMovies';
 import { breakPoint } from '../../styles/style';
+
+import { type NowPlaingMovies } from '../../types/nowPlaying/nowPlayingMoviesType';
 
 const StyledNawPlaying = styled.section`
 	display: flex;
@@ -25,16 +27,17 @@ const StyledNawPlaying = styled.section`
 	}
 `;
 
-function NowPlayingMovie() {
-	const { data, isLoading } = useNowPlayingMovieMovies();
+type NowPlayingCaruselType = {
+	data: NowPlaingMovies;
+};
 
+function NowPlayingCarusel({ data }: NowPlayingCaruselType) {
 	return (
 		<StyledNawPlaying>
 			<h2>Now playing</h2>
-			{isLoading && <h1>LOading....</h1>}
 			{data && <Carusel data={data} />}
 		</StyledNawPlaying>
 	);
 }
 
-export default NowPlayingMovie;
+export default NowPlayingCarusel;

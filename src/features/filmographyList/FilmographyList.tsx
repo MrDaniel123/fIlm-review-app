@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { type ActorFilmography } from '../../types/actors/actorFilmography';
 import { NavLink } from 'react-router-dom';
 import { Header } from './Header';
+import { ListElement } from './ListElement';
+import { List } from './List';
 
 const StyledFilmographyList = styled.section`
 	max-width: 1280px;
@@ -11,35 +13,6 @@ const StyledFilmographyList = styled.section`
 	justify-content: center;
 	flex-wrap: wrap;
 	gap: 16px;
-`;
-
-const List = styled.ol`
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 12px;
-	width: 90%;
-	max-width: 800px;
-	list-style-type: disc;
-	padding: 2rem;
-	border-radius: var(--border-radius-medium);
-	box-shadow: var(--shadow-primary);
-`;
-
-const ListElement = styled.li`
-	font-size: 16px;
-	font-family: bold;
-	width: 100%;
-
-	border: 1px solid #000000;
-	border-radius: var(--border-radius-small);
-	padding: 1rem;
-	cursor: pointer;
-
-	&:hover {
-		color: #5050c7;
-		background-color: #bababa;
-	}
 `;
 
 type FilmographyListProps = {

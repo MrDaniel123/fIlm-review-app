@@ -10,10 +10,10 @@ import { preparingTrendingTvSeries } from '../utils/preparingDataToScroller/tren
 import { preparingPopularMovies } from '../utils/preparingDataToScroller/popularMovies';
 import { preparingPopularActros } from '../utils/preparingDataToScroller/popularActros';
 
-import NowPlayingMovie from '../features/carusel/NowPlaying';
-//TODO nowplaying Movie Has olders wersion data flow Fix it
-
+import NowPlayingCarusel from '../features/nowPlayingCarusel/NowPlayingCarusel';
 import Scroller from '../features/scroller/Scroller';
+import { useNowPlayingMovieMovies } from '../hooks/nowPlaying/useNowPlayingMovies';
+//TODO nowplaying Movie Has olders wersion data flow Fix it
 
 const StyledHomePage = styled.main`
 	display: flex;
@@ -26,15 +26,16 @@ const StyledHomePage = styled.main`
 `;
 
 function HomePage() {
+	const { data: nowPlayingMovies } = useNowPlayingMovieMovies();
 	const { data: trendingMovies } = useTrendingMovies();
 	const { data: trendingTvSeries } = useTrendingTvSeries();
-
 	const { data: populatMovies } = usePopularMovies();
 	const { data: populatActros } = usePopularActros();
 
 	return (
 		<StyledHomePage>
-			<NowPlayingMovie />
+			{nowPlayingMovies && <NowPlayingCarusel data={nowPlayingMovies} />}
+
 			{trendingMovies && (
 				<Scroller data={preparingTrendingMovies(trendingMovies)} name={'Trending Movies'} />
 			)}

@@ -1,16 +1,18 @@
 import styled from 'styled-components';
-import ActroDetals from '../features/actorDetals/ActroDetals';
 import { useParams } from 'react-router-dom';
-import { useActroDetals } from '../hooks/actros/useActrosDetals';
-import { breakPoint } from '../styles/style';
-import { useActorFilmography } from '../hooks/actros/useActorFilmography';
+
 import Scroller from '../features/scroller/Scroller';
-import { preparingActorFilmographyToScroller } from '../utils/preparingDataToScroller/actorFilmography';
+import ActroDetals from '../features/actorDetals/ActroDetals';
+import FilmographyList from '../features/filmographyList/FilmographyList';
+
+import { useActroDetals } from '../hooks/actros/useActrosDetals';
+import { useActorFilmography } from '../hooks/actros/useActorFilmography';
 import { useActorMovies } from '../hooks/actros/useActorMovies';
 import { useActortvSeries } from '../hooks/actros/useActorTvSeries';
+
 import { preparingActorMoviestoScroller } from '../utils/preparingDataToScroller/actorMovies';
 import { preparingActorTvSeriestoScroller } from '../utils/preparingDataToScroller/actorTvSeries';
-import FilmographyList from '../features/filmographyList/FilmographyList';
+import { breakPoint } from '../styles/style';
 
 const StyledPersonPage = styled.div`
 	display: flex;

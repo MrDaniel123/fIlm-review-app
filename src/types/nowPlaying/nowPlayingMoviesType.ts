@@ -15,7 +15,7 @@ export type NowPlayingMovieResult = {
 	vote_count: number;
 };
 
-export type NowPlaingMovie = {
+export type NowPlaingMovies = {
 	dates: [maximum: string, minmum: string];
 	page: number;
 	results: NowPlayingMovieResult[];

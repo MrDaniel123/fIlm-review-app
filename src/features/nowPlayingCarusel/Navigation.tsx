@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { breakPoint, colors, fontSizes } from '../../styles/style';
+import { NavLink } from 'react-router-dom';
 
 const arrow = require('../../assets/arrow.png');
 
@@ -43,7 +44,7 @@ const NextSlideBtn = styled.button`
 	}
 `;
 
-const SeeMoreButton = styled.button`
+const SeeMoreButton = styled(NavLink)`
 	all: unset;
 	padding: 1rem;
 	background-color: ${colors.buttonWhite};
@@ -61,15 +62,16 @@ const SeeMoreButton = styled.button`
 interface Props {
 	nextSlide: () => void;
 	previewSlide: () => void;
+	movieid: number;
 }
 
-function Navigation({ nextSlide, previewSlide }: Props) {
+function Navigation({ nextSlide, previewSlide, movieid }: Props) {
 	return (
 		<NavigationWrapper>
 			<BackSlideBtn onClick={previewSlide}>
 				<img src={arrow} alt='' />
 			</BackSlideBtn>
-			<SeeMoreButton>See More...</SeeMoreButton>
+			<SeeMoreButton to={`/movie/${movieid}`}>See More...</SeeMoreButton>
 			<NextSlideBtn onClick={nextSlide}>
 				<img src={arrow} alt='' />
 			</NextSlideBtn>
