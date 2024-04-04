@@ -16,7 +16,7 @@ type KnowForType = {
 	vote_count: number;
 };
 
-type PopularActrosResults = {
+export type PopularActrosResults = {
 	adult: boolean;
 	gender: number;
 	id: number;

@@ -56,9 +56,10 @@ type SelectroProps = {
 	categories: string[];
 	name: string;
 	acturalPath: string;
+	disabled?: boolean;
 };
 
-function Selector({ categories, name, acturalPath }: SelectroProps) {
+function Selector({ categories, name, acturalPath, disabled }: SelectroProps) {
 	const [openSelector, setopenSelector] = useState(false);
 
 	const renderCategories = categories.map(category => (
@@ -71,7 +72,7 @@ function Selector({ categories, name, acturalPath }: SelectroProps) {
 		<StyledSelector>
 			{!openSelector && (
 				<div>
-					<AnchorButton onClick={() => setopenSelector(true)}>
+					<AnchorButton onClick={() => (disabled ? null : setopenSelector(true))}>
 						<AnchorHeader>{acturalPath}</AnchorHeader>
 					</AnchorButton>
 				</div>

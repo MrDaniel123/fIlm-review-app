@@ -46,7 +46,7 @@ function Navigation() {
 					</StyledNavLink>
 				</li>
 				<li>
-					<StyledNavLink to={'/persons'}>
+					<StyledNavLink to={'/persons/popular'}>
 						<img src={logoPersons} alt='Logo persons' />
 						<span>Persons</span>
 					</StyledNavLink>

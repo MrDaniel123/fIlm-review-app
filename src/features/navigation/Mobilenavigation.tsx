@@ -116,7 +116,7 @@ function Mobilenavigation({ showHideNavigation }: Props) {
 						</StyledNavLink>
 					</li>
 					<li>
-						<StyledNavLink to={'/persons'} onClick={showHideNavigation}>
+						<StyledNavLink to={'/persons/popular'} onClick={showHideNavigation}>
 							<img src={logoPersons} alt='Logo persons' />
 							<span>Persons</span>
 						</StyledNavLink>

@@ -6,13 +6,14 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import HomePage from './pages/HomePage';
 import AppLayout from './ui/AppLayout';
 import TvSeries from './pages/TvSeriesPage';
-import Persons from './pages/Persons';
 import GlobalStyles from './styles/GlobalStyle';
 import MoviePage from './pages/MoviePage';
 import PersonPage from './pages/PersonPage';
 import TvSeriesPage from './pages/SeriesPage';
 import MoviesPage from './pages/MoviesPage';
 import MoviesList from './features/list/MoviesList';
+import PersonsPage from './pages/PersonsPage';
+import PersonsList from './features/list/PersonsList';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -42,7 +43,9 @@ function App() {
 								<Route path='upcoming' element={<MoviesList type={'upcoming'} />} />
 							</Route>
 							<Route path='tv-series' element={<TvSeries />} />
-							<Route path='persons' element={<Persons />} />
+							<Route path='persons' element={<PersonsPage />}>
+								<Route path='popular' element={<PersonsList type={'popular'} />} />
+							</Route>
 							<Route path='movie/:movieId' element={<MoviePage />} />
 							<Route path='person/:personId' element={<PersonPage />} />
 							<Route path='tv/:tvId' element={<TvSeriesPage />} />

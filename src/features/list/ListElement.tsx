@@ -6,6 +6,7 @@ import { type PopulatMoviesResults } from '../../types/popular/movies';
 import { type NowPlayingMovieResult } from '../../types/nowPlaying/nowPlayingMoviesType';
 import { type TopRatedMoviesResults } from '../../types/topRated/topRated';
 import { type UpcomingMoviesResults } from '../../types/upcoming/upcomingMovies';
+import { PopularActrosResults } from '../../types/popular/actros';
 
 const StyledListElement = styled(NavLink)`
 	width: 100%;
@@ -70,14 +71,20 @@ type UpcomingMoviesProps = {
 	data: UpcomingMoviesResults;
 };
 
+type PopularActrosProps = {
+	type: 'persons';
+	data: PopularActrosResults;
+};
+
 type ListElementProps =
 	| NowPLayingMovieProps
 	| PopularMovieProps
 	| TopRatedMoviesProps
-	| UpcomingMoviesProps;
+	| UpcomingMoviesProps
+	| PopularActrosProps;
 
 function ListElement({ data, type }: ListElementProps) {
-	if (type === 'popular') {
+	if (type === 'popular' || type === 'nowPlaying' || type === 'topRated' || type === 'upcoming') {
 		return (
 			<StyledListElement to={`/movie/${data.id}`}>
 				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster ' />
@@ -88,35 +95,13 @@ function ListElement({ data, type }: ListElementProps) {
 		);
 	}
 
-	if (type === 'nowPlaying') {
+	if (type === 'persons') {
 		return (
-			<StyledListElement to={`/movie/${data.id}`}>
-				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster' />
-				<Title>{data.title}</Title>
-				<Date>{data.release_date}</Date>
-				<Description>{data.overview.slice(0, 160)}</Description>
-			</StyledListElement>
-		);
-	}
+			<StyledListElement to={`/person/${data.id}`}>
+				<Image src={`https://image.tmdb.org/t/p/w500${data.profile_path}`} alt='Poster ' />
+				<Title>{data.name}</Title>
 
-	if (type === 'topRated') {
-		return (
-			<StyledListElement to={`/movie/${data.id}`}>
-				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster' />
-				<Title>{data.title}</Title>
-				<Date>{data.release_date}</Date>
-				<Description>{data.overview.slice(0, 160)}</Description>
-			</StyledListElement>
-		);
-	}
-
-	if (type === 'upcoming') {
-		return (
-			<StyledListElement to={`/movie/${data.id}`}>
-				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster' />
-				<Title>{data.title}</Title>
-				<Date>{data.release_date}</Date>
-				<Description>{data.overview.slice(0, 160)}</Description>
+				<Description>{data.original_name.slice(0, 160)}</Description>
 			</StyledListElement>
 		);
 	}
