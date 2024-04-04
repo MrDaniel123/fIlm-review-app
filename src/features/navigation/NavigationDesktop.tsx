@@ -34,7 +34,7 @@ function Navigation() {
 		<NavigationStyled>
 			<NavList>
 				<li>
-					<StyledNavLink to={'/movies'}>
+					<StyledNavLink to={'/movies/popular'}>
 						<img src={logoMovie} alt='Logo movie' />
 						<span>Movies</span>
 					</StyledNavLink>

@@ -28,7 +28,7 @@ const StyledNavLink = styled(NavLink)`
 
 	&:hover,
 	&:active,
-	&.active:link,
+	/* &.active:link, */
 	&.active:visited {
 		background-color: var(--color-white-mercury);
 	}
