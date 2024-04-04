@@ -12,6 +12,7 @@ import MoviePage from './pages/MoviePage';
 import PersonPage from './pages/PersonPage';
 import TvSeriesPage from './pages/SeriesPage';
 import MoviesPage from './pages/MoviesPage';
+import MoviesList from './features/list/MoviesList';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -34,7 +35,13 @@ function App() {
 					<Routes>
 						<Route element={<AppLayout />}>
 							<Route index element={<HomePage />} />
-							<Route path='movies/:moviesCategory' element={<MoviesPage />} />
+							<Route path='movies' element={<MoviesPage />}>
+								<Route path='popular' element={<MoviesList type={'popular'} />} />
+								<Route path='nowPlaying' element={<MoviesList type={'nowPlaying'} />} />
+								<Route path='topRated' element={<MoviesList type={'topRated'} />} />
+								<Route path='upcoming' element={<MoviesList type={'upcoming'} />} />
+							</Route>
+
 							<Route path='tv-series' element={<TvSeries />} />
 							<Route path='persons' element={<Persons />} />
 							<Route path='movie/:movieId' element={<MoviePage />} />

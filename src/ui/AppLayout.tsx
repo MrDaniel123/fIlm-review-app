@@ -8,6 +8,7 @@ const AppContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-content: flex-start;
+	align-items: center;
 	flex-wrap: wrap;
 	width: 100%;
 	height: 100vh;

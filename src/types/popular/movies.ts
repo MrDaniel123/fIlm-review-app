@@ -1,4 +1,4 @@
-type PopulatMoviesResults = {
+export type PopulatMoviesResults = {
 	adult: boolean;
 	backdrop_path: string;
 	genre_ids: number[];

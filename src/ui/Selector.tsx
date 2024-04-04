@@ -6,9 +6,9 @@ const StyledSelector = styled.div`
 	display: flex;
 	align-items: flex-start;
 	gap: 16px;
-
+	padding-left: 1rem;
 	width: 90%;
-	max-width: 1280px;
+	max-width: 1440px;
 `;
 
 const AnchorHeader = styled.h3`
@@ -62,7 +62,7 @@ function Selector({ categories, name, acturalPath }: SelectroProps) {
 	const [openSelector, setopenSelector] = useState(false);
 
 	const renderCategories = categories.map(category => (
-		<AnchorHeader onClick={() => setopenSelector(false)}>
+		<AnchorHeader onClick={() => setopenSelector(false)} key={category}>
 			<NavLink to={`/movies/${category}`}>{category}</NavLink>
 		</AnchorHeader>
 	));
