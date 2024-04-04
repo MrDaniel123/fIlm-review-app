@@ -41,7 +41,6 @@ function App() {
 								<Route path='topRated' element={<MoviesList type={'topRated'} />} />
 								<Route path='upcoming' element={<MoviesList type={'upcoming'} />} />
 							</Route>
-
 							<Route path='tv-series' element={<TvSeries />} />
 							<Route path='persons' element={<Persons />} />
 							<Route path='movie/:movieId' element={<MoviePage />} />

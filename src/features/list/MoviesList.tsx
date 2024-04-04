@@ -1,8 +1,12 @@
 import React from 'react';
-import { useNowPlayingMovieMovies } from '../../hooks/nowPlaying/useNowPlayingMovies';
-import ListElement from './ListElement';
 import styled from 'styled-components';
+
+import { useNowPlayingMovieMovies } from '../../hooks/nowPlaying/useNowPlayingMovies';
 import { usePopularMovies } from '../../hooks/popular/usePopularMovies';
+import { useTopRatedMovies } from '../../hooks/topRated/useTopRatedMovies';
+
+import ListElement from './ListElement';
+import { useUpComingMovies } from '../../hooks/upcoming/useUpcomingMovies';
 
 const ListWrapper = styled.div`
 	display: flex;
@@ -21,6 +25,8 @@ type ListProps = {
 function MoviesList({ type }: ListProps) {
 	const { data: nowPlayingMovies } = useNowPlayingMovieMovies();
 	const { data: popularMovies } = usePopularMovies();
+	const { data: topRatedMovies } = useTopRatedMovies();
+	const { data: upcomingMovies } = useUpComingMovies();
 
 	if (type === 'nowPlaying') {
 		const renderListElements = nowPlayingMovies?.results.map(movie => (
@@ -32,6 +38,21 @@ function MoviesList({ type }: ListProps) {
 	if (type === 'popular') {
 		const renderListElements = popularMovies?.results.map(movie => (
 			<ListElement type={'popular'} data={movie} key={movie.id} />
+		));
+
+		return <ListWrapper>{renderListElements}</ListWrapper>;
+	}
+
+	if (type === 'topRated') {
+		const renderListElements = topRatedMovies?.results.map(movie => (
+			<ListElement type={'topRated'} data={movie} key={movie.id} />
+		));
+
+		return <ListWrapper>{renderListElements}</ListWrapper>;
+	}
+	if (type === 'upcoming') {
+		const renderListElements = upcomingMovies?.results.map(movie => (
+			<ListElement type={'upcoming'} data={movie} key={movie.id} />
 		));
 
 		return <ListWrapper>{renderListElements}</ListWrapper>;

@@ -1,8 +1,11 @@
 import React from 'react';
-import { PopulatMoviesResults } from '../../types/popular/movies';
-import { NowPlayingMovieResult } from '../../types/nowPlaying/nowPlayingMoviesType';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+
+import { type PopulatMoviesResults } from '../../types/popular/movies';
+import { type NowPlayingMovieResult } from '../../types/nowPlaying/nowPlayingMoviesType';
+import { type TopRatedMoviesResults } from '../../types/topRated/topRated';
+import { type UpcomingMoviesResults } from '../../types/upcoming/upcomingMovies';
 
 const StyledListElement = styled(NavLink)`
 	width: 100%;
@@ -57,7 +60,21 @@ type NowPLayingMovieProps = {
 	data: NowPlayingMovieResult;
 };
 
-type ListElementProps = NowPLayingMovieProps | PopularMovieProps;
+type TopRatedMoviesProps = {
+	type: 'topRated';
+	data: TopRatedMoviesResults;
+};
+
+type UpcomingMoviesProps = {
+	type: 'upcoming';
+	data: UpcomingMoviesResults;
+};
+
+type ListElementProps =
+	| NowPLayingMovieProps
+	| PopularMovieProps
+	| TopRatedMoviesProps
+	| UpcomingMoviesProps;
 
 function ListElement({ data, type }: ListElementProps) {
 	if (type === 'popular') {
@@ -72,6 +89,28 @@ function ListElement({ data, type }: ListElementProps) {
 	}
 
 	if (type === 'nowPlaying') {
+		return (
+			<StyledListElement to={`/movie/${data.id}`}>
+				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster' />
+				<Title>{data.title}</Title>
+				<Date>{data.release_date}</Date>
+				<Description>{data.overview.slice(0, 160)}</Description>
+			</StyledListElement>
+		);
+	}
+
+	if (type === 'topRated') {
+		return (
+			<StyledListElement to={`/movie/${data.id}`}>
+				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster' />
+				<Title>{data.title}</Title>
+				<Date>{data.release_date}</Date>
+				<Description>{data.overview.slice(0, 160)}</Description>
+			</StyledListElement>
+		);
+	}
+
+	if (type === 'upcoming') {
 		return (
 			<StyledListElement to={`/movie/${data.id}`}>
 				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster' />
