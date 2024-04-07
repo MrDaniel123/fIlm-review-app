@@ -15,13 +15,21 @@ const StyledMoviesPage = styled.div`
 
 function MoviesPage() {
 	const location = useLocation();
+	let actualCategory = 'popular';
+	if (location.pathname.includes('nowPlaying')) {
+		actualCategory = 'nowPlaying';
+	} else if (location.pathname.includes('upcoming')) {
+		actualCategory = 'upcoming';
+	} else if (location.pathname.includes('topRated')) {
+		actualCategory = 'topRated';
+	}
 
 	return (
 		<StyledMoviesPage>
 			<Selector
 				categories={['popular', 'nowPlaying', 'topRated', 'upcoming']}
 				name={'movies'}
-				acturalPath={location.pathname.slice(8, location.pathname.length)}
+				actualCategory={actualCategory}
 			/>
 
 			<Outlet />

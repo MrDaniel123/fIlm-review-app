@@ -39,18 +39,27 @@ function App() {
 							<Route index element={<HomePage />} />
 							<Route path='movies' element={<MoviesPage />}>
 								<Route path='popular' element={<MoviesList type={'popular'} />} />
+								<Route path='popular/:pageNumber' element={<MoviesList type={'popular'} />} />
 								<Route path='nowPlaying' element={<MoviesList type={'nowPlaying'} />} />
+								<Route path='nowPlaying/:pageNumber' element={<MoviesList type={'nowPlaying'} />} />
 								<Route path='topRated' element={<MoviesList type={'topRated'} />} />
+								<Route path='topRated/:pageNumber' element={<MoviesList type={'topRated'} />} />
 								<Route path='upcoming' element={<MoviesList type={'upcoming'} />} />
+								<Route path='upcoming/:pageNumber' element={<MoviesList type={'upcoming'} />} />
 							</Route>
 							<Route path='tv-series' element={<TvSeriesPage />}>
 								<Route path='popular' element={<TvSeriesList type={'popular'} />} />
+								<Route path='popular/:pageNumber' element={<TvSeriesList type={'popular'} />} />
 								<Route path='trending' element={<TvSeriesList type={'trending'} />} />
+								<Route path='trending/:pageNumber' element={<TvSeriesList type={'trending'} />} />
 								<Route path='topRated' element={<TvSeriesList type={'topRated'} />} />
+								<Route path='topRated/:pageNumber' element={<TvSeriesList type={'topRated'} />} />
 								<Route path='onTheAir' element={<TvSeriesList type={'onTheAir'} />} />
+								<Route path='onTheAir/:pageNumber' element={<TvSeriesList type={'onTheAir'} />} />
 							</Route>
 							<Route path='persons' element={<PersonsPage />}>
 								<Route path='popular' element={<PersonsList type={'popular'} />} />
+								<Route path='popular/:pageNumber' element={<PersonsList type={'popular'} />} />
 							</Route>
 							<Route path='movie/:movieId' element={<MoviePage />} />
 							<Route path='person/:personId' element={<PersonPage />} />

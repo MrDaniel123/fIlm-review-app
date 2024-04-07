@@ -55,12 +55,18 @@ const ActualCategory = styled.h3`
 type SelectroProps = {
 	categories: string[];
 	name: string;
-	acturalPath: string;
+	actualCategory: string;
 	disabled?: boolean;
 	linkTo?: 'movies' | 'tv-series';
 };
 
-function Selector({ categories, name, acturalPath, disabled, linkTo = 'movies' }: SelectroProps) {
+function Selector({
+	categories,
+	name,
+	disabled,
+	linkTo = 'movies',
+	actualCategory,
+}: SelectroProps) {
 	const [openSelector, setopenSelector] = useState(false);
 
 	const renderCategories = categories.map(category => (
@@ -74,7 +80,7 @@ function Selector({ categories, name, acturalPath, disabled, linkTo = 'movies' }
 			{!openSelector && (
 				<div>
 					<AnchorButton onClick={() => (disabled ? null : setopenSelector(true))}>
-						<AnchorHeader>{acturalPath}</AnchorHeader>
+						<AnchorHeader>{actualCategory}</AnchorHeader>
 					</AnchorButton>
 				</div>
 			)}

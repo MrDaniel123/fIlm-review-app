@@ -8,6 +8,8 @@ import { useTopRatedMovies } from '../../hooks/topRated/useTopRatedMovies';
 import ListElement from './ListElement';
 import { useUpComingMovies } from '../../hooks/upcoming/useUpcomingMovies';
 import { usePopularActros } from '../../hooks/popular/usePopularActros';
+import { useParams } from 'react-router-dom';
+import Pagination from '../../ui/Pagination';
 
 const ListWrapper = styled.div`
 	display: flex;
@@ -24,14 +26,26 @@ type ListProps = {
 };
 
 function PersonsList({ type }: ListProps) {
-	const { data: popularActros } = usePopularActros();
+	const { pageNumber } = useParams();
+	console.log(pageNumber);
 
-	if (type === 'popular') {
+	const { data: popularActros } = usePopularActros(pageNumber ? pageNumber : '1');
+
+	if (type === 'popular' && popularActros) {
 		const renderListElements = popularActros?.results.map(actor => (
 			<ListElement type={'persons'} data={actor} key={actor.id} />
 		));
 
-		return <ListWrapper>{renderListElements}</ListWrapper>;
+		return (
+			<>
+				<ListWrapper>{renderListElements}</ListWrapper>
+				<Pagination
+					totalPages={popularActros.total_pages > 500 ? 500 : popularActros.total_pages}
+					actualPage={pageNumber!}
+					linkTo={'persons/popular'}
+				/>
+			</>
+		);
 	}
 
 	return <ListWrapper>List</ListWrapper>;

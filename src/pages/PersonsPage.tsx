@@ -14,15 +14,13 @@ const StyledPersonsPage = styled.div`
 `;
 
 function PersonsPage() {
-	const location = useLocation();
-
 	return (
 		<StyledPersonsPage>
 			<Selector
 				categories={['popular']}
 				name={'Persons'}
-				acturalPath={location.pathname.slice(9, location.pathname.length)}
 				disabled={true}
+				actualCategory={'popular'}
 			/>
 			<Outlet />
 		</StyledPersonsPage>

@@ -6,8 +6,7 @@ import { type TrendingTvSeries } from '../../types/trending/tvSeries';
 const baseTrendingMoviesUrl =
 	'https://api.themoviedb.org/3/trending/movie/day?language=en-US?&api_key=';
 
-const baseTrendingtvSeriesUrl =
-	'https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=';
+const baseTrendingtvSeriesUrl = 'https://api.themoviedb.org/3/trending/tv/day?language=en-US';
 
 export const getTrendingMovies = async () => {
 	const response = await axios.get<TrendingMovies>(`${baseTrendingMoviesUrl}${TMDB_KEY}`);
@@ -16,7 +15,9 @@ export const getTrendingMovies = async () => {
 };
 
 export const getTrendingTvSeries = async () => {
-	const response = await axios.get<TrendingTvSeries>(`${baseTrendingtvSeriesUrl}${TMDB_KEY}`);
+	const response = await axios.get<TrendingTvSeries>(
+		`${baseTrendingtvSeriesUrl}&api_key=${TMDB_KEY}`
+	);
 
 	return response.data;
 };

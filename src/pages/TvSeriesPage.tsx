@@ -16,13 +16,22 @@ const StyledPersonsPage = styled.div`
 function TvSeriesPage() {
 	const location = useLocation();
 
+	let actualCategory = 'popular';
+	if (location.pathname.includes('trending')) {
+		actualCategory = 'trending';
+	} else if (location.pathname.includes('onTheAir')) {
+		actualCategory = 'onTheAir';
+	} else if (location.pathname.includes('topRated')) {
+		actualCategory = 'topRated';
+	}
+
 	return (
 		<StyledPersonsPage>
 			<Selector
 				categories={['popular', 'trending', 'topRated', 'onTheAir']}
 				name={'Tv Series'}
-				acturalPath={location.pathname.slice(11, location.pathname.length)}
 				linkTo={'tv-series'}
+				actualCategory={actualCategory}
 			/>
 			<Outlet />
 		</StyledPersonsPage>

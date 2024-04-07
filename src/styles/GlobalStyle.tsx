@@ -76,6 +76,7 @@ h6 {
   hyphens: auto;
 }
 
+
 `;
 
 export default GlobalStyles;

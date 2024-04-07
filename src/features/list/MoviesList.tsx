@@ -7,6 +7,8 @@ import { useTopRatedMovies } from '../../hooks/topRated/useTopRatedMovies';
 
 import ListElement from './ListElement';
 import { useUpComingMovies } from '../../hooks/upcoming/useUpcomingMovies';
+import { useParams } from 'react-router-dom';
+import Pagination from '../../ui/Pagination';
 
 const ListWrapper = styled.div`
 	display: flex;
@@ -23,39 +25,77 @@ type ListProps = {
 };
 
 function MoviesList({ type }: ListProps) {
-	const { data: nowPlayingMovies } = useNowPlayingMovieMovies();
-	const { data: popularMovies } = usePopularMovies();
-	const { data: topRatedMovies } = useTopRatedMovies();
-	const { data: upcomingMovies } = useUpComingMovies();
+	const { pageNumber } = useParams();
 
-	if (type === 'nowPlaying') {
-		const renderListElements = nowPlayingMovies?.results.map(movie => (
+	const { data: popularMovies } = usePopularMovies(pageNumber ? pageNumber : '1');
+	const { data: nowPlayingMovies } = useNowPlayingMovieMovies(pageNumber ? pageNumber : '1');
+	const { data: topRatedMovies } = useTopRatedMovies(pageNumber ? pageNumber : '1');
+	const { data: upcomingMovies } = useUpComingMovies(pageNumber ? pageNumber : '1');
+
+	if (type === 'nowPlaying' && nowPlayingMovies) {
+		const renderListElements = nowPlayingMovies.results.map(movie => (
 			<ListElement type={'nowPlaying'} data={movie} key={movie.id} />
 		));
 
-		return <ListWrapper>{renderListElements}</ListWrapper>;
+		return (
+			<>
+				<ListWrapper>{renderListElements}</ListWrapper>
+				<Pagination
+					totalPages={nowPlayingMovies.total_pages > 500 ? 500 : nowPlayingMovies.total_pages}
+					actualPage={pageNumber!}
+					linkTo={'movies/nowPlaying'}
+				/>
+			</>
+		);
 	}
-	if (type === 'popular') {
-		const renderListElements = popularMovies?.results.map(movie => (
+	if (type === 'popular' && popularMovies) {
+		const renderListElements = popularMovies.results.map(movie => (
 			<ListElement type={'popular'} data={movie} key={movie.id} />
 		));
 
-		return <ListWrapper>{renderListElements}</ListWrapper>;
+		return (
+			<>
+				<ListWrapper>{renderListElements}</ListWrapper>
+				<Pagination
+					totalPages={popularMovies.total_pages > 500 ? 500 : popularMovies.total_pages}
+					actualPage={pageNumber!}
+					linkTo={'movies/popular'}
+				/>
+			</>
+		);
 	}
 
-	if (type === 'topRated') {
-		const renderListElements = topRatedMovies?.results.map(movie => (
+	if (type === 'topRated' && topRatedMovies) {
+		const renderListElements = topRatedMovies.results.map(movie => (
 			<ListElement type={'topRated'} data={movie} key={movie.id} />
 		));
 
-		return <ListWrapper>{renderListElements}</ListWrapper>;
+		return (
+			<>
+				<ListWrapper>{renderListElements}</ListWrapper>
+				<Pagination
+					totalPages={topRatedMovies.total_pages > 500 ? 500 : topRatedMovies.total_pages}
+					actualPage={pageNumber!}
+					linkTo={'movies/topRated'}
+				/>
+			</>
+		);
 	}
-	if (type === 'upcoming') {
-		const renderListElements = upcomingMovies?.results.map(movie => (
+	if (type === 'upcoming' && upcomingMovies) {
+		const renderListElements = upcomingMovies.results.map(movie => (
 			<ListElement type={'upcoming'} data={movie} key={movie.id} />
 		));
 
-		return <ListWrapper>{renderListElements}</ListWrapper>;
+		return (
+			<>
+				<ListWrapper>{renderListElements}</ListWrapper>
+				<Pagination
+					totalPages={upcomingMovies.total_pages > 500 ? 500 : upcomingMovies.total_pages}
+					actualPage={pageNumber!}
+					linkTo={'movies/upcoming'}
+				/>
+			</>
+		);
 	}
 
 	return <ListWrapper>List</ListWrapper>;

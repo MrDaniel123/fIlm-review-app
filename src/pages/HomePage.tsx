@@ -26,11 +26,11 @@ const StyledHomePage = styled.main`
 `;
 
 function HomePage() {
-	const { data: nowPlayingMovies } = useNowPlayingMovieMovies();
+	const { data: nowPlayingMovies } = useNowPlayingMovieMovies('1');
 	const { data: trendingMovies } = useTrendingMovies();
 	const { data: trendingTvSeries } = useTrendingTvSeries();
-	const { data: populatMovies } = usePopularMovies();
-	const { data: populatActros } = usePopularActros();
+	const { data: populatMovies } = usePopularMovies('1');
+	const { data: populatActros } = usePopularActros('1');
 
 	return (
 		<StyledHomePage>
