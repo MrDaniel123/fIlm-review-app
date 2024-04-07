@@ -1,24 +1,23 @@
-export type TrendingTvSeriesResult = {
+export type PopularTvSeriesResult = {
 	adult: boolean;
 	backdrop_path: string;
+	genre_ids: number[];
 	id: number;
-	name: string;
+	origin_country: string[];
 	original_language: string;
 	original_name: string;
 	overview: string;
-	poster_path: string;
-	media_type: string;
-	genre_ids: number[];
 	popularity: number;
+	poster_path: string;
 	first_air_date: string;
+	name: string;
 	vote_average: number;
 	vote_count: number;
-	origin_country: string[];
 };
 
-export type TrendingTvSeries = {
+export type PopularTvSeries = {
 	page: number;
-	results: TrendingTvSeriesResult[];
+	results: PopularTvSeriesResult[];
 	total_pages: number;
 	total_results: number;
 };

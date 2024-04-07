@@ -28,7 +28,7 @@ const StyledSeriesPage = styled.div`
 	padding-bottom: 80px;
 `;
 
-function TvSeriesPage() {
+function SeriesPage() {
 	const { tvId } = useParams();
 
 	const { data: tvSerie } = useTvSerie(tvId!);
@@ -64,4 +64,4 @@ function TvSeriesPage() {
 	);
 }
 
-export default TvSeriesPage;
+export default SeriesPage;

@@ -1,12 +1,15 @@
-import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { type PopulatMoviesResults } from '../../types/popular/movies';
 import { type NowPlayingMovieResult } from '../../types/nowPlaying/nowPlayingMoviesType';
-import { type TopRatedMoviesResults } from '../../types/topRated/topRated';
+import { type TopRatedMoviesResults } from '../../types/topRated/movies';
 import { type UpcomingMoviesResults } from '../../types/upcoming/upcomingMovies';
-import { PopularActrosResults } from '../../types/popular/actros';
+import { type PopularActrosResults } from '../../types/popular/actros';
+import { type TrendingTvSeriesResult } from '../../types/trending/tvSeries';
+import { type TopRatedTvSeriesResult } from '../../types/topRated/tvSeries';
+import { type PopularTvSeriesResult } from '../../types/popular/tvSeries';
+import { type OnTheAirTvSeriesResult } from '../../types/onTheAir/tvSeries';
 
 const StyledListElement = styled(NavLink)`
 	width: 100%;
@@ -76,12 +79,36 @@ type PopularActrosProps = {
 	data: PopularActrosResults;
 };
 
+type TrendingTvSeriesProps = {
+	type: 'trending-tvSeries';
+	data: TrendingTvSeriesResult;
+};
+
+type TopRatedTvSeriesProps = {
+	type: 'topRated-tvSeries';
+	data: TopRatedTvSeriesResult;
+};
+
+type PopularTvSeriesProps = {
+	type: 'popular-tvSeries';
+	data: PopularTvSeriesResult;
+};
+
+type OnTheAirTvSeriesProps = {
+	type: 'onTheAir-tvSeries';
+	data: OnTheAirTvSeriesResult;
+};
+
 type ListElementProps =
 	| NowPLayingMovieProps
 	| PopularMovieProps
 	| TopRatedMoviesProps
 	| UpcomingMoviesProps
-	| PopularActrosProps;
+	| PopularActrosProps
+	| TrendingTvSeriesProps
+	| TopRatedTvSeriesProps
+	| PopularTvSeriesProps
+	| OnTheAirTvSeriesProps;
 
 function ListElement({ data, type }: ListElementProps) {
 	if (type === 'popular' || type === 'nowPlaying' || type === 'topRated' || type === 'upcoming') {
@@ -90,6 +117,22 @@ function ListElement({ data, type }: ListElementProps) {
 				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster ' />
 				<Title>{data.title}</Title>
 				<Date>{data.release_date}</Date>
+				<Description>{data.overview.slice(0, 160)}</Description>
+			</StyledListElement>
+		);
+	}
+
+	if (
+		type === 'trending-tvSeries' ||
+		type === 'topRated-tvSeries' ||
+		type === 'popular-tvSeries' ||
+		type === 'onTheAir-tvSeries'
+	) {
+		return (
+			<StyledListElement to={`/tv/${data.id}`}>
+				<Image src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} alt='Poster ' />
+				<Title>{data.name}</Title>
+				<Date>{data.first_air_date}</Date>
 				<Description>{data.overview.slice(0, 160)}</Description>
 			</StyledListElement>
 		);

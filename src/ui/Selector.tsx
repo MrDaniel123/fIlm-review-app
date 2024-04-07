@@ -57,14 +57,15 @@ type SelectroProps = {
 	name: string;
 	acturalPath: string;
 	disabled?: boolean;
+	linkTo?: 'movies' | 'tv-series';
 };
 
-function Selector({ categories, name, acturalPath, disabled }: SelectroProps) {
+function Selector({ categories, name, acturalPath, disabled, linkTo = 'movies' }: SelectroProps) {
 	const [openSelector, setopenSelector] = useState(false);
 
 	const renderCategories = categories.map(category => (
 		<AnchorHeader onClick={() => setopenSelector(false)} key={category}>
-			<NavLink to={`/movies/${category}`}>{category}</NavLink>
+			<NavLink to={`/${linkTo}/${category}`}>{category}</NavLink>
 		</AnchorHeader>
 	));
 

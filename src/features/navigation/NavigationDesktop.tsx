@@ -40,7 +40,7 @@ function Navigation() {
 					</StyledNavLink>
 				</li>
 				<li>
-					<StyledNavLink to={'/tv-series'}>
+					<StyledNavLink to={'/tv-series/popular'}>
 						<img src={logoTvSeires} alt='Logo tv-series' />
 						<span>Tv-Series</span>
 					</StyledNavLink>

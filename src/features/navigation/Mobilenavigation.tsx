@@ -110,7 +110,7 @@ function Mobilenavigation({ showHideNavigation }: Props) {
 						</StyledNavLink>
 					</li>
 					<li>
-						<StyledNavLink to={'/tv-series'} onClick={showHideNavigation}>
+						<StyledNavLink to={'/tv-series/popular'} onClick={showHideNavigation}>
 							<img src={logoTvSeires} alt='Logo tv-series' />
 							<span>Tv-Series</span>
 						</StyledNavLink>

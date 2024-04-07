@@ -5,15 +5,16 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import HomePage from './pages/HomePage';
 import AppLayout from './ui/AppLayout';
-import TvSeries from './pages/TvSeriesPage';
+import TvSeriesPage from './pages/TvSeriesPage';
 import GlobalStyles from './styles/GlobalStyle';
 import MoviePage from './pages/MoviePage';
 import PersonPage from './pages/PersonPage';
-import TvSeriesPage from './pages/SeriesPage';
 import MoviesPage from './pages/MoviesPage';
 import MoviesList from './features/list/MoviesList';
 import PersonsPage from './pages/PersonsPage';
 import PersonsList from './features/list/PersonsList';
+import TvSeriesList from './features/list/TvSeriesList';
+import SeriesPage from './pages/SeriesPage';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -42,13 +43,18 @@ function App() {
 								<Route path='topRated' element={<MoviesList type={'topRated'} />} />
 								<Route path='upcoming' element={<MoviesList type={'upcoming'} />} />
 							</Route>
-							<Route path='tv-series' element={<TvSeries />} />
+							<Route path='tv-series' element={<TvSeriesPage />}>
+								<Route path='popular' element={<TvSeriesList type={'popular'} />} />
+								<Route path='trending' element={<TvSeriesList type={'trending'} />} />
+								<Route path='topRated' element={<TvSeriesList type={'topRated'} />} />
+								<Route path='onTheAir' element={<TvSeriesList type={'onTheAir'} />} />
+							</Route>
 							<Route path='persons' element={<PersonsPage />}>
 								<Route path='popular' element={<PersonsList type={'popular'} />} />
 							</Route>
 							<Route path='movie/:movieId' element={<MoviePage />} />
 							<Route path='person/:personId' element={<PersonPage />} />
-							<Route path='tv/:tvId' element={<TvSeriesPage />} />
+							<Route path='tv/:tvId' element={<SeriesPage />} />
 						</Route>
 					</Routes>
 				</BrowserRouter>
