@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import Search from './Search';
+import SearchButton from './SearchButton';
 import NavigationDesktop from './NavigationDesktop';
 import Logo from './Logo';
 import Mobilenavigation from './Mobilenavigation';
 import ShowHideMenueButton from './ShowHideMenueButton';
+import Search from '../search/Search';
 
 import { breakPoint } from '../../styles/style';
 
@@ -41,6 +42,11 @@ const StyledNavigation = styled.nav`
 function Navigation() {
 	const [windowWidth, setWindowWitch] = useState(window.innerWidth);
 	const [showMobileMenu, setShowMobileMenue] = useState(false);
+	const [showSearch, setShowSearch] = useState(false);
+
+	const handleShowHideSearch = () => {
+		setShowSearch(prevState => !prevState);
+	};
 
 	useEffect(() => {
 		const handleResizeWindow = () => setWindowWitch(window.innerWidth);
@@ -65,11 +71,16 @@ function Navigation() {
 				</NavLink>
 				{windowWidth > Number(breakPoint.large) && <NavigationDesktop />}
 
-				{windowWidth > Number(breakPoint.large) ? <Search /> : <Search type={'small'} />}
+				{windowWidth > Number(breakPoint.large) ? (
+					<SearchButton showSearch={handleShowHideSearch} />
+				) : (
+					<SearchButton type={'small'} showSearch={handleShowHideSearch} />
+				)}
 			</StyledNavigation>
 			<AnimatePresence>
 				{showMobileMenu && <Mobilenavigation showHideNavigation={handleShowHideMenue} />}
 			</AnimatePresence>
+			{showSearch && <Search hideSearch={handleShowHideSearch} />}
 		</>
 	);
 }

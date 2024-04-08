@@ -11,7 +11,6 @@ const AppContainer = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	width: 100%;
-	height: 100vh;
 `;
 
 const MainContentStyled = styled.div`

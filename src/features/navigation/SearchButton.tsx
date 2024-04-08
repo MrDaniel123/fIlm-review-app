@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { colors } from '../../styles/style';
 
@@ -13,36 +12,31 @@ const SearchContainer = styled.div`
 		cursor: pointer;
 		border-radius: 0.8rem;
 		padding: 1rem;
+		width: 60px;
 		&:hover {
 			background-color: ${colors.whiteHover};
 		}
 	}
 `;
 
-const StyledInput = styled.input`
-	width: 20rem;
-	height: 3rem;
-	border-radius: 0.8rem;
-	font-size: var(--font-medium);
-
-	&::placeholder {
-		font-size: var(--font-medium);
-		color: var(--color-river-bed);
-		padding: 0.7rem;
-	}
+const StyledSearchButton = styled.button`
+	border: none;
+	background-color: transparent;
 `;
 
 type Props = {
 	type?: 'full' | 'small';
+	showSearch: () => void;
 };
 
-function Search({ type }: Props) {
+function SearchButton({ type, showSearch }: Props) {
 	return (
 		<SearchContainer>
-			<img src={searchLogo} alt='Search logo' />
-			{type !== 'small' && <StyledInput type='text' placeholder='Search...' />}
+			<StyledSearchButton onClick={() => showSearch()}>
+				<img src={searchLogo} alt='Search logo' />
+			</StyledSearchButton>
 		</SearchContainer>
 	);
 }
 
-export default Search;
+export default SearchButton;
