@@ -38,7 +38,7 @@ function Answer({ name, mediaType, imagePath, id, hideSearch }: Props) {
 
 	if (mediaType === 'movie') {
 		return (
-			<StyledAnsver to={`movie/${id}`} onClick={hideSearch} reloadDocument={true}>
+			<StyledAnsver to={`movie/${id}`} onClick={hideSearch}>
 				<Poster src={`https://image.tmdb.org/t/p/w92${imagePath}`} alt='Movie' />
 				<Name>{name}</Name>
 			</StyledAnsver>
@@ -47,7 +47,7 @@ function Answer({ name, mediaType, imagePath, id, hideSearch }: Props) {
 
 	if (mediaType === 'tv') {
 		return (
-			<StyledAnsver to={`tv/${id}`} onClick={hideSearch} reloadDocument={true}>
+			<StyledAnsver to={`tv/${id}`} onClick={hideSearch}>
 				<Poster src={`https://image.tmdb.org/t/p/w92${imagePath}`} alt='Movie' />
 				<Name>{name}</Name>
 			</StyledAnsver>
@@ -56,7 +56,7 @@ function Answer({ name, mediaType, imagePath, id, hideSearch }: Props) {
 
 	if (mediaType === 'person') {
 		return (
-			<StyledAnsver to={`person/${id}`} onClick={hideSearch} reloadDocument={true}>
+			<StyledAnsver to={`person/${id}`} onClick={hideSearch}>
 				<Poster src={personAvatar} alt='Movie' />
 				<Name>{name}</Name>
 			</StyledAnsver>

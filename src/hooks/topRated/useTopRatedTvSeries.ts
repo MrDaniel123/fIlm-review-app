@@ -3,7 +3,7 @@ import { getTopRatedTvSeries } from '../../services/topRated/apiToprated';
 
 export const useTopRatedTvSeries = (pageNumber: string) => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['topRated-tvSeries'],
+		queryKey: [`topRated-tvSeries:${pageNumber}`],
 		queryFn: () => getTopRatedTvSeries(pageNumber),
 	});
 	return { data, isLoading, isError };

@@ -3,7 +3,7 @@ import { getPopularMovies } from '../../services/popular/apiPopular';
 
 export const usePopularMovies = (pageNumber: string) => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['popular-movies'],
+		queryKey: [`popular-movies:${pageNumber}`],
 		queryFn: () => getPopularMovies(pageNumber),
 	});
 

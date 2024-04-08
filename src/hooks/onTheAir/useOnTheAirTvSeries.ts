@@ -3,7 +3,7 @@ import { getOnTheAirTvSeries } from '../../services/onTheAir/apiOnTheAir';
 
 export const useOnTheAirTvSeries = (pageNumber: string) => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['onTheAir-tvSeries'],
+		queryKey: [`onTheAir-tvSeries:${pageNumber}`],
 		queryFn: () => getOnTheAirTvSeries(pageNumber),
 	});
 	return { data, isLoading, isError };

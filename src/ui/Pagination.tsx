@@ -41,25 +41,14 @@ function Pagination({ totalPages, actualPage, linkTo }: PaginationProps) {
 	if (actualPage === undefined || actualPage === '1' || actualPage === '2' || actualPage === '3') {
 		return (
 			<StyledPagination>
-				<PaginateButton
-					reloadDocument={true}
-					to={`/${linkTo}/1`}
-					className={`${actualPage === undefined && 'active'}`}>
+				<PaginateButton to={`/${linkTo}/1`} className={`${actualPage === undefined && 'active'}`}>
 					1
 				</PaginateButton>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/2`}>
-					2
-				</PaginateButton>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/3`}>
-					3
-				</PaginateButton>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/4`}>
-					4
-				</PaginateButton>
+				<PaginateButton to={`/${linkTo}/2`}>2</PaginateButton>
+				<PaginateButton to={`/${linkTo}/3`}>3</PaginateButton>
+				<PaginateButton to={`/${linkTo}/4`}>4</PaginateButton>
 				<DotLine>...</DotLine>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/${totalPages - 1}`}>
-					{totalPages - 1}
-				</PaginateButton>
+				<PaginateButton to={`/${linkTo}/${totalPages - 1}`}>{totalPages - 1}</PaginateButton>
 			</StyledPagination>
 		);
 	}
@@ -67,45 +56,29 @@ function Pagination({ totalPages, actualPage, linkTo }: PaginationProps) {
 	if (Number(actualPage) >= totalPages - 2) {
 		return (
 			<StyledPagination>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/1`}>
-					1
-				</PaginateButton>
+				<PaginateButton to={`/${linkTo}/1`}>1</PaginateButton>
 				<DotLine>...</DotLine>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/${totalPages - 4}`}>
-					{totalPages - 4}
-				</PaginateButton>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/${totalPages - 3}`}>
-					{totalPages - 3}
-				</PaginateButton>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/${totalPages - 2}`}>
-					{totalPages - 2}
-				</PaginateButton>
-				<PaginateButton reloadDocument={true} to={`/${linkTo}/${totalPages - 1}`}>
-					{totalPages - 1}
-				</PaginateButton>
+				<PaginateButton to={`/${linkTo}/${totalPages - 4}`}>{totalPages - 4}</PaginateButton>
+				<PaginateButton to={`/${linkTo}/${totalPages - 3}`}>{totalPages - 3}</PaginateButton>
+				<PaginateButton to={`/${linkTo}/${totalPages - 2}`}>{totalPages - 2}</PaginateButton>
+				<PaginateButton to={`/${linkTo}/${totalPages - 1}`}>{totalPages - 1}</PaginateButton>
 			</StyledPagination>
 		);
 	}
 
 	return (
 		<StyledPagination>
-			<PaginateButton reloadDocument={true} to={`/${linkTo}/1`}>
-				1
-			</PaginateButton>
+			<PaginateButton to={`/${linkTo}/1`}>1</PaginateButton>
 			<DotLine>...</DotLine>
-			<PaginateButton reloadDocument={true} to={`/${linkTo}/${Number(actualPage) - 1}`}>
+			<PaginateButton to={`/${linkTo}/${Number(actualPage) - 1}`}>
 				{Number(actualPage) - 1}
 			</PaginateButton>
-			<PaginateButton reloadDocument={true} to={`/${linkTo}/${actualPage}`}>
-				{actualPage}
-			</PaginateButton>
-			<PaginateButton reloadDocument={true} to={`/${linkTo}/${Number(actualPage) + 1}`}>
+			<PaginateButton to={`/${linkTo}/${actualPage}`}>{actualPage}</PaginateButton>
+			<PaginateButton to={`/${linkTo}/${Number(actualPage) + 1}`}>
 				{Number(actualPage) + 1}
 			</PaginateButton>
 			<DotLine>...</DotLine>
-			<PaginateButton reloadDocument={true} to={`/${linkTo}/${totalPages - 1}`}>
-				{totalPages - 1}
-			</PaginateButton>
+			<PaginateButton to={`/${linkTo}/${totalPages - 1}`}>{totalPages - 1}</PaginateButton>
 		</StyledPagination>
 	);
 }

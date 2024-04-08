@@ -3,7 +3,7 @@ import { getUpcomingMovies } from '../../services/upcoming/apiUpcoming';
 
 export const useUpComingMovies = (pageNumber: string) => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['upcoming-movies'],
+		queryKey: [`upcoming-movies:${pageNumber}`],
 		queryFn: () => getUpcomingMovies(pageNumber),
 	});
 	return { data, isLoading, isError };

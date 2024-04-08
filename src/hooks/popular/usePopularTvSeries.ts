@@ -3,7 +3,7 @@ import { getPopularTvSeries } from '../../services/popular/apiPopular';
 
 export const usePopularTvSeries = (pageNumber: string) => {
 	const { data, isLoading, isError } = useQuery({
-		queryKey: ['popular-tvSeries'],
+		queryKey: [`popular-tvSeries:${pageNumber}`],
 		queryFn: () => getPopularTvSeries(pageNumber),
 	});
 
